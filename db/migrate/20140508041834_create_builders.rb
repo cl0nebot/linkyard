@@ -3,6 +3,7 @@ class CreateBuilders < ActiveRecord::Migration
     create_table :builders do |t|
       t.belongs_to :user
       t.string :type, :null => false
+      t.string :configuration
       t.timestamps
     end
   end
