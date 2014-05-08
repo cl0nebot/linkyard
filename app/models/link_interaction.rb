@@ -1,3 +1,4 @@
 class LinkInteraction < ActiveRecord::Base
-  belongs_to :interaction, :links
+  belongs_to :interaction 
+  belongs_to :link
 end
