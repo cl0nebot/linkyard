@@ -7,8 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1><%= link_to 'Linkyard', root_path %></h1>
+    <ul>
+      <%= navigation_link_to 'Add Link', root_path %>
+      <%= navigation_link_to 'Links', link_index_path %>
+    <% if user_signed_in? %>
+      <%= navigation_link_to current_user.email, edit_user_registration_path %>
+      <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+    <% else %>
+      <%= navigation_link_to 'Login', new_user_session_path %>
+      <%= navigation_link_to 'Sign up', new_user_registration_path %>
+    <% end %>
+    </ul>
+  </header>
+
+  <% if notice %>
   <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
   <p class="alert"><%= alert %></p>
+  <% end %>
+
   <%= yield %>
 
 </body>
