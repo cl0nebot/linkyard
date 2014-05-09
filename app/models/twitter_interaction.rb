@@ -1,0 +1,2 @@
+class TwitterInteraction
+end
