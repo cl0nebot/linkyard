@@ -11,6 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140508221926) do
+
+  create_table "builders", force: true do |t|
+    t.integer  "user_id"
+    t.string   "type",          null: false
+    t.string   "configuration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interactions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "type",          null: false
+    t.string   "configuration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "link_interactions", force: true do |t|
+    t.integer  "interaction_id"
+    t.integer  "links_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title",      null: false
+    t.string   "url",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links_summaries", force: true do |t|
+    t.integer  "link_id"
+    t.integer  "summary_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "summaries", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "summary_builders", force: true do |t|
+    t.integer  "summary_id"
+    t.integer  "builder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
