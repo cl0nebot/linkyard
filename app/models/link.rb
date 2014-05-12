@@ -3,6 +3,6 @@ class Link < ActiveRecord::Base
   has_many :link_interactions
   belongs_to :user
 
-  validate :title, :url, :presence => true
-  validate :url, :format => { :with => URI::regexp(%w(http https)), :message => "Your link should be a valid URL"}
+  validates :title, :url, :presence => true
+  validates :url, :format => { :with => URI::regexp(%w(http https)), :message => "should be a valid address"}
 end

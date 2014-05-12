@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "link/create.html.erb" do
+describe "interactions/delete.html.erb" do
   pending "add some examples to (or delete) #{__FILE__}"
 end

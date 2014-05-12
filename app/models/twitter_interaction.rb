@@ -1,2 +1,2 @@
-class TwitterInteraction
+class TwitterInteraction < Interaction
 end

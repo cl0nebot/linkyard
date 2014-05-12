@@ -1,0 +1,24 @@
+<h1>Add</h1>
+
+<% if @link.errors.any? %>
+  <div class="error">
+    <h3>Invalid input</h3>
+    <p><%= @link.errors.full_messages.to_sentence %></p>
+  </div>
+<% end %>
+
+<%= form_for @link, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
+  <div class="pure-control-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, { :autofocus => true, :class => "pure-input-2-3" } %>
+  </div>
+  
+  <div class="pure-control-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "pure-input-1-2" %>
+  </div>
+  
+  <div class="pure-controls">
+    <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
+  </div>
+<% end %>

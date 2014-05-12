@@ -10,6 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require pure
  *= require_tree .
  *= require_self
  */
+
+body { font-family: 'Source Sans Pro', sans-serif; color: gray; margin: 1em;}
+h1, h2, h3, h4, h5, h6 { font-weight: 200;}
+
+#page { margin: 0 auto; width: 720px;}
+
+header h1 a { color: gray; text-decoration: none; text-transform: uppercase;}
+header ul { margin: 0; padding: 0;}
+header ul li { list-style: none; display: inline; padding-right: 1em;}
+
+div.field_with_errors { display: inline;}
+.field_with_errors input { background-color: #fdf7f7;}
+.success, .error { margin: 2em 0; padding: 20px; border-left: 3px solid #eee;} 
+.success h3, .error h3 { font-weight: normal; margin: 0;}
+.success { background-color: #f2f9ef; border-color: #090 }
+.error { background-color: #fdf7f7; border-color: #d9534f;}
+.error h3 { color: #d9534f;}
+.success h3 { color: #090;}

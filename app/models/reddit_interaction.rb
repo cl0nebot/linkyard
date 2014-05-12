@@ -1,2 +1,3 @@
-class RedditInteraction
+class RedditInteraction < Interaction
+
 end
