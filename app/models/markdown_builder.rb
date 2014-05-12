@@ -1,3 +1,3 @@
-class MarkdownBuilder
+class MarkdownBuilder < Builder
   
 end

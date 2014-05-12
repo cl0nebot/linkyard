@@ -14,30 +14,30 @@
 ActiveRecord::Schema.define(version: 20140509024015) do
 
   create_table "builders", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",       null: false
     t.string   "type",          null: false
-    t.string   "configuration"
+    t.text     "configuration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "interactions", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",       null: false
     t.string   "type",          null: false
-    t.string   "configuration"
+    t.text     "configuration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "link_interactions", force: true do |t|
-    t.integer  "interaction_id"
-    t.integer  "links_id"
+    t.integer  "interaction_id", null: false
+    t.integer  "links_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "links", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
     t.string   "title",      null: false
     t.string   "url",        null: false
     t.datetime "created_at"
@@ -45,21 +45,21 @@ ActiveRecord::Schema.define(version: 20140509024015) do
   end
 
   create_table "links_summaries", force: true do |t|
-    t.integer  "link_id"
-    t.integer  "summary_id"
+    t.integer  "link_id",    null: false
+    t.integer  "summary_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "summaries", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "summary_builders", force: true do |t|
-    t.integer  "summary_id"
-    t.integer  "builder_id"
+    t.integer  "summary_id", null: false
+    t.integer  "builder_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

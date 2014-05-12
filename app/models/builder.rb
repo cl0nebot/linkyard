@@ -3,6 +3,7 @@ class Builder < ActiveRecord::Base
 
   validates :type, :presence => true
   
+#don't use
   def build
     raise 'Abstract method'
   end

@@ -1,4 +1,4 @@
-class EmailBuilder
+class EmailBuilder < Builder
   def build
     
   end

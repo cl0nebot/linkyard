@@ -12,11 +12,11 @@
   <header>
     <h1><%= link_to 'Linkyard', root_path %></h1>
     <ul>
+    <% if user_signed_in? %>
       <%= navigation_link_to 'Add', root_path %>
       <%= navigation_link_to 'Links', links_path %>
       <%= navigation_link_to 'Interactions', interactions_path %>
       <%= navigation_link_to 'Builders', root_path %>
-    <% if user_signed_in? %>
       <%= navigation_link_to current_user.email, edit_user_registration_path %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>
@@ -27,10 +27,14 @@
   </header>
 
   <% if notice %>
-  <p class="notice"><%= notice %></p>
+    <div class="notice">
+      <p><%= notice %></p>
+    </div>
   <% end %>
   <% if alert %>
-  <p class="alert"><%= alert %></p>
+    <div class="warning">
+      <p><%= alert %></p>
+    </div>
   <% end %>
 
   <%= yield %>
