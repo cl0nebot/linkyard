@@ -1,5 +1,14 @@
 class InteractionsController < ApplicationController
   def create
+    @interaction = Interaction.new_by_type(params[:type], params[params[:type].underscore].permit!)
+    @interaction.user = current_user
+    
+    if @interaction.save
+      flash[:success] = "Interaction added successfully"
+      redirect_to interactions_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -10,7 +19,7 @@ class InteractionsController < ApplicationController
 
   def new
     if request.xhr? && params[:type]
-      interaction = Interaction.new_by_type(params[:type])
+      @interaction = Interaction.new_by_type(params[:type])
       render view_for(params[:type]), :layout => false
     else
       @interaction = current_user.interactions.build

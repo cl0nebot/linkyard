@@ -1,6 +1,12 @@
 <h1>New Interaction</h1>
 
-<%= form_for @interaction do |f| %>
-  <%= f.select :type, Hash[Interaction.subclasses.map { |interaction| [interaction.name.underscore.humanize, interaction.name] }] %>
+  <div class="pure-control-group">
+    Interaction Type
+    <%= select_tag :type, options_for_select(Interaction::AVAILABLE_INTERACTIONS.map { |interaction| [interaction.underscore.humanize, interaction] }, @interaction.try(:type)), :class => "pure-input-1-4" %>
+  </div>
+
   <div id="new-interaction-container"></div>
-<% end %>
+
+
+
+

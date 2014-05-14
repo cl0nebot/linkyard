@@ -1,1 +1,28 @@
-<h1>TwitterInteraction</h1>
+<%= form_for @interaction, :url => interactions_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
+
+<%= hidden_field_tag :type, @interaction.type %>
+
+<div class="pure-control-group">
+  <%= f.label :consumer_key %>
+  <%= f.text_field :consumer_key, :autofocus => true %>
+</div>
+
+<div class="pure-control-group">
+  <%= f.label :consumer_secret %>
+  <%= f.text_field :consumer_secret %>
+</div>
+
+<div class="pure-control-group">
+  <%= f.label :access_token %>
+  <%= f.text_field :access_token %>
+</div>
+
+<div class="pure-control-group">
+  <%= f.label :access_token_secret %>
+  <%= f.text_field :access_token_secret %>
+</div>
+
+  <div class="pure-controls">
+    <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
+  </div>
+<% end %>
