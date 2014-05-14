@@ -11,10 +11,8 @@ class InteractionsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def index
+    @interactions = Interaction.order(:created_at => :desc)
   end
 
   def new

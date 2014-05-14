@@ -19,3 +19,8 @@ div.field_with_errors { display: inline;}
 .success h3 { color: #090;}
 .notice h3 { color: #5bc0de;} 
 .warning h3 { color: #f0ad4e;}
+
+table { width: 100%;}
+table td, table th { padding: 0.5em 1em }
+table th { text-align: left;} 
+table tr.even { background: #f2f2f2;}

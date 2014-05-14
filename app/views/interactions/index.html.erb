@@ -8,3 +8,22 @@
 <% end %>
 
 <p><%= link_to 'New', new_interaction_path, :class => "pure-button pure-button-primary" %></p>
+
+<% if @interactions.any? %>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @interactions.each do |interaction| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= interaction.type.underscore.humanize %></td>
+      <td><%= interaction.created_at.to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

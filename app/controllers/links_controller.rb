@@ -6,16 +6,14 @@ class LinksController < ApplicationController
   def create
     @link = current_user.links.build(params[:link].permit(:url, :title))
     if current_user.save
-      flash[:success] = "Link added successfully"
+      flash[:success] = "Link added successfully."
       redirect_to links_path
     else
       render :new
     end
   end
 
-  def show
-  end
-
   def index
+    @links = Link.order(:created_at => :desc)
   end
-end
+end         
