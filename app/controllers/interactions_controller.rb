@@ -1,18 +1,10 @@
 class InteractionsController < ApplicationController
-  def create
-    @interaction = Interaction.new_by_type(params[:type], params[params[:type].underscore].permit!)
-    @interaction.user = current_user
-    
-    if @interaction.save
-      flash[:success] = "Interaction added successfully."
-      redirect_to interactions_path
-    else
-      render view_for(params[:type])
-    end
-  end
-
   def index
     @interactions = Interaction.order(:created_at => :desc)
+  end
+
+  def show
+    
   end
 
   def new
@@ -26,8 +18,24 @@ class InteractionsController < ApplicationController
 
   def edit
   end
+  
+  def create
+    @interaction = Interaction.new_by_type(params[:type], params[params[:type].underscore].permit!)
+    @interaction.user = current_user
+    
+    if @interaction.save
+      flash[:success] = "Interaction added successfully."
+      redirect_to interactions_path
+    else
+      render view_for(params[:type])
+    end
+  end
 
-  def delete
+  def update
+    
+  end
+
+  def destroy
   end
 
   protected

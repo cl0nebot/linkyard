@@ -1,4 +1,12 @@
 class LinksController < ApplicationController
+  def index
+    @links = Link.order(:created_at => :desc)
+  end
+
+  def show
+    
+  end
+
   def new
     @link = current_user.links.build
   end
@@ -13,7 +21,7 @@ class LinksController < ApplicationController
     end
   end
 
-  def index
-    @links = Link.order(:created_at => :desc)
+  def destroy
+    
   end
 end         
