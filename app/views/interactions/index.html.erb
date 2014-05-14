@@ -1,2 +1,10 @@
 <h1>My Interactions</h1>
-<p><%= link_to 'New', new_interaction_path %></p>
+
+<% if flash[:success] %>
+  <div class="success">
+    <h3>Success!</h3>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+
+<p><%= link_to 'New', new_interaction_path, :class => "pure-button pure-button-primary" %></p>

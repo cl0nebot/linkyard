@@ -4,7 +4,7 @@ class InteractionsController < ApplicationController
     @interaction.user = current_user
     
     if @interaction.save
-      flash[:success] = "Interaction added successfully"
+      flash[:success] = "Interaction added successfully."
       redirect_to interactions_path
     else
       render view_for(params[:type])
