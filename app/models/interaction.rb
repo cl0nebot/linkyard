@@ -3,8 +3,7 @@ class Interaction < ActiveRecord::Base
   has_many :link_interactions, :dependent => :destroy
 
   validates :type, :presence => true
-  serialize :configuration
-
+  store :configuration, :accessors => [], :coder => JSON
 
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction)
 
