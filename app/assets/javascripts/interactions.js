@@ -4,7 +4,7 @@ $(function() {
 
   function loadInteractionTemplate(type) {
     var container = $("#new-interaction-container");
-    $.get(window.location.href + "?type=" + type)
+    $.get("/interactions/new?type=" + type)
       .done(function(data) { container.html(data).removeClass("error"); })
       .fail(function(error) { 
         console.log(error);

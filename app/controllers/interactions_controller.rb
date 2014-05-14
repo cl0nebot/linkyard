@@ -7,7 +7,7 @@ class InteractionsController < ApplicationController
       flash[:success] = "Interaction added successfully"
       redirect_to interactions_path
     else
-      render :new
+      render view_for(params[:type])
     end
   end
 
