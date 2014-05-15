@@ -7,4 +7,10 @@
   </div>
 <% end %>
 
-<%= render @interaction.type.underscore %>
+
+<%= form_for @interaction, :url => interaction_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>  
+  <%= render @interaction.type.underscore %>
+  <div class="pure-controls">
+    <%= f.submit 'Update', :class => "pure-button pure-button-primary pure-input-1-4" %>
+  </div>
+<% end %>

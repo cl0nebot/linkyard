@@ -5,10 +5,6 @@
     <h3>Invalid input</h3>
     <p><%= @interaction.errors.full_messages.to_sentence %></p>
   </div>
-<% end %>
-
-<% if @interaction.errors.any? %>
-  <%= render @interaction.type.underscore %>
 <% else %>
   <div class="pure-form pure-form-aligned">
     <div class="pure-control-group">
@@ -16,6 +12,17 @@
       <%= select_tag :type, options_for_select(Interaction::AVAILABLE_INTERACTIONS.map { |interaction| [interaction.underscore.humanize, interaction] }, @interaction.try(:type)), :class => "pure-input-1-4" %>
     </div>
   </div>
+<% end %>
 
-  <div id="new-interaction-container"></div>
+<%= form_for @interaction, :url => interactions_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>  
+
+  <% if @interaction.errors.any? %>
+    <%= render @interaction.type.underscore %>
+  <% else %>
+    <div id="new-interaction-container"></div>
+  <% end %>
+
+  <div class="pure-controls">
+    <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
+  </div>
 <% end %>
