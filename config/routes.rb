@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :links, :only => [:index, :new, :create, :show] do 
   end
 
-  resources :interactions do
+  resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 
   root 'links#new'

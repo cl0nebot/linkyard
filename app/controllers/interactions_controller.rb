@@ -3,10 +3,6 @@ class InteractionsController < ApplicationController
     @interactions = Interaction.order(:created_at => :desc)
   end
 
-  def show
-    
-  end
-
   def new
     if request.xhr? && params[:type]
       @interaction = Interaction.new_by_type(params[:type])

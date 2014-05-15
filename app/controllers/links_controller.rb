@@ -9,6 +9,7 @@ class LinksController < ApplicationController
 
   def new
     @link = current_user.links.build
+    @interactions = current_user.interactions
   end
 
   def create

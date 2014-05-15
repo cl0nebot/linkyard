@@ -13,4 +13,8 @@ class Interaction < ActiveRecord::Base
     interaction_class.constantize.new(attributes)
   end
 
+  def name
+    type.underscore.humanize
+  end
+
 end
