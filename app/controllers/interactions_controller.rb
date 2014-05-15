@@ -32,10 +32,14 @@ class InteractionsController < ApplicationController
   end
 
   def update
+    # should check whether user has rights to update this interaction?
     
   end
 
   def destroy
+    # should check whether user has rights to delete this interaction?
+    Interaction.destroy(params[:id])
+    redirect_to interactions_path
   end
 
   protected

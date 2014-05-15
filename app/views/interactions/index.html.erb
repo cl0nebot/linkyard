@@ -15,6 +15,7 @@
     <tr>
       <th>Type</th>
       <th>Created</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,10 @@
     <tr class="<%= cycle("odd", "even") %>">
       <td><%= interaction.type.underscore.humanize %></td>
       <td><%= interaction.created_at.to_formatted_s(:long) %></td>
+      <td>
+        <%= link_to 'Edit', edit_interaction_path(interaction.id) %>
+        <%= link_to 'Delete', interaction_path(interaction.id), data: { :confirm => "Are you sure you want to delete #{interaction.type.underscore.humanize}?" }, :method => :delete %>
+      </td>
     </tr>
   <% end %>
   </tbody>
