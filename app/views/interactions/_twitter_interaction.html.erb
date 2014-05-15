@@ -1,5 +1,6 @@
 <%= fields_for @interaction do |f| %>
   <%= hidden_field_tag :type, @interaction.type %>
+  
   <div class="pure-control-group">
     <%= f.label :consumer_key %>
     <%= f.text_field :consumer_key, :autofocus => true %>

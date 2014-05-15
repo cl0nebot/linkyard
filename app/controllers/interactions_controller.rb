@@ -21,7 +21,7 @@ class InteractionsController < ApplicationController
   end
   
   def create
-    @interaction = Interaction.new_by_type(params[:type], params[params[:type].underscore].permit!)
+    @interaction = Interaction.new_by_type(params[:type], extract_interaction_params_from(params).permit!)
     @interaction.user = current_user
     
     if @interaction.save
@@ -36,7 +36,7 @@ class InteractionsController < ApplicationController
     # should check whether user has rights to update this interaction?
     @interaction = Interaction.find(params[:id])
     
-    if @interaction.update(params[params[:type].underscore].permit!)
+    if @interaction.update(extract_interaction_params_from(params).permit!)
       flash[:success] = "Interaction updated successfully."
       redirect_to interactions_path
     else
@@ -51,6 +51,10 @@ class InteractionsController < ApplicationController
   end
 
   protected
+  def extract_interaction_params_from(params)
+    params[params[:type].underscore]
+  end
+
   def view_exists?(type)
     File.exists?(Rails.root.join("app", "views", params[:controller], "_#{type}.html.erb"))
   end
