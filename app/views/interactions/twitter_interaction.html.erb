@@ -6,7 +6,11 @@
   </div>
 <% end %>
 
-<%= form_for @interaction, :url => interactions_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
+<% unless @interaction.new_record? %>
+<h1>Twitter Interaction</h1>
+<% end %>
+
+<%= form_for @interaction, :url => @interaction.new_record? ? interactions_path : interaction_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
 
   <%= hidden_field_tag :type, @interaction.type %>
 
@@ -31,6 +35,6 @@
   </div>
 
   <div class="pure-controls">
-    <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
+    <%= f.submit @interaction.new_record? ? 'Add' : 'Update', :class => "pure-button pure-button-primary pure-input-1-4" %>
   </div>
 <% end %>

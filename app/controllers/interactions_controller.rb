@@ -17,6 +17,8 @@ class InteractionsController < ApplicationController
   end
 
   def edit
+    @interaction = Interaction.find(params[:id])
+    render view_for(@interaction.type)
   end
   
   def create
@@ -33,7 +35,13 @@ class InteractionsController < ApplicationController
 
   def update
     # should check whether user has rights to update this interaction?
-    
+    @interaction = Interaction.find(params[:id])
+    if @interaction.update(params[params[:type].underscore].permit!)
+      flash[:success] = "Interaction updated successfully."
+      redirect_to interactions_path
+    else
+      render view_for(@interaction.type)
+    end
   end
 
   def destroy
