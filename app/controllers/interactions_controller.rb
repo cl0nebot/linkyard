@@ -18,7 +18,6 @@ class InteractionsController < ApplicationController
 
   def edit
     @interaction = Interaction.find(params[:id])
-    render view_for(@interaction.type)
   end
   
   def create
@@ -29,18 +28,19 @@ class InteractionsController < ApplicationController
       flash[:success] = "Interaction added successfully."
       redirect_to interactions_path
     else
-      render view_for(params[:type])
+      render :new
     end
   end
 
   def update
     # should check whether user has rights to update this interaction?
     @interaction = Interaction.find(params[:id])
+    
     if @interaction.update(params[params[:type].underscore].permit!)
       flash[:success] = "Interaction updated successfully."
       redirect_to interactions_path
     else
-      render view_for(@interaction.type)
+      render :edit
     end
   end
 
@@ -52,10 +52,10 @@ class InteractionsController < ApplicationController
 
   protected
   def view_exists?(type)
-    File.exists?(Rails.root.join("app", "views", params[:controller], "#{type}.html.erb"))
+    File.exists?(Rails.root.join("app", "views", params[:controller], "_#{type}.html.erb"))
   end
 
   def view_for(type)
-    view_exists?(type.underscore) ? type.underscore : 'generic_interaction'
+    view_exists?(type.underscore) ? '_' + type.underscore : '_generic_interaction'
   end
 end
