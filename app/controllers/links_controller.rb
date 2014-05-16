@@ -19,6 +19,7 @@ class LinksController < ApplicationController
       LinkInteraction.new(:interaction => Interaction.find(interaction_id))
     end
     if @link.save
+      @link.link_interactions.each { |li| InteractionWorker.perform_async(li.id, li.interaction.type) }
       flash[:success] = "Link added successfully."
       redirect_to links_path
     else

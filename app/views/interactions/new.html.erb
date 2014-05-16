@@ -9,7 +9,7 @@
   <div class="pure-form pure-form-aligned">
     <div class="pure-control-group">
       <label for="type">Type</label>
-      <%= select_tag :type, options_for_select(Interaction::AVAILABLE_INTERACTIONS.map { |interaction| [interaction.underscore.humanize, interaction] }, @interaction.try(:type)), :class => "pure-input-1-4" %>
+      <%= select_tag :type, options_for_select(available_interaction_options, @interaction.try(:type)), :class => "pure-input-1-4" %>
     </div>
   </div>
 <% end %>

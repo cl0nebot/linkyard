@@ -12,9 +12,13 @@ class Interaction < ActiveRecord::Base
     raise 'Invalid interaction type' unless interaction_class.present?
     interaction_class.constantize.new(attributes)
   end
-
-  def name
-    type.underscore.humanize
+  
+  def self.humanize_type(type)
+    type.gsub('Interaction', '').underscore.humanize  
   end
 
+
+  def name
+    self.class.humanize_type(type)
+  end
 end
