@@ -20,10 +20,10 @@
   
 
   <div class="pure-controls">
-    <%= fields_for :link_interactions do |li| %>
+    <%= f.fields_for :link_interactions do |li| %>
       <% @interactions.each do |interaction| %>
         <label for="user_remember_me" class="pure-checkbox">
-          <%= li.check_box interaction.type, :checked => true %> <%= interaction.name %>
+          <%= li.check_box interaction.id, :checked => @link_interactions.any? { |li| li.interaction.id == interaction.id} %> <%= interaction.name %>
         </label>
       <% end %>
     <% end %>

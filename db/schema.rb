@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140509024015) do
 
   create_table "link_interactions", force: true do |t|
     t.integer  "interaction_id", null: false
-    t.integer  "links_id",       null: false
+    t.integer  "link_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
