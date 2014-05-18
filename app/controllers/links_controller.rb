@@ -15,11 +15,9 @@ class LinksController < ApplicationController
 
   def create
     @link = current_user.links.build(params[:link].permit(:url, :title))
-    @link.link_interactions = params[:link][:link_interactions].select { |interaction_id, checked| checked == "1"}.map do |interaction_id, checked|
-      LinkInteraction.new(:interaction => Interaction.find(interaction_id))
-    end
-    if @link.save
-      @link.link_interactions.each { |li| InteractionWorker.perform_async(li.id, li.interaction.type) }
+    @link.link_interactions = create_link_interactions_from(params[:link][:link_interactions])
+
+    if @link.save_and_publish
       flash[:success] = "Link added successfully."
       redirect_to links_path
     else
@@ -30,6 +28,12 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    
+  end
+
+  protected
+  def create_link_interactions_from(link_interaction_params)
+    link_interaction_params.select { |interaction_id, checked| checked == "1"}.map do |interaction_id, checked|
+      LinkInteraction.new(:interaction => Interaction.where(:user => current_user).find(interaction_id))
+    end
   end
 end         

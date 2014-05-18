@@ -1,4 +1,6 @@
 class InteractionsController < ApplicationController
+  before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
+  
   def index
     @interactions = Interaction.order(:created_at => :desc)
   end
@@ -13,11 +15,10 @@ class InteractionsController < ApplicationController
   end
 
   def edit
-    @interaction = Interaction.find(params[:id])
   end
   
   def create
-    @interaction = Interaction.new_by_type(params[:type], extract_interaction_params_from(params).permit!)
+    @interaction = Interaction.new_by_type(params[:type], interaction_params_from(params))
     @interaction.user = current_user
     
     if @interaction.save
@@ -29,10 +30,7 @@ class InteractionsController < ApplicationController
   end
 
   def update
-    # should check whether user has rights to update this interaction?
-    @interaction = Interaction.find(params[:id])
-    
-    if @interaction.update(extract_interaction_params_from(params).permit!)
+    if @interaction.update(interaction_params_from(params))
       flash[:success] = "Interaction updated successfully."
       redirect_to interactions_path
     else
@@ -41,14 +39,21 @@ class InteractionsController < ApplicationController
   end
 
   def destroy
-    # should check whether user has rights to delete this interaction?
     Interaction.destroy(params[:id])
     redirect_to interactions_path
   end
 
   protected
-  def extract_interaction_params_from(params)
-    params[params[:type].underscore]
+  def find_interaction_and_check_permissions
+    @interaction = Interaction.where(:user => current_user).find_by_id(params[:id])
+    if @interaction.nil? 
+      flash[:error] = "You are not authorized to perform this action."
+      redirect_to interactions_path
+    end
+  end
+
+  def interaction_params_from(params)
+    params[params[:type].underscore].permit!
   end
 
   def view_exists?(type)

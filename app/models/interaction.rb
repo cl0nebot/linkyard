@@ -21,4 +21,8 @@ class Interaction < ActiveRecord::Base
   def name
     self.class.humanize_type(type)
   end
+
+  def act(link)
+    raise 'Abstract method should be overriden on descendants.'
+  end
 end
