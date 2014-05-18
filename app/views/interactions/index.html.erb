@@ -7,6 +7,13 @@
   </div>
 <% end %>
 
+<% if flash[:error] %>
+  <div class="error">
+    <h3>Error!</h3>
+    <p><%= flash[:error] %></p>
+  </div>
+<% end %>
+
 <p><%= link_to 'New', new_interaction_path, :class => "pure-button pure-button-primary" %></p>
 
 <% if @interactions.any? %>
