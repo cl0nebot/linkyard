@@ -17,4 +17,4 @@
 /log/*.log
 /tmp
 config/secrets.yml
-*.rdp
+*.rdb
