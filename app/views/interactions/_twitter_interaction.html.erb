@@ -1,13 +1,15 @@
 <%= fields_for @interaction do |f| %>
   <%= hidden_field_tag :type, @interaction.type %>
-  
-  <div class="pure-control-group">
-    <%= f.label :access_token %>
-    <%= f.text_field :access_token, :autofocus => true %>
-  </div>
 
-  <div class="pure-control-group">
-    <%= f.label :access_token_secret %>
-    <%= f.text_field :access_token_secret %>
-  </div>
+  <%
+  def check_connection(provider)
+    unless current_user.has_connection_with(provider)
+      html = link_to user_omniauth_authorize_path(provider: provider.downcase), class: "#{provider}-m phone-verified row" do
+        content_tag :span, 'Click to verify', class: "un-verified"
+      end
+    end
+  end
+  %>
+
+  <%= check_connection('Twitter')%>
 <% end %>

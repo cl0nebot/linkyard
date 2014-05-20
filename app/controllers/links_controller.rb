@@ -3,10 +3,6 @@ class LinksController < ApplicationController
     @links = Link.order(:created_at => :desc)
   end
 
-  def show
-    
-  end
-
   def new
     @link = current_user.links.build
     @interactions = current_user.interactions
@@ -27,13 +23,10 @@ class LinksController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   protected
   def create_link_interactions_from(link_interaction_params)
-    link_interaction_params.select { |interaction_id, checked| checked == "1"}.map do |interaction_id, checked|
-      LinkInteraction.new(:interaction => Interaction.where(:user => current_user).find(interaction_id))
+    link_interaction_params.select { |_, checked| checked == "1"}.map do |interaction_id, _| # there might be a better rails way
+      LinkInteraction.new(:interaction => current_user.interactions.find(interaction_id))
     end
   end
 end         

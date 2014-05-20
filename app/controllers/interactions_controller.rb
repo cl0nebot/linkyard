@@ -1,4 +1,5 @@
 class InteractionsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => :authenticate
   before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
   
   def index
@@ -39,21 +40,21 @@ class InteractionsController < ApplicationController
   end
 
   def destroy
-    Interaction.destroy(params[:id])
+    @interaction.destroy
     redirect_to interactions_path
   end
 
+
   protected
   def find_interaction_and_check_permissions
-    @interaction = Interaction.where(:user => current_user).find_by_id(params[:id])
-    if @interaction.nil? 
+    unless @interaction = current_user.interactions.find_by_id(params[:id])
       flash[:error] = "You are not authorized to perform this action."
       redirect_to interactions_path
     end
   end
 
   def interaction_params_from(params)
-    params[params[:type].underscore].permit!
+    params[params[:type].underscore].permit! if params[params[:type].underscore].present? # instead of permit everything use a helper method on models with defined permitted paramters
   end
 
   def view_exists?(type)

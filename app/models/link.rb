@@ -7,6 +7,8 @@ class Link < ActiveRecord::Base
   validates :url, :format => { :with => URI::regexp(%w(http https)), :message => "should be a valid address"}
 
   def save_and_publish
-    link_interactions.each { |li| InteractionWorker.perform_async(li.id) } if save
+    save.tap do |save_succeeded|
+      link_interactions.each { |li| InteractionWorker.perform_async(li.id) if save_succeeded }
+    end
   end
 end

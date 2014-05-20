@@ -1,10 +1,11 @@
 class TwitterInteraction < Interaction
   validates :access_token, :access_token_secret, :presence => true
   store_accessor :configuration, :access_token, :access_token_secret
+  before_validation :assign_twitter_credentials
 
   def act(link)
     client = create_twitter_client
-    client.update("Tweet by Twitter gem")
+    client.update("#{link.title} #{link.url}")
   end
 
   protected
@@ -15,5 +16,11 @@ class TwitterInteraction < Interaction
       config.access_token = access_token
       config.access_token_secret = access_token_secret
     end
+  end
+
+  def assign_twitter_credentials
+    authorization = user.authorizations.where(:provider => "Twitter").first
+    self.access_token = authorization.token
+    self.access_token_secret = authorization.secret    
   end
 end
