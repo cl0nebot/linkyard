@@ -1,15 +1,8 @@
 <%= fields_for @interaction do |f| %>
   <%= hidden_field_tag :type, @interaction.type %>
-
-  <%
-  def check_connection(provider)
-    unless current_user.has_connection_with(provider)
-      html = link_to user_omniauth_authorize_path(provider: provider.downcase), class: "#{provider}-m phone-verified row" do
-        content_tag :span, 'Click to verify', class: "un-verified"
-      end
-    end
-  end
-  %>
-
-  <%= check_connection('Twitter')%>
+  <% unless current_user.has_connection_with('Twitter') %>
+    <div class="pure-controls">
+      <%= link_to 'Assign Twittter account', edit_user_registration_path %>
+    </div>
+  <% end %>
 <% end %>

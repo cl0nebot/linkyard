@@ -8,6 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     oauthorize "Twitter"
+    redirect_to edit_user_registration_path 
   end
 
   def linkedin
@@ -21,12 +22,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 private
 
   def oauthorize(kind)
-    byebug
     @user = find_for_ouath(kind, env["omniauth.auth"], current_user)
-    if @user
+    if @user && !user_signed_in?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => kind
       session["devise.#{kind.downcase}_data"] = env["omniauth.auth"]
-      sign_in_and_redirect @user, :event => :authentication
+      sign_in_and_redirect @user, :event => :authentication     
     end
   end
 
@@ -57,6 +57,7 @@ private
     else
       raise 'Provider #{provider} not handled'
     end
+
     if resource.nil?
       if email
         user = find_for_oauth_by_email(email, resource)

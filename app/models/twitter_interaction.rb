@@ -19,8 +19,9 @@ class TwitterInteraction < Interaction
   end
 
   def assign_twitter_credentials
-    authorization = user.authorizations.where(:provider => "Twitter").first
-    self.access_token = authorization.token
-    self.access_token_secret = authorization.secret    
+    if authorization = user.authorizations.where(:provider => "Twitter").first
+      self.access_token = authorization.token
+      self.access_token_secret = authorization.secret    
+    end
   end
 end
