@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
     authorization = authorizations.where(:provider => provider).first
     authorization.present? && authorization.token.present?
   end
+
+  def add_authorization!(authorization_attributes)
+    unless authorizations.exists?(:provider => authorization_attributes[:provider])
+      authorizations.build(authorization_attributes)
+      save!
+    end    
+  end
+
 end

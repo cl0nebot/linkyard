@@ -17,7 +17,7 @@
       <%= navigation_link_to 'Links', links_path %>
       <%= navigation_link_to 'Interactions', interactions_path %>
       <%= navigation_link_to 'Builders', root_path %>
-      <%= navigation_link_to current_user.email, edit_user_registration_path %>
+      <%= navigation_link_to 'Account Settings', edit_user_registration_path %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>
       <%= navigation_link_to 'Login', new_user_session_path %>
