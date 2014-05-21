@@ -3,7 +3,7 @@ class InteractionsController < ApplicationController
   before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
   
   def index
-    @interactions = Interaction.order(:created_at => :desc)
+    @interactions = current_user.interactions.order(:created_at => :desc)
   end
 
   def new
