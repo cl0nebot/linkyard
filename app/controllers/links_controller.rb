@@ -11,7 +11,7 @@ class LinksController < ApplicationController
 
   def create
     @link = current_user.links.build(params[:link].permit(:url, :title))
-    @link.link_interactions = create_link_interactions_from(params[:link][:link_interactions])
+    @link.link_interactions = create_link_interactions_from(params[:link][:link_interactions] || {})
 
     if @link.save_and_publish
       flash[:success] = "Link added successfully."

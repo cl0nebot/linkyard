@@ -57,13 +57,11 @@ describe Interaction do
     end
   end
 
-
   describe "#act" do
     it "raises as it is an abstract method" do
       expect { Interaction.new.act }.to raise_error
     end
   end
-
 
   describe "#name" do
     subject { Interaction.new_by_type(type).name }
@@ -78,6 +76,4 @@ describe Interaction do
       it { should match reddit_interaction_name }
     end
   end
-
-
 end

@@ -30,7 +30,6 @@ describe TwitterOauthLogin do
     }
   end
 
-
   describe ".new" do
     it "should assign correct authorization attributes" do
       authorization_attributes = login.instance_variable_get(:@authorization_attributes)
