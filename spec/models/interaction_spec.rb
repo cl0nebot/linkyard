@@ -7,15 +7,17 @@ describe Interaction do
   let(:reddit_interaction_type) { "RedditInteraction" }
 
   describe "validations" do
-    context "when type isn't present" do
-      it "should be invalid" do
-        expect(Interaction.new).to have_at_least(1).error_on(:type)
+    describe "on type" do 
+      context "when type isn't present" do
+        it "should be invalid" do
+          expect(Interaction.new).to have_at_least(1).error_on(:type)
+        end
       end
-    end
 
-    context "when using subclass" do
-      it "should be valid" do
-        expect(RedditInteraction.new).to have(0).error_on(:type)
+      context "when using subclass" do
+        it "should be valid" do
+          expect(RedditInteraction.new).to have(0).error_on(:type)
+        end
       end
     end
   end

@@ -13,7 +13,7 @@ class OauthLogin
 
   def run!
     if @user
-      @user.add_authorization!(@authorization_attributes.attribute_hash)
+      @user.add_authorization!(@authorization_attributes)
       ACCOUNT_LINKED
     elsif auth = Authorization.find_by_uid(@authorization_attributes[:uid].to_s)
       @user = auth.user

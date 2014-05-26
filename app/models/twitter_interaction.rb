@@ -1,7 +1,5 @@
 class TwitterInteraction < Interaction
-  validates :access_token, :access_token_secret, :presence => true
-  store_accessor :configuration, :access_token, :access_token_secret
-  before_validation :assign_twitter_credentials
+  validate :must_be_connected_to_twitter 
 
   def act(link)
     client = create_twitter_client
@@ -13,15 +11,12 @@ class TwitterInteraction < Interaction
     Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.application.secrets.twitter_api_key
       config.consumer_secret = Rails.application.secrets.twitter_api_secret
-      config.access_token = access_token
-      config.access_token_secret = access_token_secret
+      config.access_token = user.twitter_authorization.token
+      config.access_token_secret = user.twitter_authorization.secret
     end
   end
 
-  def assign_twitter_credentials
-    if authorization = user.authorizations.where(:provider => "Twitter").first
-      self.access_token = authorization.token
-      self.access_token_secret = authorization.secret    
-    end
+  def must_be_connected_to_twitter
+    errors.add(:base, "Twitter account has to be assigned to the user before adding interaction.") unless user.has_twitter_access?
   end
 end

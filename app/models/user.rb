@@ -23,4 +23,16 @@ class User < ActiveRecord::Base
     end    
   end
 
+  def has_twitter_access?
+    twitter_authorizations.any?
+  end
+
+  def twitter_authorization
+    twitter_authorizations.last if has_twitter_access?
+  end
+
+  protected
+  def twitter_authorizations
+    authorizations.where(:provider => "Twitter")
+  end
 end
