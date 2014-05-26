@@ -1,5 +1,19 @@
 require 'spec_helper'
 
 describe LinkInteraction do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#act" do
+    let(:interaction) { Interaction.new}
+    let(:link) { Link.new}
+    let(:link_interaction) do
+      LinkInteraction.new.tap do |link_interaction|
+        link_interaction.interaction = interaction
+        link_interaction.link = link
+      end
+    end
+    
+    it "should act on interaction" do
+      expect(interaction).to receive(:act).with(link)
+      link_interaction.act
+    end
+  end
 end

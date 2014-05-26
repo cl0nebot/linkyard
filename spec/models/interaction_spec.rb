@@ -6,42 +6,55 @@ describe Interaction do
   let(:twitter_interaction_type) { "TwitterInteraction" }
   let(:reddit_interaction_type) { "RedditInteraction" }
 
-  def new_by_type(type)
-    Interaction.new_by_type(type)
-  end 
+  describe "validations" do
+    context "when type isn't present" do
+      it "should be invalid" do
+        expect(Interaction.new).to have_at_least(1).error_on(:type)
+      end
+    end
+
+    context "when using subclass" do
+      it "should be valid" do
+        expect(RedditInteraction.new).to have(0).error_on(:type)
+      end
+    end
+  end
 
   describe ".new_by_type" do
-     
+    subject { Interaction.new_by_type(type) }
+
     context "when creating twitter interaction" do
-      subject { new_by_type(twitter_interaction_type) }
+      let(:type) { twitter_interaction_type }
       it { should be_instance_of TwitterInteraction }
     end
   
-    context "when creating reddit interaction" do     
-      subject { new_by_type(reddit_interaction_type) }
+    context "when creating reddit interaction" do 
+      let(:type) { reddit_interaction_type }
       it { should be_instance_of RedditInteraction }
     end
 
-    it "when creating invalid interaction" do
-      expect { new_by_type("NotSupportedInteraction") }.to raise_error
+    context "when creating invalid interaction" do
+      let(:type) { "NotSupportedInteraction" }
+      it "raise error" do 
+        expect { Interaction.new_by_type(type) }.to raise_error
+      end
     end
   end
-  
-  describe ".humanize_type" do
-    def humanize_type(type)
-      Interaction.humanize_type(type)
-    end
+
+  describe ".humanize_type" do    
+    subject { Interaction.humanize_type(type) }
 
     context "when twitter interaction is passed" do
-      subject { humanize_type(twitter_interaction_type) }
+      let(:type) { twitter_interaction_type }
       it { should match twitter_interaction_name }
     end
 
     context "when reddit interaction is passed" do
-      subject { humanize_type(reddit_interaction_type) }
+      let(:type) { reddit_interaction_type }
       it { should match reddit_interaction_name }
     end
   end
+
 
   describe "#act" do
     it "raises as it is an abstract method" do
@@ -49,11 +62,20 @@ describe Interaction do
     end
   end
 
+
   describe "#name" do
-    it "should return reasonable name for existing interactions" do
-      new_by_type(twitter_interaction_type).name.should match twitter_interaction_name
-      new_by_type(reddit_interaction_type).name.should match reddit_interaction_name
+    subject { Interaction.new_by_type(type).name }
+
+    context "when twitter interaction is passed" do
+      let(:type) { twitter_interaction_type }
+      it { should match twitter_interaction_name }
+    end
+
+    context "when reddit interaction is passed" do
+      let(:type) { reddit_interaction_type }
+      it { should match reddit_interaction_name }
     end
   end
+
 
 end
