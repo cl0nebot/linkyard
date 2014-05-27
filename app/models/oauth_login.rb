@@ -1,4 +1,14 @@
-class OauthLogin
+module OauthLogin
+  def self.included(base)
+    base.extend ClassMethods
+    base.cattr_accessor :attributes_proc
+  end
+
+  module ClassMethods
+    def configure_oauth_login(&block)
+      self.attributes_proc = block
+    end
+  end
 
   ACCOUNT_LINKED = :account_linked
   SIGNED_IN = :signed_in
@@ -8,7 +18,7 @@ class OauthLogin
 
   def initialize(current_user, access_token)
     @user = current_user
-    @authorization_attributes = initialize_authorization_attributes(access_token)
+    @authorization_attributes = self.class.attributes_proc.call(access_token)
   end
 
   def run!
@@ -19,23 +29,10 @@ class OauthLogin
       @user = auth.user
       SIGNED_IN
     else
-      @user = User.create!(:password => Devise.friendly_token[0,20], :email => extract_email)
+      @user = User.create!(:password => Devise.friendly_token[0,20], :email => "#{UUIDTools::UUID.random_create}@l.me")
       @user.add_authorization!(@authorization_attributes)
       SIGNED_UP
     end
-  end
-
-  def name 
-    raise "Abstract method should be overriden"  
-  end
-
-  protected
-  def extract_email
-    @authorization_attributes.email || "#{UUIDTools::UUID.random_create}@l.me"
-  end
-
-  def initialize_authorization_attributes(access_token)
-    raise "Abstract method should be overriden" 
   end
 end
 

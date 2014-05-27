@@ -1,11 +1,9 @@
-class TwitterOauthLogin < OauthLogin
-  def name
-    "Twitter"
-  end
-  
-  protected 
-  def initialize_authorization_attributes(access_token) { 
-      :provider => name,
+class TwitterOauthLogin
+  include OauthLogin
+
+  configure_oauth_login do |access_token|
+    {
+      :provider => "Twitter",
       :uid => access_token['extra']['raw_info']['id'],
       :name => access_token['extra']['raw_info']['name'],
       :token => access_token['credentials']['token'],

@@ -42,10 +42,4 @@ describe TwitterOauthLogin do
       authorization_attributes[:link].should eq link
     end  
   end
-
-  describe "#name" do
-    it "equals to name of the provider" do
-      login.name.should eq provider
-    end
-  end
 end
