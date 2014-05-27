@@ -38,7 +38,7 @@
   
   <div class="pure-control-group">
     <label>Twitter</label>
-    <% if current_user.has_connection_with('Twitter') %>
+    <% if current_user.has_authorization_for?('Twitter') %>
       <span class="pure-button pure-button-disabled">Connected</span>
     <% else %>
       <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "twitter"), :class => "pure-button" %>

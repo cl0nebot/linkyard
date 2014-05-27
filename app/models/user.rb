@@ -11,9 +11,8 @@ class User < ActiveRecord::Base
   has_many :interactions, :dependent => :destroy
   has_many :authorizations, :dependent => :destroy
 
-  def has_connection_with(provider)
-    authorization = authorizations.where(:provider => provider).first
-    authorization.present? && authorization.token.present?
+  def has_authorization_for?(provider)
+    authorizations.where(:provider => provider).any?
   end
 
   def add_authorization!(authorization_attributes)
@@ -28,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def twitter_authorization
-    twitter_authorizations.last if has_twitter_access?
+    twitter_authorizations.last
   end
 
   protected
