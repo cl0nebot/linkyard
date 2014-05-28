@@ -8,9 +8,8 @@ class Interaction < ActiveRecord::Base
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction)
 
   def self.new_by_type(type, attributes = {})
-    interaction_class = AVAILABLE_INTERACTIONS.detect { |name| name == type } 
-    raise 'Invalid interaction type' unless interaction_class.present?
-    interaction_class.constantize.new(attributes)
+    raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(type)
+    type.constantize.new(attributes)
   end
   
   def self.humanize_type(type)

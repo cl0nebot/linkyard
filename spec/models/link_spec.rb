@@ -15,7 +15,7 @@ describe Link do
       context "when title is there" do
         it "should be valid" do
           link.title = "Super awesome title"
-          expect(link).to have(0).error_on(:title)
+          expect(link).to have(:no).error_on(:title)
         end
       end
     end
@@ -28,9 +28,9 @@ describe Link do
       end
 
       context "when url doesn't start with http://" do
-        it "should prepend http and be valid"  do
+        it "should prepend http:// and be valid"  do
           link.url = "www.betterthangoogle.io"
-          expect(link).to have(0).error_on(:url)
+          expect(link).to have(:no).error_on(:url)
           expect(link.url).to match("http://www.betterthangoogle.io")
         end
       end
@@ -38,7 +38,7 @@ describe Link do
       context "when url is valid" do
         it "should be valid" do
           link.url = "https://superawesomeurl.io"
-          expect(link).to have(0).error_on(:url)
+          expect(link).to have(:no).error_on(:url)
         end
       end
     end
@@ -55,7 +55,6 @@ describe Link do
       link.url = "http://awesome.io"
       link.link_interactions << first_interaction
       link.link_interactions << second_interaction
-      link.save!
     end
 
     subject { link.save_and_publish }
@@ -67,7 +66,10 @@ describe Link do
 
       it "should return true and perform interactions" do
         link.link_interactions.each do |li|
-          expect(InteractionWorker).to receive(:perform_async).with(li.id)
+          expect(InteractionWorker).to receive(:perform_async) do |id|
+            expect(id).not_to be_nil
+            expect(id).to eq li.id
+          end
         end
         expect(subject).to be_true
       end

@@ -32,7 +32,7 @@ describe TwitterOauthLogin do
 
   describe ".new" do
     it "should assign correct authorization attributes" do
-      authorization_attributes = login.instance_variable_get(:@authorization_attributes)
+      authorization_attributes = login.authorization_attributes
       authorization_attributes[:provider].should eq provider
       authorization_attributes[:uid].should eq uid
       authorization_attributes[:token].should eq token

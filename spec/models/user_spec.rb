@@ -62,8 +62,8 @@ describe User do
   end
 
   describe "#twitter_authorization" do
-    let(:first_twitter_authorization) { Authorization.new(:id => 1, :provider => "Twitter") }
-    let(:second_twitter_authorization) { Authorization.new(:id => 2, :provider => "Twitter") }
+    let(:first_twitter_authorization) { Authorization.new(:provider => "Twitter") }
+    let(:second_twitter_authorization) { Authorization.new(:provider => "Twitter") }
 
     subject { user.twitter_authorization }
 
@@ -73,14 +73,14 @@ describe User do
         user.authorizations << second_twitter_authorization
       end
       it "should return the latest one" do
-        expect(subject.id).to eq 2
+        expect(subject).to eq second_twitter_authorization
       end
     end
 
     context "when has only one twitter authorization" do
       before { user.authorizations << first_twitter_authorization }
       it "should return this one" do
-        expect(subject.id).to eq 1
+        expect(subject).to eq first_twitter_authorization
       end
     end
 

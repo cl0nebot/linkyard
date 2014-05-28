@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe OauthLogin do
   let(:dummy_oauth_login_class) do
-    Class.new do 
-      include OauthLogin 
-      configure_oauth_login do |access_token| 
+    Class.new(OauthLogin) do 
+      protected
+      def parse_attributes(access_token)
         { :token => access_token['token'], :secret => access_token['secret'], :uid => access_token['uid'] }
       end
     end
@@ -24,9 +24,11 @@ describe OauthLogin do
     it "assigns user" do
       expect(dummy_oauth_login.user.id).to eq 123
     end
+  end
 
-    it "creates attributes" do
-      attributes = dummy_oauth_login.instance_variable_get(:@authorization_attributes)
+  describe "#authorization_attributes" do
+    it "creates correct attributes" do
+      attributes = dummy_oauth_login.authorization_attributes
       expect(attributes[:uid]).to eq 123
       expect(attributes[:token]).to match 't'
       expect(attributes[:secret]).to match 's'

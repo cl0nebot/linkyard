@@ -1,7 +1,7 @@
-class TwitterOauthLogin
-  include OauthLogin
+class TwitterOauthLogin < OauthLogin
 
-  configure_oauth_login do |access_token|
+  protected
+  def parse_attributes(access_token)
     {
       :provider => "Twitter",
       :uid => access_token['extra']['raw_info']['id'],

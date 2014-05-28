@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :authorizations, :dependent => :destroy
 
   def has_authorization_for?(provider)
-    authorizations.where(:provider => provider).any?
+    authorizations.where(:provider => provider).exists?
   end
 
   def add_authorization!(authorization_attributes)
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def has_twitter_access?
-    twitter_authorizations.any?
+    twitter_authorizations.exists?
   end
 
   def twitter_authorization
