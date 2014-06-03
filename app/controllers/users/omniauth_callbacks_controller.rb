@@ -2,6 +2,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     authenticate(TwitterOauthLogin.new(current_user, access_token("twitter")))     
   end
+
+  def reddit
+    authenticate(RedditOauthLogin.new(current_user, access_token("reddit")))
+  end
   
   protected
   def access_token(provider)

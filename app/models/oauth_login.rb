@@ -29,6 +29,10 @@ class OauthLogin
     @authorization_attributes ||= parse_attributes(@access_token)
   end
 
+  def name
+    raise 'Abstract method should be overriden by subclass'
+  end
+
   protected
   def parse_attributes
     raise 'Abstract method should be overriden by subclass'

@@ -1,5 +1,9 @@
 class TwitterOauthLogin < OauthLogin
 
+  def name
+    "Twitter"
+  end
+  
   protected
   def parse_attributes(access_token)
     {

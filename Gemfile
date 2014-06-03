@@ -31,6 +31,7 @@ gem 'pure-css-rails'
 gem 'sidekiq'
 gem 'twitter'
 gem 'omniauth-twitter'
+gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
 gem 'uuidtools'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
