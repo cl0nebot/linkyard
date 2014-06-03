@@ -35,11 +35,8 @@ class RedditApi
     uri = URI(api + method)
     req = Net::HTTP::Post.new(uri)
     req.set_form_data(data)
+    req.basic_auth(Rails.application.secrets.reddit_api_key, Rails.application.secrets.reddit_api_secret)
     res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') { |http| http.request(req) }
     res.body
-  end
-
-  def authorization_header
-    { "Authorization" => "bearer #{@token}" }
   end
 end
