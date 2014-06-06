@@ -10,10 +10,10 @@
 <body>
 <div id="page">
   <header>
-    <h1><%= link_to 'Linkyard', root_path %></h1>
+    <h1><%= link_to 'Linkyard', user_signed_in? ? root_path : unauthenticated_root_path %></h1>
     <ul>
     <% if user_signed_in? %>
-      <%= navigation_link_to 'Add', root_path %>
+      <%= navigation_link_to 'Add', new_link_path %>
       <%= navigation_link_to 'Links', links_path %>
       <%= navigation_link_to 'Interactions', interactions_path %>
       <%= navigation_link_to 'Builders', root_path %>
