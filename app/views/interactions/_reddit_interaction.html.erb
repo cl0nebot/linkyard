@@ -1,1 +1,8 @@
-<h1>Reddit</h1>
+<%= fields_for @interaction do |f| %>
+  <%= hidden_field_tag :type, @interaction.type %>
+  <% unless current_user.has_authorization_for?('Reddit') %>
+    <div class="pure-controls">
+      <%= link_to 'Assign Reddit account', edit_user_registration_path %>
+    </div>
+  <% end %>
+<% end %>

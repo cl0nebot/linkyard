@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
   def add_authorization!(authorization_attributes)
     unless authorizations.exists?(:provider => authorization_attributes[:provider])
-      byebug
       authorizations.build(authorization_attributes)
       save!
     end    
