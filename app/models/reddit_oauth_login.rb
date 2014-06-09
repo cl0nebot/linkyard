@@ -1,7 +1,7 @@
 class RedditOauthLogin < OauthLogin
 
   def name 
-    "Twitter"
+    "Reddit"
   end
 
   protected
