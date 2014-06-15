@@ -1,7 +1,7 @@
-class RedditConnection
+class Reddit::Connection
 
   AUTHENTICATION_URI = URI("https://ssl.reddit.com/api/v1/access_token")
-  API_PATH = "https://oauth.reddit.com/api/v1/"
+  API_PATH = "https://oauth.reddit.com/api/"
 
   def initialize(token, refresh_token, on_token_update = nil)
     @token = token
@@ -24,7 +24,7 @@ class RedditConnection
     response = execute_request(request)
     response = execute_request(request) if unauthorized?(response) && refresh_access_token
 
-    JSON.parse(response.body)
+    response.body
   end
 
   def refresh_access_token
