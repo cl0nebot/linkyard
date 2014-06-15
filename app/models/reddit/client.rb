@@ -32,7 +32,6 @@ class Reddit::Client
     json = JSON.parse(response)
     parsers.each do |parser| 
       response = parser.parse_from(json) 
-      byebug
       return response if response.present?
     end
     Unknown.new(json)

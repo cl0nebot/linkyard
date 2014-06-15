@@ -17,7 +17,7 @@ class Reddit::Response
     @@attributes.each do |attribute|
       path = attribute[1].split("/")
       value = value_for(path, json)
-      return Unknown.new(json) unless value.present?
+      return nil if value.nil?
       values[attribute[0]] = value
     end
 
@@ -32,7 +32,7 @@ class Reddit::Response
 
   private
   def self.value_for(path, object)
-    return nil unless object.present?
+    return nil if object.nil?
     return object unless path.present?
 
     current_path = path.shift
