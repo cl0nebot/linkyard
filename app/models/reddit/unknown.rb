@@ -1,7 +1,11 @@
 class Reddit::Unknown < Reddit::Response
-  attr_reader :json
+  attr_reader :data
 
-  def initialize(json)
-    @json = json
+  def initialize(data)
+    @data = data
+  end
+
+  def self.parseable?(data)
+    true
   end
 end

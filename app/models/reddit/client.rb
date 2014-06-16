@@ -1,6 +1,10 @@
 class Reddit::Client 
-  def initialize(token, refresh_token, on_token_update = nil)
-    @connection = Connection.new(token, refresh_token, on_token_update)
+  def initialize(token, refresh_token)
+    @connection = Connection.new(token, refresh_token)
+  end
+
+  def add_token_update_listener(&block)
+    @connection.add_token_update_listener(&block)
   end
 
   def submit(url, title, subreddit, save: false, resubmit: false, send_replies: false)
@@ -28,12 +32,9 @@ class Reddit::Client
   end
 
   private
-  def response(response, parsers)
-    json = JSON.parse(response)
-    parsers.each do |parser| 
-      response = parser.parse_from(json) 
-      return response if response.present?
-    end
-    Unknown.new(json)
+  def response(json, available_responses)
+    data = JSON.parse(json)
+    available_responses << Unknown
+    available_responses.detect { |i| i.parseable?(data) }.new(data)
   end
 end

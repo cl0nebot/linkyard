@@ -3,10 +3,10 @@ class Reddit::Connection
   AUTHENTICATION_URI = URI("https://ssl.reddit.com/api/v1/access_token")
   API_PATH = "https://oauth.reddit.com/api/"
 
-  def initialize(token, refresh_token, on_token_update = nil)
+  def initialize(token, refresh_token)
     @token = token
     @refresh_token = refresh_token
-    @on_token_update = on_token_update
+    @token_update_listeners = []
   end
 
   def get(method, parameters = {})
@@ -15,6 +15,10 @@ class Reddit::Connection
 
   def post(method, parameters = {})
     api_request(method, parameters, :post_request)
+  end
+
+  def add_token_update_listener(&block)
+    @token_update_listeners << block
   end
 
   private 
@@ -30,14 +34,13 @@ class Reddit::Connection
   def refresh_access_token
     request = post_request(AUTHENTICATION_URI, { "grant_type" => "refresh_token", "refresh_token" => @refresh_token })
     request.basic_auth(api_key, api_secret)
-    response = execute_request(request, false)
+    response = execute_request(request, should_authorize: false)
      
-    if success?(response)
-      @token = JSON.parse(response.body)["access_token"]
-      @on_token_update.call(@token) if @on_token_update 
-      true
-    else
-      false
+    success?(response).tap do |result|
+      if result
+        @token = JSON.parse(response.body)["access_token"] # handle if not JSON, but true instead
+        @token_update_listeners.each { |listener| listener.call(@token) }
+      end
     end
   end
 
@@ -49,7 +52,7 @@ class Reddit::Connection
     Net::HTTP::Post.new(uri).tap { |request| request.set_form_data(parameters) }
   end
 
-  def execute_request(request, should_authorize = true)
+  def execute_request(request, should_authorize: true)
     request['Authorization'] = "bearer #{@token}" if should_authorize
     Net::HTTP.start(request.uri.hostname, request.uri.port, use_ssl: request.uri.scheme == 'https') { |http| http.request(request) }
   end
