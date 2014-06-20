@@ -33,6 +33,11 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
 gem 'uuidtools'
+
+group :development do
+  gem 'metric_fu'
+  gem 'rubocop'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
