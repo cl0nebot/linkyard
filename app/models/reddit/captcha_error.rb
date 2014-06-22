@@ -1,8 +1,8 @@
-class Reddit::Captcha < Reddit::Response
+class Reddit::CaptchaError
   attr_reader :id
 
-  def initialize(data)
-    @id = extract_value(data, "json/captcha")
+  def initialize(id)
+    @id = id  
   end
   
   def self.parseable?(data)

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Reddit::Client do
-  let(:token) { "U3trC3cc7y-uwAZ8VYyRSymdxYA" }
-  let(:refresh_token) { "RsMgyyn_1DFAngHHUTM8axcapEA" }
+  let(:token) { Rails.application.secrets.my_reddit_token }
+  let(:refresh_token) { Rails.application.secrets.my_reddit_secret }
   let(:authorization) { Authorization.new(:token => token, :secret => refresh_token) }
   let(:client) do
     Reddit::Client.new(authorization.token, authorization.secret).tap do |client|
@@ -12,7 +12,7 @@ describe Reddit::Client do
   
   describe "#me" do
     it "should return for tested account" do
-      x = client.submit("http://awesome.io", "Greatest of the greatest tests", "test")
+      x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
       byebug
     end
   end

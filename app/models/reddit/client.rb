@@ -17,7 +17,7 @@ class Reddit::Client
       :title => title
     }
     
-    response(@connection.post("submit", parameters), [Submission, Captcha])
+    response(@connection.post("submit", parameters), Submission)
   end
 
   def needs_captcha?
@@ -28,13 +28,12 @@ class Reddit::Client
   end
 
   def me
-    response(@connection.get("v1/me"), [Identity])
+    response(@connection.get("v1/me"), Identity)
   end
 
   private
-  def response(json, available_responses)
+  def response(json, available_response)
     data = JSON.parse(json)
-    available_responses << Unknown
-    available_responses.detect { |i| i.parseable?(data) }.new(data)
+    [Error, available_response, Unknown].detect { |i| i.parseable?(data) }.new(data)
   end
 end

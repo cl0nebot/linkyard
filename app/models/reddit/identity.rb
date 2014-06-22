@@ -12,6 +12,7 @@ class Reddit::Identity < Reddit::Response
   attr_reader :id
 
   def initialize(data)
+    super(data)
     @name = extract_value(data, "name")
     @created = extract_value(data, "created")
     @gold_credits = extract_value(data, "gold_creddits")

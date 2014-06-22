@@ -1,4 +1,9 @@
 class Reddit::Response
+  attr_reader :data
+
+  def initialize(data)
+    @data = data
+  end
 
   protected
   def extract_value(data, path)
