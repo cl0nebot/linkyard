@@ -12,7 +12,9 @@ describe Reddit::Client do
   
   describe "#me" do
     it "should return for tested account" do
-      x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
+      #x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
+      #byebug
+      x = client.info("http://awesome1.io", "test")
       byebug
     end
   end

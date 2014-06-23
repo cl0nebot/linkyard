@@ -17,23 +17,27 @@ class Reddit::Client
       :title => title
     }
     
-    response(@connection.post("submit", parameters), Submission)
+    response(@connection.post("submit", parameters), [Submission])
   end
 
   def needs_captcha?
     @connection.get("needs_captcha.json") == 'true'
   end
 
-  def vote
+  def vote(id, direction)
   end
 
   def me
-    response(@connection.get("v1/me"), Identity)
+    response(@connection.get("v1/me"), [Identity])
+  end
+  
+  def info(url, subreddit)
+    response(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), [Submission])
   end
 
   private
-  def response(json, available_response)
+  def response(json, available_responses)
     data = JSON.parse(json)
-    [Error, available_response, Unknown].detect { |i| i.parseable?(data) }.new(data)
+    [Error, available_responses, Unknown].flatten.detect { |i| i.parseable?(data) }.new(data)
   end
 end
