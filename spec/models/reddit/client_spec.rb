@@ -14,7 +14,7 @@ describe Reddit::Client do
     it "should return for tested account" do
       #x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
       #byebug
-      x = client.info("http://awesome1.io", "test")
+      x = client.info("http://awesome1.ioasdads", "test")
       byebug
     end
   end

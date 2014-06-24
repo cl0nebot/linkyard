@@ -32,7 +32,7 @@ class Reddit::Client
   end
   
   def info(url, subreddit)
-    response(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), [Submission])
+    response(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), [Listing])
   end
 
   private
