@@ -4,9 +4,7 @@ class Reddit::Listing < Reddit::Response
   def initialize(data)
     super(data)
     items = extract_value(data, "data/children") || []
-    @items = items.map do |data| 
-      [Link, Reddit::Unknown].detect { |c| c.parseable?(data) }.new(data)
-    end
+    @items = items.map { |data| self.class.new_from_data(data, [Link, Reddit::Unknown]) }
   end
 
   def self.parseable?(data)

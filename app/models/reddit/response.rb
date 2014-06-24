@@ -5,15 +5,22 @@ class Reddit::Response
     @data = data
   end
 
+  def self.new_from(json, available_responses)
+    self.new_from_data(JSON.parse(json), [Error, available_responses, Unknown].flatten)
+  end
+
+  def self.new_from_data(data, available_responses)
+    available_responses.detect { |i| i.parseable?(data) }.new(data)
+  end
+    
   protected
-  def extract_value(data, path)
-    self.class.extract_value(data, path)
-  end 
-
-
   def self.contains_attribute?(data, path)
     !self.extract_value(data, path).nil?
   end
+
+  def extract_value(data, path)
+    self.class.extract_value(data, path)
+  end 
 
   private
   def self.extract_value(data, path)

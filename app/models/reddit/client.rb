@@ -40,8 +40,7 @@ class Reddit::Client
   end
 
   private
-  def response(json, available_responses)
-    data = JSON.parse(json)
-    [Error, available_responses, Unknown].flatten.detect { |i| i.parseable?(data) }.new(data)
+  def response(data, available_responses)
+    Reddit::Response.new_from(data, available_responses)
   end
 end
