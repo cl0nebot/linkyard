@@ -1,4 +1,4 @@
-class Reddit::Empty< Reddit::Response
+class Reddit::Empty < Reddit::Response
 
   def initialize(data)
     super(data)
