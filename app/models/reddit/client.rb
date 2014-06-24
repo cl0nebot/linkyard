@@ -14,7 +14,10 @@ class Reddit::Client
       :kind => "link",
       :sr => subreddit,
       :url => url,
-      :title => title
+      :title => title,
+      :save => save,
+      :resubmit => resubmit,
+      :send_replies => send_replies
     }
     
     response(@connection.post("submit", parameters), [Submission])
@@ -25,6 +28,7 @@ class Reddit::Client
   end
 
   def vote(id, direction)
+    response(@connection.post("vote", {:id => id, :dir => direction }), [Empty])
   end
 
   def me
