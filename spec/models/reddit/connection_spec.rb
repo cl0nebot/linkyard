@@ -1,4 +1,6 @@
 require 'spec_helper'
 
-describe RedditConnection do
+module Reddit
+  describe RedditConnection do
+  end
 end

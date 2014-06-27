@@ -1,18 +1,44 @@
-class Reddit::Submission < Reddit::Response
-  attr_reader :url
-  attr_reader :id
-  attr_reader :name
+module Reddit
+  class Submission < Response
+    ERROR_CODES = {
+      "ALREADY_SUB" => :already_submitted,
+      "BAD_CAPTCHA" => :captcha_needed,
+      "RATELIMIT" => :rate_limit_exceeded,
+      "QUOTA_FILLED" => :quota_filled
+    }
 
-  def initialize(data)
-    super(data)
-    @url = extract_value(data, "json/data/url")
-    @id = extract_value(data, "json/data/id")
-    @name = extract_value(data, "json/data/name")
-  end
+    attr_reader :errors
+    attr_reader :url
+    attr_reader :id
+    attr_reader :name
 
-  def self.parseable?(data)
-    contains_attribute?(data, "json/data/url")
-    contains_attribute?(data, "json/data/id")
-    contains_attribute?(data, "json/data/name")
+    def initialize(data)
+      super(data)
+
+      if self.class.submission_response?(data)
+        @url = extract_value(data, "json/data/url")
+        @id = extract_value(data, "json/data/id")
+        @name = extract_value(data, "json/data/name")
+      else
+        @errors = extract_value(data, "json/errors").map { |e| ERROR_CODES[e[0]] }
+      end
+    end
+
+    def self.parseable?(data)
+      submission_response?(data) || error_response?(data)
+    end
+
+    def success?
+      @errors.empty?
+    end
+
+    private 
+    def self.submission_response?(data)
+      contains_attribute?(data, "json/data/url") && contains_attribute?(data, "json/data/id") && contains_attribute?(data, "json/data/name")      
+    end
+
+    def self.error_response?(data)
+      extract_value(data, "json/errors")
+    end
   end
 end
