@@ -1,16 +1,15 @@
 module Reddit
-  class Client 
-    def initialize(token, refresh_token)
-      @connection = Connection.new(token, refresh_token)
+  class Client
+    def initialize(api_key, api_secret, token, refresh_token)
+      @connection = Connection.new(api_key, api_secret, token, refresh_token)
     end
 
     def add_token_update_listener(&block)
       @connection.add_token_update_listener(&block)
     end
 
-    # Q - should I have ! in every public method?
     def submit(url, title, subreddit, save: false, resubmit: false, send_replies: false)
-      parameters = { 
+      parameters = {
         :api_type => "json",
         :extension => "json",
         :kind => "link",
@@ -21,7 +20,6 @@ module Reddit
         :resubmit => resubmit,
         :send_replies => send_replies
       }
-      
       response_from_json!(@connection.post("submit", parameters), Submission)
     end
 
@@ -36,7 +34,7 @@ module Reddit
     def me
       response_from_json!(@connection.get("v1/me"), Identity)
     end
-    
+
     def info(url, subreddit)
       response_form_json!(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), Listing)
     end
@@ -61,7 +59,7 @@ module Reddit
     end
 
     def fail_if_not_success!(response)
-      fail ResponseError, "Request was unsuccessful with code #{response.code}" unless response.code == "200"      
+      fail ResponseError, "Request was unsuccessful with code #{response.code}" unless response.code == "200"
     end
   end
 end

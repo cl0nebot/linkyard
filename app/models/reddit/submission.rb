@@ -32,9 +32,13 @@ module Reddit
       @errors.empty?
     end
 
-    private 
+    def already_submitted?
+      errors.include?(:already_submitted)
+    end
+
+    private
     def self.submission_response?(data)
-      contains_attribute?(data, "json/data/url") && contains_attribute?(data, "json/data/id") && contains_attribute?(data, "json/data/name")      
+      contains_attribute?(data, "json/data/url") && contains_attribute?(data, "json/data/id") && contains_attribute?(data, "json/data/name")
     end
 
     def self.error_response?(data)

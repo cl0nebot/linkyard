@@ -1,5 +1,5 @@
 module Reddit
-  class Listing < Response  
+  class Listing < Response
     attr_reader :items
 
     def initialize(data)

@@ -1,6 +1,5 @@
 module Reddit
   class Empty < Response
-
     def initialize(data)
       super(data)
     end

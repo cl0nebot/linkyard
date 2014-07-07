@@ -1,6 +1,8 @@
 module Reddit
   class Connection
-    def initialize(token, refresh_token)
+    def initialize(ap_key, api_secret, token, refresh_token)
+      @application_key = application_key
+      @application_secret = application_secret
       @token = token
       @refresh_token = refresh_token
       @token_update_listeners = []
@@ -18,7 +20,7 @@ module Reddit
       @token_update_listeners << block
     end
 
-    private 
+    private
     def api_request(method, parameters, request, subreddit)
       request = self.send(request, api_path(method, subreddit), parameters)
       response = execute_request(request)
@@ -33,7 +35,6 @@ module Reddit
       success?(response).tap { |result| update_token(response) }
     end
 
-    # Q - should I use bang?
     def update_token(response)
       @token = JSON.parse(response.body)["access_token"]
       @token_update_listeners.each { |listener| listener.call(@token) }
@@ -41,7 +42,7 @@ module Reddit
       fail ResponseError, "Failed to parse JSON when updating access token"
     end
 
-    def get_request(path, parameters)   
+    def get_request(path, parameters)
       Net::HTTP::Get.new(URI([path, URI.encode_www_form(parameters)].join("?")))
     end
 

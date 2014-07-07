@@ -1,5 +1,5 @@
 module Reddit
-  class Link < Response  
+  class Link < Response
     attr_reader :id
     attr_reader :url
     attr_reader :author

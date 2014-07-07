@@ -19,19 +19,22 @@ class User < ActiveRecord::Base
     unless authorizations.exists?(:provider => authorization_attributes[:provider])
       authorizations.build(authorization_attributes)
       save!
-    end    
+    end
   end
 
   def has_twitter_access?
     twitter_authorizations.exists?
   end
 
-  def twitter_authorization
-    twitter_authorizations.last
+  def has_reddit_access?
+    reddit_authorization.exists?
   end
 
-  protected
   def twitter_authorizations
     authorizations.where(:provider => "Twitter")
+  end
+
+  def reddit_authorization
+    authorizations.where(:provider => "Reddit")
   end
 end
