@@ -25,8 +25,8 @@ class LinksController < ApplicationController
 
   protected
   def create_link_interactions_from(link_interaction_params)
-    link_interaction_params.select { |_, checked| checked == "1"}.map do |interaction_id, _| # there might be a better rails way
-      LinkInteraction.new(:interaction => current_user.interactions.find(interaction_id))
+    link_interaction_params.select { |_, checked| checked == "1"}.map do |interaction_id, _|
+      LinkInteraction.new(:interaction => current_user.interactions.find(interaction_id), :status => :pending)
     end
   end
-end         
+end

@@ -1,12 +1,11 @@
 class TwitterInteraction < Interaction
   validate :must_be_connected_to_twitter
 
-  def act(link)
-    client.update("#{link.title} #{link.url}")
-    # notification success
+  def act(link_interaction)
+    client.update("#{link_interaction.link.title} #{link_interaction.link.url}")
+    link_interaction.update_and_notify!(:success, "submitted")
   rescue Twitter::Error => e
-    # add to notifications
-    # test if it goes here when no connection
+    link_interaction.update_and_notify!(:error, e.message)
   end
 
   protected

@@ -22,7 +22,7 @@
   <% @links.each do |link| %>
     <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to link.title, link.url %></td>
-      <td><%= link.link_interactions.map { |li| li.interaction.name}.join(', ') %></td>
+      <td><%= link.link_interactions.map { |li| "#{li.interaction.name} (#{li.status})" }.join(', ') %></td>
       <td><%= link.created_at.to_formatted_s(:long) %></td>
     </tr>
   <% end %>
