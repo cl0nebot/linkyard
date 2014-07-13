@@ -24,7 +24,7 @@ module Reddit
     end
 
     def needs_captcha?
-      response_form!(@connection.get("needs_captcha.json")) == "true"
+      response_from!(@connection.get("needs_captcha.json")) == "true"
     end
 
     def vote(id, direction)
@@ -36,7 +36,7 @@ module Reddit
     end
 
     def info(url, subreddit)
-      response_form_json!(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), Listing)
+      response_from_json!(@connection.get("info.json", { :url => url }, "r/#{subreddit}/"), Listing)
     end
 
     private

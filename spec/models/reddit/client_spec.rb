@@ -9,7 +9,7 @@ module Reddit
         client.add_token_update_listener { |token| puts "Token updated #{token}" }
       end
     end
-    
+
     it "should return for tested account" do
       x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
       #x = client.info("http://awesome1.io", "test")

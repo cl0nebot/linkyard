@@ -1,6 +1,5 @@
 module Reddit
   class Link < Response
-    attr_reader :id
     attr_reader :url
     attr_reader :author
 
@@ -15,7 +14,7 @@ module Reddit
       contains_attribute?(data, "kind") && extract_value(data, "kind") == 't3'
     end
 
-    def fullname
+    def id
       't3_' + @id
     end
   end
