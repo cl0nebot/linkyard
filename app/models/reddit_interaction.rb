@@ -29,10 +29,7 @@ class RedditInteraction < Interaction
       Rails.application.secrets.reddit_api_secret,
       user.reddit_authorization.token,
       user.reddit_authorization.secret).tap do |client|
-        client.add_token_update_listener do |token|
-          user.reddit_authorization.token = token
-          user.reddit_authorization.save!
-        end
+        client.add_token_update_listener { |token| user.reddit_authorization.update!(:token => token) }
       end
   end
 end
