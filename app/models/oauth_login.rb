@@ -3,7 +3,7 @@ class OauthLogin
   ACCOUNT_LINKED = :account_linked
   SIGNED_IN = :signed_in
   SIGNED_UP = :signed_up
-  
+
   attr_reader :user
 
   def initialize(user, access_token)

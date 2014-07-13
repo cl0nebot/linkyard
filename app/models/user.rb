@@ -23,18 +23,18 @@ class User < ActiveRecord::Base
   end
 
   def has_twitter_access?
-    twitter_authorizations.exists?
+    twitter_authorization.present?
   end
 
   def has_reddit_access?
-    reddit_authorization.exists?
+    reddit_authorization.present?
   end
 
-  def twitter_authorizations
-    authorizations.where(:provider => "Twitter")
+  def twitter_authorization
+    authorizations.where(:provider => "Twitter").first
   end
 
   def reddit_authorization
-    authorizations.where(:provider => "Reddit")
+    authorizations.where(:provider => "Reddit").first
   end
 end

@@ -1,8 +1,8 @@
 module Reddit
   class Connection
-    def initialize(ap_key, api_secret, token, refresh_token)
-      @application_key = application_key
-      @application_secret = application_secret
+    def initialize(api_key, api_secret, token, refresh_token)
+      @api_key = api_key
+      @api_secret = api_secret
       @token = token
       @refresh_token = refresh_token
       @token_update_listeners = []

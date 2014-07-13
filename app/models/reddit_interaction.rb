@@ -30,7 +30,7 @@ class RedditInteraction < Interaction
       user.reddit_authorization.token,
       user.reddit_authorization.secret).tap do |client|
         client.add_token_update_listener do |token|
-          user.reddit_authorization.secret = token
+          user.reddit_authorization.token = token
           user.reddit_authorization.save!
         end
       end
