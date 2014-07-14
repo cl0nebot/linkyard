@@ -19,7 +19,7 @@ module Reddit
       @url = extract_value(data, "json/data/url")
       @id = extract_value(data, "json/data/id")
       @name = extract_value(data, "json/data/name")
-      @errors = extract_value(data, "json/errors").map { |e| ERROR_CODES[e[0]] } || []
+      @errors = extract_value(data, "json/errors").map { |e| ERROR_CODES[e[0]] || e[0] } || []
     end
 
     def self.parseable?(data)
