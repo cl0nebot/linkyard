@@ -2,7 +2,7 @@ class RedditInteraction < Interaction
   before_validation :must_be_connected_to_reddit
 
   def act(link_interaction)
-    subreddit = "test"
+    subreddit = "testasdasdasdtestasdkocicky"
     link = link_interaction.link
 
     submission = client.submit(link.url, link.title, subreddit)
@@ -16,6 +16,8 @@ class RedditInteraction < Interaction
       link_interaction.update_and_notify!(:error, submission.errors.join(", "))
     end
   rescue Reddit::ResponseError => e
+    link_interaction.update_and_notify!(:error, e.message)
+  rescue SocketError => e
     link_interaction.update_and_notify!(:error, e.message)
   end
 

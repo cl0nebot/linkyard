@@ -4,7 +4,8 @@ module Reddit
       "ALREADY_SUB" => :already_submitted,
       "BAD_CAPTCHA" => :captcha_needed,
       "RATELIMIT" => :rate_limit_exceeded,
-      "QUOTA_FILLED" => :quota_filled
+      "QUOTA_FILLED" => :quota_filled,
+      "SUBREDDIT_NOEXIST" => :non_existing_subreddit
     }
 
     attr_reader :errors
