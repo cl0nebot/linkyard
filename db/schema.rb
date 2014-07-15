@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711031309) do
+ActiveRecord::Schema.define(version: 20140715201126) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20140711031309) do
     t.string   "status_description"
   end
 
+  create_table "link_tags", force: true do |t|
+    t.integer  "link_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "links", force: true do |t|
     t.integer  "user_id",    null: false
     t.string   "title",      null: false
@@ -76,6 +83,13 @@ ActiveRecord::Schema.define(version: 20140711031309) do
   create_table "summary_builders", force: true do |t|
     t.integer  "summary_id", null: false
     t.integer  "builder_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

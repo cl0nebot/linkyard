@@ -3,20 +3,21 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:twitter, :reddit]
+         :omniauthable, omniauth_providers: [:twitter, :reddit]
 
-  has_many :links, :dependent => :destroy
-  has_many :summaries, :dependent => :destroy
-  has_many :builders, :dependent => :destroy
-  has_many :interactions, :dependent => :destroy
-  has_many :authorizations, :dependent => :destroy
+  has_many :links, dependent: :destroy
+  has_many :summaries, dependent: :destroy
+  has_many :builders, dependent: :destroy
+  has_many :interactions, dependent: :destroy
+  has_many :authorizations, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   def has_authorization_for?(provider)
-    authorizations.where(:provider => provider).exists?
+    authorizations.where(provider: provider).exists?
   end
 
   def add_authorization!(authorization_attributes)
-    unless authorizations.exists?(:provider => authorization_attributes[:provider])
+    unless authorizations.exists?(provider: authorization_attributes[:provider])
       authorizations.build(authorization_attributes)
       save!
     end
@@ -31,10 +32,10 @@ class User < ActiveRecord::Base
   end
 
   def twitter_authorization
-    authorizations.where(:provider => "Twitter").first
+    authorizations.where(provider: "Twitter").first
   end
 
   def reddit_authorization
-    authorizations.where(:provider => "Reddit").first
+    authorizations.where(provider: "Reddit").first
   end
 end
