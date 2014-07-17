@@ -1,7 +1,7 @@
 class InteractionsController < ApplicationController
   skip_before_action :authenticate_user!, :only => :authenticate
   before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
-  
+
   def index
     @interactions = current_user.interactions.order(:created_at => :desc)
   end
@@ -17,11 +17,11 @@ class InteractionsController < ApplicationController
 
   def edit
   end
-  
+
   def create
     @interaction = Interaction.new_by_type(params[:type], interaction_params_from(params))
     @interaction.user = current_user
-    
+
     if @interaction.save
       flash[:success] = "Interaction added successfully."
       redirect_to interactions_path

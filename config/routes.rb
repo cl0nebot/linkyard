@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_scope :user do 
+  devise_scope :user do
     authenticated :user do
       root :to => 'links#new'
     end
 
-    unauthenticated :user do 
+    unauthenticated :user do
       root :to => 'home#index', :as => :unauthenticated_root
     end
   end
 
-  resources :links, :only => [:index, :new, :create] do 
+  resources :links, :only => [:index, :new, :create] do
   end
 
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
