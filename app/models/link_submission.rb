@@ -1,35 +1,59 @@
 class LinkSubmission
   include ActiveModel::Model
 
-  attr_accessor :user
-  attr_accessor :link
+  attr_accessor :user, :url, :title, :tags, :link_interactions, :link
 
-  def self.new_from(user, params)
-    link = user.links.build(params[:link].permit(:url, :title))
-    link.link_interactions = create_link_interactions_from(user, params[:link][:link_interactions] || {})
-    new(link: link, user: user)
+  def self.new_from_user(user)
+    new(user: user, link_interactions: {})
   end
 
-  def save
-    @link.save_and_publish
+  def save(options)
+    self.link_interactions = build_link_interactions_from(options[:link_interaction_ids])
+    self.url = options[:url]
+    self.title = options[:title]
+    self.tags = options[:tags]
+
+    self.link = build_link
+    link.link_interactions = self.link_interactions
+    link.link_tags = build_link_tags
+
+    if link.valid?
+      link.save_and_publish
+    else
+      link.errors.each { |attribute, message| errors.add(attribute, message) }
+      false
+    end
   end
 
   def interactions
-    @interactions ||= user.interactions
+    user.interactions
   end
 
   def available_tags
-    @available_tags ||= user.tags
-  end
-
-  def link
-    @link ||= user.links.build
+    user.tags
   end
 
   protected
-  def self.create_link_interactions_from(user, link_interaction_params)
-    link_interaction_params.select { |_, checked| checked == "1"}.map do |interaction_id, _|
-      LinkInteraction.new(interaction: user.interactions.find(interaction_id), status: :pending)
+  def build_link
+    user.links.build(title: title, url: url)
+  end
+
+  def build_link_interactions_from(ids)
+    self.link_interactions = ids.map { |id, _| build_link_interaction_from(id) }
+  end
+
+  def build_link_interaction_from(id)
+    LinkInteraction.new(interaction: user.interactions.find(id), status: :pending)
+  end
+
+  def build_link_tags
+    tags.split(',').map do |tag|
+      tag = user.tags.where(name: tag).first_or_initialize
+      LinkTag.new(tag: tag)
     end
+  end
+
+  def normalize_url
+    self.url = "http://#{url}" unless url.blank? || url.start_with?("http")
   end
 end

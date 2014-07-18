@@ -3,6 +3,7 @@ class Link < ActiveRecord::Base
   #has_many :summaries, :through => :link_summaries
   has_many :link_interactions, dependent: :destroy
   has_many :link_tags, dependent: :destroy
+  has_many :tags, through: :link_tags
   belongs_to :user
 
   before_validation :normalize_url
