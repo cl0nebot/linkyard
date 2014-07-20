@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= "#{params[:controller]} #{params[:controller]}-#{params[:action]}" %>">
 <div id="page">
   <header>
     <h1><%= link_to 'Linkyard', user_signed_in? ? root_path : unauthenticated_root_path %></h1>

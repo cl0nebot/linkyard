@@ -7,7 +7,7 @@
   </div>
 <% end %>
 
-<%= form_for @link_submission, url: links_path(@link_submission), html: { class: "pure-form pure-form-aligned" } do |f| %>
+<%= form_for @link_submission, url: links_path(@link_submission), html: { class: "pure-form pure-form-stacked" } do |f| %>
   <div class="pure-control-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "pure-input-1-2" %>
@@ -20,7 +20,8 @@
 
   <div class="pure-control-group">
     <%= f.label :tags %>
-    <%= f.text_field :tags, { class: "pure-input-2-3" } %>
+    <%= f.text_field :tags, { class: "hidden", data: { tags: @link_submission.available_tags.to_json.html_safe }} %>
+    <ul id="tags"></ul>
   </div>
 
   <div class="pure-controls">

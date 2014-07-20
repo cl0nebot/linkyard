@@ -8,17 +8,17 @@ class LinkSubmission
   end
 
   def save(options)
-    self.link_interactions = build_link_interactions_from(options[:link_interaction_ids])
     self.url = options[:url]
     self.title = options[:title]
     self.tags = options[:tags]
 
+    self.link_interactions = build_link_interactions_from(options[:link_interaction_ids])
     self.link = build_link
     link.link_interactions = self.link_interactions
     link.link_tags = build_link_tags
 
-    if link.valid?
-      link.save_and_publish
+    if link.save_and_publish
+      true
     else
       link.errors.each { |attribute, message| errors.add(attribute, message) }
       false
@@ -30,7 +30,7 @@ class LinkSubmission
   end
 
   def available_tags
-    user.tags
+    user.tags.map { |tag| tag.name }
   end
 
   protected
@@ -51,9 +51,5 @@ class LinkSubmission
       tag = user.tags.where(name: tag).first_or_initialize
       LinkTag.new(tag: tag)
     end
-  end
-
-  def normalize_url
-    self.url = "http://#{url}" unless url.blank? || url.start_with?("http")
   end
 end
