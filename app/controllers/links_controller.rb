@@ -12,8 +12,10 @@ class LinksController < ApplicationController
     url = params[:link_submission][:url]
     title = params[:link_submission][:title]
     tags = params[:link_submission][:tags]
+    description = params[:link_submission][:description]
+    content = params[:link_submission][:content]
 
-    if @link_submission.save(url: url, title: title, tags: tags, link_interaction_ids: extract_link_interaction_ids(params))
+    if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: extract_link_interaction_ids(params))
       flash[:success] = "Link added successfully."
       redirect_to links_path
     else

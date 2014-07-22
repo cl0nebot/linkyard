@@ -1,7 +1,7 @@
 class LinkSubmission
   include ActiveModel::Model
 
-  attr_accessor :user, :url, :title, :tags, :link_interactions, :link
+  attr_accessor :user, :url, :title, :tags, :description, :content, :link_interactions, :link
 
   def self.new_from_user(user)
     new(user: user, link_interactions: {})
@@ -11,6 +11,8 @@ class LinkSubmission
     self.url = options[:url]
     self.title = options[:title]
     self.tags = options[:tags]
+    self.description = options[:description]
+    self.content = options[:content]
 
     self.link_interactions = build_link_interactions_from(options[:link_interaction_ids])
     self.link = build_link
@@ -35,7 +37,7 @@ class LinkSubmission
 
   protected
   def build_link
-    user.links.build(title: title, url: url)
+    user.links.build(title: title, url: url, description: description, content: content)
   end
 
   def build_link_interactions_from(ids)
