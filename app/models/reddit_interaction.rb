@@ -2,10 +2,15 @@ class RedditInteraction < Interaction
   before_validation :must_be_connected_to_reddit
 
   def act(link_interaction)
-    subreddit = "testasdasdasdtestasdkocicky"
     link = link_interaction.link
+    tags = link.tags
 
-    submission = client.submit(link.url, link.title, subreddit)
+    if tags.empty?
+      link_interaction.update_and_notify!(:error, "Tag is missing") if tags.empty?
+      return
+    end
+
+    submission = client.submit(link.url, link.title, tags.first.name)
     if submission.success?
       link_interaction.update_and_notify!(:success, "submitted")
     elsif submission.already_submitted?
