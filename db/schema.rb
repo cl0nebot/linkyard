@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722195351) do
+ActiveRecord::Schema.define(version: 20140727085714) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 20140722195351) do
     t.string   "last_name"
     t.string   "name"
     t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "builders", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "type",          null: false
-    t.text     "configuration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,14 +69,16 @@ ActiveRecord::Schema.define(version: 20140722195351) do
   end
 
   create_table "summaries", force: true do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",            null: false
+    t.integer  "summary_builder_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "summary_builders", force: true do |t|
-    t.integer  "summary_id", null: false
-    t.integer  "builder_id", null: false
+    t.integer  "user_id",       null: false
+    t.string   "type",          null: false
+    t.text     "confifuration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

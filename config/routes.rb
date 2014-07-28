@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   resources :links, :only => [:index, :new, :create] do
   end
 
+  resources :summaries do
+  end
+
+
+  resources :summary_builders do
+  end
+
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 

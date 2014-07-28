@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Linkyard</title>
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic' rel='stylesheet' type='text/css'> 
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <%= navigation_link_to 'Add', new_link_path %>
       <%= navigation_link_to 'Links', links_path %>
-      <%= navigation_link_to 'Interactions', interactions_path %>
+      <%= navigation_link_to 'Summaries', summaries_path %>
       <%= navigation_link_to 'Account Settings', edit_user_registration_path %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>
@@ -36,7 +36,7 @@
     </div>
   <% end %>
 
-  <%= yield %>
+  <%= content_for?(:content) ? yield(:content) : yield %>
 </div>
 </body>
 </html>

@@ -1,4 +1,6 @@
 class InteractionsController < ApplicationController
+  layout "account"
+
   skip_before_action :authenticate_user!, :only => :authenticate
   before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
 

@@ -1,6 +1,6 @@
 class Link < ActiveRecord::Base
-  #has_many :link_summaries, :dependent => :destroy
-  #has_many :summaries, :through => :link_summaries
+  has_many :link_summaries, :dependent => :destroy
+  has_many :summaries, :through => :link_summaries
   has_many :link_interactions, dependent: :destroy
   has_many :link_tags, dependent: :destroy
   has_many :tags, through: :link_tags

@@ -1,9 +1,9 @@
 class Interaction < ActiveRecord::Base
   belongs_to :user
-  has_many :link_interactions, :dependent => :destroy
+  has_many :link_interactions, dependent: :destroy
 
-  validates :type, :presence => true
-  store :configuration, :accessors => [], :coder => JSON
+  validates :type, presence: true
+  store :configuration, accessors: [], coder: JSON
 
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction)
 

@@ -1,0 +1,9 @@
+<% content_for :content do %>
+  <ul>
+    <%= navigation_link_to 'Details', edit_user_registration_path %>
+    <%= navigation_link_to 'Interactions', interactions_path %>
+    <%= navigation_link_to 'Builders', summary_builders_path %>
+  </ul>
+  <%= yield %>
+<% end %>
+<%= render template: "layouts/application" %>

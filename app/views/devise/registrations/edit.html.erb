@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>Edit Account</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => "pure-form pure-form-aligned" }) do |f| %>
   <%= devise_error_messages! %>
@@ -33,7 +33,7 @@
   </div>
 <% end %>
 
-<h3>Social Connections</h3>
+<h2>Social Connections</h2>
 <div class="pure-form pure-form-aligned">
   <div class="pure-control-group">
     <label>Twitter</label>
