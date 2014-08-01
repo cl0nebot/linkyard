@@ -1,17 +1,17 @@
 class InteractionsController < ApplicationController
   layout "account"
 
-  skip_before_action :authenticate_user!, :only => :authenticate
-  before_action :find_interaction_and_check_permissions, :only => [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :authenticate
+  before_action :find_interaction_and_check_permissions, only: [:edit, :update, :destroy]
 
   def index
-    @interactions = current_user.interactions.order(:created_at => :desc)
+    @interactions = current_user.interactions.order(created_at: :desc)
   end
 
   def new
     if request.xhr? && params[:type]
       @interaction = Interaction.new_by_type(params[:type])
-      render view_for(params[:type]), :layout => false
+      render view_for(params[:type]), layout: false
     else
       @interaction = current_user.interactions.build
     end

@@ -1,18 +1,6 @@
 <h1>Interactions</h1>
 
-<% if flash[:success] %>
-  <div class="success">
-    <h3>Success!</h3>
-    <p><%= flash[:success] %></p>
-  </div>
-<% end %>
-
-<% if flash[:error] %>
-  <div class="error">
-    <h3>Error!</h3>
-    <p><%= flash[:error] %></p>
-  </div>
-<% end %>
+<%= render "shared/notifications" %>
 
 <p><%= link_to 'New', new_interaction_path, :class => "pure-button pure-button-primary" %></p>
 

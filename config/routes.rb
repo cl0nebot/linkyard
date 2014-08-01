@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'summary_builders/index'
+
+  get 'summary_builders/create'
+
+  get 'summary_builders/new'
+
+  get 'summary_builders/edit'
+
+  get 'summary_builders/show'
+
+  get 'summary_builders/update'
+
+  get 'summary_builders/destroy'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
     authenticated :user do

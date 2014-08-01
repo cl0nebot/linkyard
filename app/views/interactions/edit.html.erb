@@ -1,14 +1,6 @@
 <h1>Edit Interaction</h1>
-
-<% if @interaction.errors.any? %>
-  <div class="error">
-    <h3>Invalid input</h3>
-    <p><%= @interaction.errors.full_messages.to_sentence %></p>
-  </div>
-<% end %>
-
-
-<%= form_for @interaction, :url => interaction_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>  
+<%= form_for @interaction, :url => interaction_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
+  <%= render "shared/errors", locals: { errors?: @interaction.errors.any?, error_message: @interaction.errors.full_messages.to_sentence } %>
   <%= render @interaction.type.underscore %>
   <div class="pure-controls">
     <%= f.submit 'Update', :class => "pure-button pure-button-primary pure-input-1-4" %>

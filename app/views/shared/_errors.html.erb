@@ -1,0 +1,6 @@
+<% if locals[:errors?] %>
+  <div class="error">
+    <h3>Invalid input</h3>
+    <p><%= locals[:error_message] %></p>
+  </div>
+<% end %>

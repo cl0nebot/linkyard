@@ -1,11 +1,5 @@
-<% if @link_submission.errors.any? %>
-  <div class="error">
-    <h3>Invalid input</h3>
-    <p><%= @link_submission.errors.full_messages.to_sentence %></p>
-  </div>
-<% end %>
-
 <%= form_for @link_submission, url: links_path(@link_submission), html: { class: "pure-form pure-form-stacked" } do |f| %>
+  <%= render "shared/errors", locals: { errors?: @link_submission.errors.any?, error_message: @link_submission.errors.full_messages.to_sentence } %>
   <div class="pure-control-group">
     <%= f.label :url %>
     <%= f.text_field :url, { required: true, autofocus: true, class: "pure-input-2-3" } %>
