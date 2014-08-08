@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-  before_filter :build_link_submission, :except => :index
+  before_filter :build_link_submission, only: [:new, :create]
+  before_filter :find_link_and_redirect_if_not_exists, only: [:show, :destroy]
 
   def index
     @links = Link.order(created_at: :desc)
@@ -23,6 +24,14 @@ class LinksController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def destroy
+    @link.destroy
+    redirect_to links_path
+  end
+
   private
   def build_link_submission
     @link_submission = LinkSubmission.new_from_user(current_user)
@@ -30,5 +39,12 @@ class LinksController < ApplicationController
 
   def extract_link_interaction_ids(params)
     (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }
+  end
+
+  def find_link_and_redirect_if_not_exists
+    unless @link = current_user.links.find_by_id(params[:id])
+      flash[:error] = "The selected link doesn't exist."
+      redirect_to links_path
+    end
   end
 end

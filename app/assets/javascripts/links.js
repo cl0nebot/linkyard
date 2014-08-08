@@ -37,7 +37,7 @@ $(function() {
         view.loading();
         $.get(api + $(this).val())
           .done(function(data) { view.update(data.title, data.content); })
-          .fail(function(error) { console.error(error); });
+          .fail(function(error) { view.update("", ""); });
       };
 
       this.init = function() {

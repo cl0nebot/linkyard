@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :links, :only => [:index, :new, :create] do
+  resources :links, only: [:index, :new, :create, :show, :destroy] do
   end
 
   resources :summaries do

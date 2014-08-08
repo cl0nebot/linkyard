@@ -1,0 +1,13 @@
+<article>
+  <header>
+    <h1><%= link_to @link.title, @link.url %></h1>
+    <aside>
+      <div><%= @link.created_at.to_formatted_s(:long) %></div>
+      <div class="interactions"><%= @link.link_interactions.map { |li| "#{li.interaction.name} (#{li.status})" }.join(', ') %></div>
+      <div class="tags"><%= @link.tags.map { |t| t.name }.join(", ") %></div>
+    </aside>
+  </header>
+  <div class="content">
+    <%= sanitize @link.content, tags: %w(div p h1 h2 h3 h4 h5 h6 a em i strong ul li ol dt dd pre code article section address del big sub tt cite abbr main), attributes: %w(href src id) %>
+  </div>
+</article>

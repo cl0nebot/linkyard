@@ -2,7 +2,7 @@ class InteractionsController < ApplicationController
   layout "account"
 
   skip_before_action :authenticate_user!, only: :authenticate
-  before_action :find_interaction_and_check_permissions, only: [:edit, :update, :destroy]
+  before_action :find_interaction_and_redirect_if_not_exists, only: [:edit, :update, :destroy]
 
   def index
     @interactions = current_user.interactions.order(created_at: :desc)
@@ -48,9 +48,9 @@ class InteractionsController < ApplicationController
 
 
   protected
-  def find_interaction_and_check_permissions
+  def find_interaction_and_redirect_if_not_exists
     unless @interaction = current_user.interactions.find_by_id(params[:id])
-      flash[:error] = "You are not authorized to perform this action."
+      flash[:error] = "The interaction doesn't exists."
       redirect_to interactions_path
     end
   end

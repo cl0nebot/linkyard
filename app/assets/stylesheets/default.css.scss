@@ -1,7 +1,17 @@
-body { font-family: 'Source Sans Pro', sans-serif; color: gray; margin: 1em;}
-h1, h2, h3, h4, h5, h6 { font-weight: 200;}
+header, nav, section, article, aside, footer, main { display:block; }
 
-#page { margin: 0 auto; width: 720px;}
+body { font-family: 'Source Sans Pro', sans-serif; color: #404040; margin: 1em; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 19px; }
+h1, h2, h3, h4, h5, h6 { margin: 1.5em 0 1.25em 0; font-weight: 200; line-height: 125%;}
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+p { margin: 1em 0; }
+em { font-style: italic;}
+strong, th, dt { font-weight: bold;}
+pre { font-family: 'Inconsolata', monospace; line-height: 115%; margin: 1.25em 0;}
+
+#page { margin: 0 auto; width: 960px;}
 
 header h1 a { color: gray; text-decoration: none; text-transform: uppercase;}
 header ul { margin: 0; padding: 0;}
@@ -28,3 +38,16 @@ table tbody tr:nth-child(odd) { background: #f2f2f2;}
 .hidden { display: none !important;}
 
 .links-new textarea.content { height: 10em; }
+
+.links-show {
+  article {
+    font-family: "Lora", serif;
+    h1, h2, h3, h4, h5, h6 { font-weight: bold;}
+    header {
+      text-align: center;
+      h1 a { text-transform: none; color: #404040; }
+    }
+
+    .content { width: 720px; margin: auto;}
+  }
+}

@@ -8,8 +8,8 @@ class Link < ActiveRecord::Base
 
   before_validation :normalize_url
 
-  validates :title, length: { maximum: 100 }, presence: true
-  validates :url, length: { maximum: 100 }, format: { with: URI::regexp(%w(http https)), message: "should be a valid address" }
+  validates :title, length: { maximum: 120 }, presence: true
+  validates :url, length: { maximum: 200 }, format: { with: URI::regexp(%w(http https)), message: "should be a valid address" }
 
   def save_and_publish
     save.tap do |save_succeeded|
