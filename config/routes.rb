@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 
+  scope '/api' do
+    resources :links, only: [:new, :create]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
