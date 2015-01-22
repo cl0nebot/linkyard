@@ -16,10 +16,6 @@ Rails.application.routes.draw do
   resources :summaries do
   end
 
-
-  resources :summary_builders do
-  end
-
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 

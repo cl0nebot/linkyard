@@ -30,7 +30,8 @@ $(function() {
     }
 
     function Controller(view) {
-      var api = "http://bonobo-ubuntu.cloudapp.net/api/parse?url=";
+      //var api = "http://bonobo-ubuntu.cloudapp.net/api/parse?url=";
+      var api = "http://localhost:8080/api/parse?url="
       var updateArticle = function() {
         if (!$(this).val()) return;
 
