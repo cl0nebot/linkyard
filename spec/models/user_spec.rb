@@ -17,7 +17,7 @@ describe User do
       before do
         user.authorizations << my_face_authorization
         user.authorizations << twitter_authorization
-      end 
+      end
       it { should be_true }
     end
 
@@ -31,7 +31,7 @@ describe User do
     def act
       user.add_authorization!(:provider => "MyFace" )
     end
-    
+
     context "when has an authorization already" do
       before { user.authorizations << my_face_authorization }
       it "shouldn't save anything" do

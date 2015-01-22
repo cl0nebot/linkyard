@@ -7,7 +7,7 @@ describe Interaction do
   let(:reddit_interaction_type) { "RedditInteraction" }
 
   describe "validations" do
-    describe "on type" do 
+    describe "on type" do
       context "when type isn't present" do
         it "should be invalid" do
           expect(Interaction.new).to have_at_least(1).error_on(:type)
@@ -29,21 +29,21 @@ describe Interaction do
       let(:type) { twitter_interaction_type }
       it { should be_instance_of TwitterInteraction }
     end
-  
-    context "when creating reddit interaction" do 
+
+    context "when creating reddit interaction" do
       let(:type) { reddit_interaction_type }
       it { should be_instance_of RedditInteraction }
     end
 
     context "when creating invalid interaction" do
       let(:type) { "NotSupportedInteraction" }
-      it "raise error" do 
+      it "raise error" do
         expect { Interaction.new_by_type(type) }.to raise_error
       end
     end
   end
 
-  describe ".humanize_type" do    
+  describe ".humanize_type" do
     subject { Interaction.humanize_type(type) }
 
     context "when twitter interaction is passed" do

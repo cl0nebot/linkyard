@@ -11,8 +11,8 @@ describe TwitterOauthLogin do
   let(:link) { "http://twitter.com/#{name}" }
   let(:provider) { "Twitter" }
   let(:login) { TwitterOauthLogin.new(current_user, access_token) }
-  let(:access_token) do 
-    { 
+  let(:access_token) do
+    {
       'extra' => {
         'raw_info' => {
           'id' => uid,
@@ -40,6 +40,6 @@ describe TwitterOauthLogin do
       authorization_attributes[:first_name].should eq first_name
       authorization_attributes[:last_name].should eq last_name
       authorization_attributes[:link].should eq link
-    end  
+    end
   end
 end

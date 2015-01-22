@@ -1,6 +1,6 @@
 module Reddit
-  class Error < Response  
-    ERRORS_MAP = { 
+  class Error < Response
+    ERRORS_MAP = {
       "ALREADY_SUB" => -> (data) { AlreadySubmittedError.new },
       "BAD_CAPTCHA" => -> (data) { CaptchaError.new(extract_value(data, "json/captcha")) },
       "RATELIMIT" => -> (data) { RateLimitError.new(extract_value(data, "json/ratelimit")) },

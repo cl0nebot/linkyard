@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OauthLogin do
   let(:dummy_oauth_login_class) do
-    Class.new(OauthLogin) do 
+    Class.new(OauthLogin) do
       protected
       def parse_attributes(access_token)
         { :token => access_token['token'], :secret => access_token['secret'], :uid => access_token['uid'] }

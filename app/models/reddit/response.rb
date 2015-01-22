@@ -5,7 +5,7 @@ module Reddit
     def initialize(data)
       @data = data
     end
-      
+
     protected
     def self.contains_attribute?(data, path)
       !extract_value(data, path).nil?
@@ -13,7 +13,7 @@ module Reddit
 
     def extract_value(data, path)
       self.class.extract_value(data, path)
-    end 
+    end
 
     private
     def self.extract_value(data, path)

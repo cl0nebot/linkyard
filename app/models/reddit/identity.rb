@@ -1,5 +1,5 @@
 module Reddit
-  class Identity < Response  
+  class Identity < Response
     attr_reader :name
     attr_reader :created
     attr_reader :gold_credits

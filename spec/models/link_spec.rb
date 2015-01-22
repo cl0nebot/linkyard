@@ -80,7 +80,7 @@ describe Link do
         link.title = "Astonishing title"
         link.url = "http://astonish.io"
       end
-      
+
       it "should return true and not do anything else" do
         expect(InteractionWorker).not_to receive(:perform_async)
         expect(subject).to be_true
