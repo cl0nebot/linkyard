@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    devise_scope :user do
+      post 'registrations' => 'registrations#create', :as => 'register'
+      post 'sessions'      => 'sessions#create',      :as => 'login'
+      delete 'sessions'    => 'sessions#destroy',     :as => 'logout'
+    end
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
     authenticated :user do
