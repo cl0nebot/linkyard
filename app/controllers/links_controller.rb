@@ -3,7 +3,15 @@ class LinksController < ApplicationController
   before_filter :find_link_and_redirect_if_not_exists, only: [:show, :destroy]
 
   def index
-    @links = Link.order(created_at: :desc)
+    respond_to do |format|
+      @links = Link.order(created_at: :desc)
+      format.html do
+        #html will be rendered
+      end  
+      format.json do
+        render json: {links: @links}
+      end
+    end
   end
 
   def new

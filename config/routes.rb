@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   scope '/api' do
-    resources :links, only: [:new, :create]
+    resources :links, only: [:index, :new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
