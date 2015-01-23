@@ -57,6 +57,10 @@ class LinksController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: {link: @link} }
+    end
   end
 
   def destroy
@@ -75,8 +79,15 @@ class LinksController < ApplicationController
 
   def find_link_and_redirect_if_not_exists
     unless @link = current_user.links.find_by_id(params[:id])
-      flash[:error] = "The selected link doesn't exist."
-      redirect_to links_path
+      respond_to do |format|
+        format.html do
+          flash[:error] = "The selected link doesn't exist."
+          redirect_to links_path
+        end
+        format.json do
+          render json: { error: "The selected link does not exist" }, status: :not_found
+        end
+      end
     end
   end
 
