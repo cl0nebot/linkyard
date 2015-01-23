@@ -30,7 +30,7 @@ $(function() {
     }
 
     function Controller(view) {
-      var api = window.api_path + "/parse?url="
+      var api = window.article_content_api_path
       var updateArticle = function() {
         if (!$(this).val()) return;
 

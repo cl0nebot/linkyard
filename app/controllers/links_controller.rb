@@ -7,6 +7,20 @@ class LinksController < ApplicationController
   end
 
   def new
+    respond_to do |format|
+      format.html
+      format.json do
+        url = params[:url]
+        if url.present?
+          article_content = ArticleContentFetcher.new(url).fetch
+          without_html_escaping_in_json do
+            render json: ArticleContentPresenter.new(article_content, current_user.interactions).to_h, status: :ok
+          end
+        else
+          render json: { error: "Parameter url is missing" }, status: :bad_request
+        end
+      end
+    end
   end
 
   def create
@@ -58,5 +72,12 @@ class LinksController < ApplicationController
       flash[:error] = "The selected link doesn't exist."
       redirect_to links_path
     end
+  end
+
+  def without_html_escaping_in_json(&block)
+    ActiveSupport.escape_html_entities_in_json = false
+    result = yield
+    ActiveSupport.escape_html_entities_in_json = true
+    result
   end
 end

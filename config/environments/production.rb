@@ -81,5 +81,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.api_path = "http://linkyard.com/api"
+  config.article_content_api_path = "http://localhost:8080/api/parse?url="
 end
