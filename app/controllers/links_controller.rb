@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
   def index
     respond_to do |format|
-      @links = Link.order(created_at: :desc)
+      @links = Link.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
       format.html
       format.json do
         render json: {links: @links}
