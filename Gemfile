@@ -49,4 +49,3 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 gem 'will_paginate', '~> 3.0.6'
-gem 'pg_search', "~> 0.5.7"
