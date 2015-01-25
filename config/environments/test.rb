@@ -36,4 +36,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.article_content_api_path = "http://localhost:8080/api/parse?url="
 end

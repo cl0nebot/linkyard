@@ -30,14 +30,13 @@ $(function() {
     }
 
     function Controller(view) {
-      //var api = "http://bonobo-ubuntu.cloudapp.net/api/parse?url=";
-      var api = "http://localhost:8080/api/parse?url="
+      var api = "/api/links/new?url="
       var updateArticle = function() {
         if (!$(this).val()) return;
 
         view.loading();
-        $.get(api + $(this).val())
-          .done(function(data) { view.update(data.title, data.content); })
+        $.getJSON(api + $(this).val())
+          .done(function(data) { view.update(data.link_submission.title, data.link_submission.content); })
           .fail(function(error) { view.update("", ""); });
       };
 

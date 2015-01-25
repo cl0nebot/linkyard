@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    devise_scope :user do
+      post 'registrations' => 'registrations#create', :as => 'register'
+      post 'sessions'      => 'sessions#create',      :as => 'login'
+      delete 'sessions'    => 'sessions#destroy',     :as => 'logout'
+    end
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
     authenticated :user do
@@ -17,6 +26,10 @@ Rails.application.routes.draw do
   end
 
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
+  end
+
+  scope '/api' do
+    resources :links, only: [:index, :show, :new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :tags, dependent: :destroy
   has_many :summary_builders, dependent: :destroy
 
+  before_save :ensure_authentication_token
+
   def has_authorization_for?(provider)
     authorizations.where(provider: provider).exists?
   end
@@ -37,5 +39,20 @@ class User < ActiveRecord::Base
 
   def reddit_authorization
     authorizations.where(provider: "Reddit").first
+  end
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end
