@@ -30,7 +30,7 @@ $(function() {
     }
 
     function Controller(view) {
-      var api = "/links/new?url="
+      var api = "/api/links/new?url="
       var updateArticle = function() {
         if (!$(this).val()) return;
 
