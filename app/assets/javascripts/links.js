@@ -30,13 +30,13 @@ $(function() {
     }
 
     function Controller(view) {
-      var api = window.article_content_api_path
+      var api = "/links/new?url="
       var updateArticle = function() {
         if (!$(this).val()) return;
 
         view.loading();
-        $.get(api + $(this).val())
-          .done(function(data) { view.update(data.title, data.content); })
+        $.getJSON(api + $(this).val())
+          .done(function(data) { view.update(data.link_submission.title, data.link_submission.content); })
           .fail(function(error) { view.update("", ""); });
       };
 
