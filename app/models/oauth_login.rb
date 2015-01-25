@@ -13,14 +13,14 @@ class OauthLogin
 
   def run!
     if @user
-      @user.add_authorization!(authorization_attributes)
+      CreateAuthorization.new(@user, authorization_attributes).call
       ACCOUNT_LINKED
     elsif auth = Authorization.find_by_uid(authorization_attributes[:uid].to_s)
       @user = auth.user
       SIGNED_IN
     else
       @user = User.create!(:password => Devise.friendly_token[0,20], :email => "#{UUIDTools::UUID.random_create}@l.me")
-      @user.add_authorization!(authorization_attributes)
+      CreateAuthorization.new(@user, authorization_attributes).call
       SIGNED_UP
     end
   end

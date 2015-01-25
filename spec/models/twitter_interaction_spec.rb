@@ -23,13 +23,16 @@ describe TwitterInteraction do
   end
 
   describe "#act" do
-    let(:link) { Link.new(:title => "Awesome", :url => "http://awesome.io") }
+    let(:link) { Link.new(:title => "Awesome", :url => "http://awesome.io", user: user) }
     let(:twitter_authorization) { Authorization.new(:token => "t", :secret => "s") }
+    let(:link_interaction) { double() }
     before { user.stub(:twitter_authorization) { twitter_authorization }}
 
     it "should tweet" do
       expect_any_instance_of(Twitter::REST::Client).to receive(:update).with("#{link.title} #{link.url}")
-      interaction.act(link)
+      allow(link_interaction).to receive(:link).and_return(link)
+      expect(link_interaction).to receive(:update_and_notify!).with(:success, "submitted")
+      interaction.act(link_interaction)
     end
   end
 

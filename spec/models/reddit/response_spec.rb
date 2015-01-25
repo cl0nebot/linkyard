@@ -12,8 +12,8 @@ describe Reddit::Response do
       end
 
       def initialize(data)
-        @name = initialize_attribute(data, "identity/name")
-        @surname = initialize_attribute(data, "identity/surname")
+        @name = extract_value(data, "identity/name")
+        @surname = extract_value(data, "identity/surname")
       end
     end
   end

@@ -15,8 +15,10 @@ describe Interaction do
       end
 
       context "when using subclass" do
+        let(:user) { User.new }
         it "should be valid" do
-          expect(RedditInteraction.new).to have(0).error_on(:type)
+          expect(user).to receive(:has_reddit_access?).and_return(true)
+          expect(RedditInteraction.new(user: user)).to have(0).error_on(:type)
         end
       end
     end

@@ -13,19 +13,16 @@ describe TwitterOauthLogin do
   let(:login) { TwitterOauthLogin.new(current_user, access_token) }
   let(:access_token) do
     {
-      'extra' => {
-        'raw_info' => {
-          'id' => uid,
-          'name' => name
-        }
-      },
+      'uid' => uid,
       'credentials' => {
         'token' => token,
         'secret' => secret
       },
       'info' => {
+        'name' => name,
         'first_name' => first_name,
-        'last_name' => last_name
+        'last_name' => last_name,
+        'urls' => { "Twitter" => link }
       }
     }
   end

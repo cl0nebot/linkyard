@@ -11,11 +11,11 @@ module Reddit
     end
 
     it "should return for tested account" do
-      x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
+      #x = client.submit("http://awesome1.io", "Greatest of the greatest tests", "test")
       #x = client.info("http://awesome1.io", "test")
       #x = client.vote("t3_28tuoiaaa", 1) # by jakubgarfield
       #x = client.vote("t3_28y6ri", 0) # by coolcoolnicky
-      byebug
+      #byebug
     end
   end
 end

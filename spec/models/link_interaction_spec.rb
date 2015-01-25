@@ -12,7 +12,7 @@ describe LinkInteraction do
     end
 
     it "should act on interaction" do
-      expect(interaction).to receive(:act).with(link)
+      expect(interaction).to receive(:act).with(link_interaction)
       link_interaction.act
     end
   end

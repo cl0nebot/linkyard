@@ -18,13 +18,6 @@ class User < ActiveRecord::Base
     authorizations.where(provider: provider).exists?
   end
 
-  def add_authorization!(authorization_attributes)
-    unless authorizations.exists?(provider: authorization_attributes[:provider])
-      authorizations.build(authorization_attributes)
-      save!
-    end
-  end
-
   def has_twitter_access?
     twitter_authorization.present?
   end

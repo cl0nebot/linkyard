@@ -27,27 +27,6 @@ describe User do
     end
   end
 
-  describe "#add_authorization!" do
-    def act
-      user.add_authorization!(:provider => "MyFace" )
-    end
-
-    context "when has an authorization already" do
-      before { user.authorizations << my_face_authorization }
-      it "shouldn't save anything" do
-        act
-        expect(user.authorizations.length).to be 1
-      end
-    end
-
-    context "when doesn't have an authorization yet" do
-      it "should save" do
-        act
-        expect(User.find(user.id).authorizations.length).to be 1
-      end
-    end
-  end
-
   describe "#has_twitter_access?" do
     subject { user.has_twitter_access? }
 
@@ -66,16 +45,6 @@ describe User do
     let(:second_twitter_authorization) { Authorization.new(:provider => "Twitter") }
 
     subject { user.twitter_authorization }
-
-    context "when has multiple twitter authorizations" do
-      before do
-        user.authorizations << first_twitter_authorization
-        user.authorizations << second_twitter_authorization
-      end
-      it "should return the latest one" do
-        expect(subject).to eq second_twitter_authorization
-      end
-    end
 
     context "when has only one twitter authorization" do
       before { user.authorizations << first_twitter_authorization }

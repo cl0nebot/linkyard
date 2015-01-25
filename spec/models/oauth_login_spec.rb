@@ -36,9 +36,12 @@ describe OauthLogin do
   end
 
   describe "#run!" do
+    let(:create_authorization) { double() }
+
     context "when user is signed" do
       it "try to add authorization and return account linked" do
-        expect(user).to receive(:add_authorization!)
+        expect(CreateAuthorization).to receive(:new).with(user, hash_including(:token)).and_return(create_authorization)
+        expect(create_authorization).to receive(:call)
         expect(dummy_oauth_login.run!).to eq OauthLogin::ACCOUNT_LINKED
       end
     end
@@ -48,7 +51,7 @@ describe OauthLogin do
 
       it "should assign user and return sign in" do
         expect(Authorization).to receive(:find_by_uid).with('123').and_return authorization
-        expect(user).not_to receive(:add_authorization!)
+        expect(CreateAuthorization).not_to receive(:new)
         expect(dummy_oauth_login_without_user.run!).to eq OauthLogin::SIGNED_IN
         expect(dummy_oauth_login_without_user.user).to eq user
       end
@@ -57,7 +60,8 @@ describe OauthLogin do
     context "when user isn't signed and authorization doesn't exist" do
       it "creates a new user and add authorization" do
         expect(User).to receive(:create!).with(hash_including(:password, :email)).and_return user
-        expect(user).to receive(:add_authorization!)
+        expect(CreateAuthorization).to receive(:new).with(user, hash_including(:token)).and_return(create_authorization)
+        expect(create_authorization).to receive(:call)
         expect(dummy_oauth_login_without_user.run!).to eq OauthLogin::SIGNED_UP
       end
     end
