@@ -16,6 +16,7 @@
     </tr>
   </thead>
   <tbody>
+  <%= will_paginate @links %>
   <% @links.each do |link| %>
     <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to link.id, link_path(link) %></td>
