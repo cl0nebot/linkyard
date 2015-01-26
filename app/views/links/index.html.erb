@@ -2,6 +2,11 @@
 
 <%= render "shared/notifications" %>
 
+<%= form_tag({ :controller => 'links', :action => 'search' }, :method => 'get', class: "pure-form")  do %>
+  <%= text_field_tag :search, params[:search], { class: "pure-input-2-3" } %>
+  <%= submit_tag "Search", class: "pure-button pure-button-primary" %>
+<% end %>
+
 <p><%= link_to 'New', new_link_path, :class => "pure-button pure-button-primary" %></p>
 
 <% if @links.any? %>
@@ -16,7 +21,6 @@
     </tr>
   </thead>
   <tbody>
-  <%= will_paginate @links %>
   <% @links.each do |link| %>
     <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to link.id, link_path(link) %></td>
@@ -28,4 +32,5 @@
   <% end %>
   </tbody>
 </table>
+<%= will_paginate @links unless @links.kind_of?(Array) =%>
 <% end %>

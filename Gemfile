@@ -21,6 +21,7 @@ gem 'uuidtools'
 gem 'ruby-readability'
 gem "pg"
 gem 'will_paginate', '~> 3.0.6'
+gem 'pg_search'
 
 group :development do
   gem 'spring'
@@ -33,4 +34,3 @@ group :development do
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
   gem 'capistrano-sidekiq' , github: 'seuros/capistrano-sidekiq'
 end
-

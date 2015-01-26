@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
   def index
     respond_to do |format|
-      @links = current_user.links.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
+      @links = paginated_user_links
       format.html
       format.json do
         render json: { links: @links }
@@ -68,6 +68,15 @@ class LinksController < ApplicationController
     redirect_to links_path
   end
 
+  def search
+    if params[:search].empty?
+      @links = paginated_user_links
+    else
+      @links = LinkSearch.new(params[:search], current_user).call
+    end
+    render :index
+  end
+
   private
   def build_link_submission
     @link_submission = LinkSubmission.new_from_user(current_user)
@@ -96,5 +105,9 @@ class LinksController < ApplicationController
     result = yield
     ActiveSupport.escape_html_entities_in_json = true
     result
+  end
+
+  def paginated_user_links
+    current_user.links.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 end

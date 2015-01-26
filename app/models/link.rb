@@ -1,4 +1,7 @@
 class Link < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:title, :url, :content, :description]
+
   has_many :link_interactions, dependent: :destroy
   has_many :link_tags, dependent: :destroy
   has_many :tags, through: :link_tags

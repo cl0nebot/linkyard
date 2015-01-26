@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :links, only: [:index, :new, :create, :show, :destroy] do
+    collection do
+      get :search
+    end
   end
 
   resources :summaries do
