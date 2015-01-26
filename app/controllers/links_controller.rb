@@ -48,7 +48,7 @@ class LinksController < ApplicationController
       end
       format.json do
         if saved
-          head :created
+          render json: @link_submission
         else
           render json: { error: @link_submission.errors.full_messages.to_sentence }, status: :not_acceptable
         end
