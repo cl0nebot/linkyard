@@ -9,5 +9,14 @@ class CreateAuthorization
 
     @user.authorizations.build(@attributes)
     @user.save!
+
+    create_default_interaction_for(@attributes[:provider])
+  end
+
+  private
+  def create_default_interaction_for(provider)
+    interaction = Interaction.new_by_type(provider + "Interaction", {})
+    interaction.user = @user
+    interaction.save!
   end
 end
