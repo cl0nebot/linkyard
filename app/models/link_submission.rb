@@ -41,7 +41,7 @@ class LinkSubmission
   end
 
   def build_link_interactions_from(ids)
-    self.link_interactions = ids.map { |id, _| build_link_interaction_from(id) }
+    self.link_interactions = ids.map { |id| build_link_interaction_from(id) }
   end
 
   def build_link_interaction_from(id)

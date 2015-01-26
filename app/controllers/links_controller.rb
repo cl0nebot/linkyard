@@ -38,7 +38,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       format.html do
-        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }
+        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }.map { |id, _| id }
         if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           flash[:success] = "Link added successfully."
           redirect_to links_path
@@ -47,7 +47,7 @@ class LinksController < ApplicationController
         end
       end
       format.json do
-        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |o| o[:checked] == "1" }
+        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |o| o[:checked] == "1" }.map { |o| o[:id] }
         if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           render json: @link_submission
         else
