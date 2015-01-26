@@ -64,28 +64,6 @@ ActiveRecord::Schema.define(version: 20150122210759) do
     t.text     "content"
   end
 
-  create_table "links_summaries", force: true do |t|
-    t.integer  "link_id",    null: false
-    t.integer  "summary_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "summaries", force: true do |t|
-    t.integer  "user_id",            null: false
-    t.integer  "summary_builder_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "summary_builders", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "type",          null: false
-    t.text     "confifuration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tags", force: true do |t|
     t.integer  "user_id",    null: false
     t.string   "name",       null: false

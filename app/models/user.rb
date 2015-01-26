@@ -6,11 +6,9 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:twitter, :reddit]
 
   has_many :links, dependent: :destroy
-  has_many :summaries, dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :authorizations, dependent: :destroy
   has_many :tags, dependent: :destroy
-  has_many :summary_builders, dependent: :destroy
 
   before_save :ensure_authentication_token
 
