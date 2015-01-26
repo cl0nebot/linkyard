@@ -35,11 +35,11 @@ class LinksController < ApplicationController
     tags = params[:link_submission][:tags]
     description = params[:link_submission][:description]
     content = params[:link_submission][:content]
-    saved = @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: extract_link_interaction_ids(params))
 
     respond_to do |format|
       format.html do
-        if saved
+        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }
+        if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           flash[:success] = "Link added successfully."
           redirect_to links_path
         else
@@ -47,7 +47,8 @@ class LinksController < ApplicationController
         end
       end
       format.json do
-        if saved
+        active_interactions = (params[:link_submission][:link_interactions] || {}).select { |o| o[:checked] == "1" }
+        if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           render json: @link_submission
         else
           render json: { error: @link_submission.errors.full_messages.to_sentence }, status: :not_acceptable
@@ -80,10 +81,6 @@ class LinksController < ApplicationController
   private
   def build_link_submission
     @link_submission = LinkSubmission.new_from_user(current_user)
-  end
-
-  def extract_link_interaction_ids(params)
-    (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }
   end
 
   def find_link_and_redirect_if_not_exists
