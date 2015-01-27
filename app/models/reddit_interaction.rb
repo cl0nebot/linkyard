@@ -3,14 +3,14 @@ class RedditInteraction < Interaction
 
   def act(link_interaction)
     link = link_interaction.link
-    tags = link.tags
+    default_tag = link.default_tag
 
-    if tags.empty?
-      link_interaction.update_and_notify!(:error, "Tag is missing") if tags.empty?
+    if default_tag.nil?
+      link_interaction.update_and_notify!(:error, "Default tag is missing")
       return
     end
 
-    submission = client.submit(link.url, link.title, tags.first.name)
+    submission = client.submit(link.url, link.title, default_tag.name)
     if submission.success?
       link_interaction.update_and_notify!(:success, "submitted")
     elsif submission.already_submitted?

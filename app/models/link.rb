@@ -18,6 +18,10 @@ class Link < ActiveRecord::Base
     end
   end
 
+  def default_tag
+    link_tags.default.present? ? link_tags.default.first.tag : nil
+  end
+
   protected
   def normalize_url
     self.url = "http://#{url}" unless url.blank? || url.start_with?("http")
