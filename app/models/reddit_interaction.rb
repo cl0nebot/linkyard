@@ -14,7 +14,7 @@ class RedditInteraction < Interaction
     if submission.success?
       link_interaction.update_and_notify!(:success, "submitted")
     elsif submission.already_submitted?
-      info = client.info(link.url, subreddit).items.first
+      info = client.info(link.url, default_tag.name).items.first
       client.vote(info.id, 1)
       link_interaction.update_and_notify!(:success, "upvoted")
     else
