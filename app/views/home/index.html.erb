@@ -3,12 +3,4 @@
   <p>Linkyard is a fast and easy way archive, organize and share your favorite links and bookmarks.</p>
 
   <%= render 'devise/shared/signup' %>
-
-  <ul>
-    <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-        <li><%= link_to provider.to_s.titleize, user_omniauth_authorize_path(provider) %></li>
-      <% end -%>
-    <% end -%>
-  </ul>
 </div>
