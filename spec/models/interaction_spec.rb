@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Interaction do
   let(:twitter_interaction_name) { "Twitter" }
   let(:reddit_interaction_name) { "Reddit" }
-  let(:twitter_interaction_type) { "TwitterInteraction" }
-  let(:reddit_interaction_type) { "RedditInteraction" }
 
   describe "validations" do
     describe "on type" do
@@ -24,38 +22,24 @@ describe Interaction do
     end
   end
 
-  describe ".new_by_type" do
-    subject { Interaction.new_by_type(type) }
+  describe ".new_by_name" do
+    subject { Interaction.new_by_name(name) }
 
     context "when creating twitter interaction" do
-      let(:type) { twitter_interaction_type }
+      let(:name) { "TwitterInteraction" }
       it { should be_instance_of TwitterInteraction }
     end
 
     context "when creating reddit interaction" do
-      let(:type) { reddit_interaction_type }
+      let(:name) { "RedditInteraction" }
       it { should be_instance_of RedditInteraction }
     end
 
     context "when creating invalid interaction" do
-      let(:type) { "NotSupportedInteraction" }
+      let(:name) { "NotSupportedInteraction" }
       it "raise error" do
-        expect { Interaction.new_by_type(type) }.to raise_error
+        expect { subject }.to raise_error
       end
-    end
-  end
-
-  describe ".humanize_type" do
-    subject { Interaction.humanize_type(type) }
-
-    context "when twitter interaction is passed" do
-      let(:type) { twitter_interaction_type }
-      it { should match twitter_interaction_name }
-    end
-
-    context "when reddit interaction is passed" do
-      let(:type) { reddit_interaction_type }
-      it { should match reddit_interaction_name }
     end
   end
 
@@ -65,16 +49,16 @@ describe Interaction do
     end
   end
 
-  describe "#name" do
-    subject { Interaction.new_by_type(type).name }
+  describe ".humanized_name" do
+    subject { type.humanized_name }
 
     context "when twitter interaction is passed" do
-      let(:type) { twitter_interaction_type }
+      let(:type) { TwitterInteraction }
       it { should match twitter_interaction_name }
     end
 
     context "when reddit interaction is passed" do
-      let(:type) { reddit_interaction_type }
+      let(:type) { RedditInteraction }
       it { should match reddit_interaction_name }
     end
   end

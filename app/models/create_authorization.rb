@@ -15,7 +15,7 @@ class CreateAuthorization
 
   private
   def create_default_interaction_for(provider)
-    interaction = Interaction.new_by_type(provider + "Interaction", {})
+    interaction = Interaction.new_by_name(provider + "Interaction", {})
     interaction.user = @user
     interaction.save!
   end

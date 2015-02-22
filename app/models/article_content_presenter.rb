@@ -10,6 +10,6 @@ class ArticleContentPresenter
 
   private
   def available_interactions_hash
-    { link_interactions: @available_interactions.map { |i| { id: i.id, name: i.name, checked: "0" } }.to_a }
+    { link_interactions: @available_interactions.map { |i| { id: i.id, name: i.class.humanized_name, checked: "0" } }.to_a }
   end
 end

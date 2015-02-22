@@ -5,22 +5,24 @@ class Interaction < ActiveRecord::Base
   validates :type, presence: true
   store :configuration, accessors: [], coder: JSON
 
-  AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction)
 
-  def self.new_by_type(type, attributes = {})
-    raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(type)
-    type.constantize.new(attributes)
+  def self.new_by_name(name, attributes = {})
+    raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(name)
+    name.constantize.new(attributes)
   end
 
-  def self.humanize_type(type)
-    type.gsub('Interaction', '').underscore.humanize
+  def self.available_interactions
+    AVAILABLE_INTERACTIONS.map { |i| i.constantize }
   end
 
-  def name
-    self.class.humanize_type(type)
+  def self.humanized_name
+    name.gsub("Interaction", "").underscore.humanize
   end
 
   def act(link_interaction)
     raise 'Abstract method should be overriden on descendants.'
   end
+
+  private
+  AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction)
 end
