@@ -9,7 +9,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rspec-rails'
-gem 'byebug'
 gem 'devise'
 gem 'pure-css-rails'
 gem 'jquery-ui-rails'
@@ -22,6 +21,7 @@ gem 'ruby-readability'
 gem "pg"
 gem 'will_paginate', '~> 3.0.6'
 gem 'pg_search'
+gem 'chronic'
 
 group :development do
   gem 'spring'
@@ -33,4 +33,9 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
   gem 'capistrano-sidekiq' , github: 'seuros/capistrano-sidekiq'
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'pry-byebug'
 end
