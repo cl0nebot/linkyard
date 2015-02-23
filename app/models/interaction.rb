@@ -28,5 +28,5 @@ class Interaction < ActiveRecord::Base
   end
 
   private
-  AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction)
+  AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction CompositeInteraction)
 end
