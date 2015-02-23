@@ -1,11 +1,7 @@
 require 'spec_helper'
 
-describe CalculateBestTimeToPost do
-  def load_posts_from_json
-    TopPosts::GetTopRedditPosts.new.call
-  end
-
-  let(:posts) { load_posts_from_json }
+describe CalculateBestTimeToPost, :vcr do
+  let(:posts) { TopPosts::GetTopRedditPosts.new.call }
   let(:service) { CalculateBestTimeToPost.new(posts) }
 
   it 'does a thing' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TopPosts::GetTopRedditPosts do
+describe TopPosts::GetTopRedditPosts, :vcr do
   let(:posts) { TopPosts::GetTopRedditPosts.new.call }
   let(:post) { posts.first }
 

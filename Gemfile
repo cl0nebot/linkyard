@@ -40,4 +40,6 @@ end
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
+  gem 'vcr'
+  gem 'webmock'
 end

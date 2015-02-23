@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UpdateBestTimesToPost do
+describe UpdateBestTimesToPost, :vcr do
 
   it 'creates a best time for each interaction' do
     expect { UpdateBestTimesToPost.run }
