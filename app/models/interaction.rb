@@ -19,6 +19,10 @@ class Interaction < ActiveRecord::Base
     name.gsub("Interaction", "").underscore.humanize
   end
 
+  def self.atomic?
+    true
+  end
+
   def act(link_interaction)
     raise 'Abstract method should be overriden on descendants.'
   end

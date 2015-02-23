@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Api::RegistrationsController do
   include Devise::TestHelpers
@@ -23,7 +23,7 @@ describe Api::RegistrationsController do
       it "fails and returns an error message" do
         expect {
           post :create, user: {email: 'bob@email.com', password: '', password_confirmation: ''}
-        }.to_not change(User, :count).by(1)
+        }.not_to change(User, :count)
         expect(JSON.parse(response.body)).to eq({
           "data" => {},
           "info" => {"password"=>["can't be blank"]},

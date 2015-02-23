@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TwitterInteraction do
   let(:user) { User.new }
@@ -37,4 +37,8 @@ describe TwitterInteraction do
     end
   end
 
+  describe ".atomic?" do
+    subject { TwitterInteraction.atomic? }
+    it { should eq true }
+  end
 end

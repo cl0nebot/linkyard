@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Link do
 
@@ -45,7 +45,7 @@ describe Link do
   end
 
   describe "#save_and_publish" do
-    let!(:user) { User.create!(:email => "j@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
+    let!(:user) { User.create!(:email => "ja@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
     let(:link) { user.links.new }
     let(:first_interaction) { LinkInteraction.new(:interaction_id => 123) }
     let(:second_interaction) { LinkInteraction.new(:interaction_id => 124) }
@@ -71,7 +71,7 @@ describe Link do
             expect(id).to eq li.id
           end
         end
-        expect(subject).to be_true
+        expect(subject).to eq true
       end
     end
 
@@ -83,7 +83,7 @@ describe Link do
 
       it "should return true and not do anything else" do
         expect(InteractionWorker).not_to receive(:perform_async)
-        expect(subject).to be_true
+        expect(subject).to eq true
       end
     end
 
@@ -95,7 +95,7 @@ describe Link do
 
       it "should return false and not perform any interaction" do
         expect(InteractionWorker).not_to receive(:perform_async)
-        expect(subject).to be_false
+        expect(subject).to eq false
       end
     end
   end

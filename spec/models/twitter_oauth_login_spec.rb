@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TwitterOauthLogin do
   let(:current_user) { nil }

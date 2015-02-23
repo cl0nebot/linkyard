@@ -1,7 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe LinksController do
-  render_views
 
   describe "#index" do
     subject { get :index }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 module Reddit
   describe Client do
     let(:token) { Rails.application.secrets.my_reddit_token }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Reddit::Response do
   let(:data) {{ "identity" => { "name" => "Timmy", "surname" => "the Sheep" }}}
@@ -21,7 +21,6 @@ describe Reddit::Response do
   describe "initialize" do
     it "do something" do
       sheep = sheep_class.new(data)
-      puts sheep.name + " " + sheep.surname
     end
   end
 end
