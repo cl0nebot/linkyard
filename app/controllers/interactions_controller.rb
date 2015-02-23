@@ -10,7 +10,7 @@ class InteractionsController < ApplicationController
 
   def new
     if request.xhr? && params[:type]
-      @interaction = Interaction.new_by_type(params[:type])
+      @interaction = Interaction.new_by_name(params[:type])
       render view_for(params[:type]), layout: false
     else
       @interaction = current_user.interactions.build
@@ -21,7 +21,7 @@ class InteractionsController < ApplicationController
   end
 
   def create
-    @interaction = Interaction.new_by_type(params[:type], interaction_params_from(params))
+    @interaction = Interaction.new_by_name(params[:type], interaction_params_from(params))
     @interaction.user = current_user
 
     if @interaction.save

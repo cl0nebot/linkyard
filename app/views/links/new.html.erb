@@ -30,7 +30,7 @@
     <%= f.fields_for :link_interactions do |li| %>
       <% @link_submission.interactions.each do |interaction| %>
         <label for=<%= "link_link_interactions_#{interaction.id}" %> class="pure-checkbox">
-          <%= li.check_box interaction.id, checked: @link_submission.link_interactions.any? { |li| li.interaction.id == interaction.id} %> <%= interaction.name %>
+          <%= li.check_box interaction.id, checked: @link_submission.link_interactions.any? { |li| li.interaction.id == interaction.id} %> <%= interaction.class.humanized_name %>
         </label>
       <% end %>
     <% end %>

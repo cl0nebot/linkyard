@@ -1,5 +1,5 @@
 module InteractionsHelper
   def available_interaction_options
-    Interaction::AVAILABLE_INTERACTIONS.map { |interaction| [Interaction.humanize_type(interaction), interaction] }
+    Interaction.available_interactions.map { |interaction| [interaction.humanized_name, interaction] }
   end
 end
