@@ -13,7 +13,8 @@ describe CompositeInteraction do
 
       context "when not user's interactions" do
         before do
-          interaction.stub(:user).with(user)
+          interaction.interaction_ids = [1, 2]
+          allow(interaction).to receive(:user).and_return(user)
           allow(user).to receive_message_chain("interactions.exists?").and_return(false)
         end
         it { should have_at_least(1).error_on(:interaction_ids) }
@@ -21,7 +22,8 @@ describe CompositeInteraction do
 
       context "when user's interactions" do
         before do
-          interaction.stub(:user).with(user)
+          interaction.interaction_ids = [1, 2]
+          allow(interaction).to receive(:user).and_return(user)
           allow(user).to receive_message_chain("interactions.exists?").and_return(true)
         end
         it { should have(:no).error_on(:interaction_ids) }

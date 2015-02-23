@@ -30,13 +30,13 @@ describe TwitterOauthLogin do
   describe ".new" do
     it "should assign correct authorization attributes" do
       authorization_attributes = login.authorization_attributes
-      authorization_attributes[:provider].should eq provider
-      authorization_attributes[:uid].should eq uid
-      authorization_attributes[:token].should eq token
-      authorization_attributes[:secret].should eq secret
-      authorization_attributes[:first_name].should eq first_name
-      authorization_attributes[:last_name].should eq last_name
-      authorization_attributes[:link].should eq link
+      expect(authorization_attributes[:provider]).to eq provider
+      expect(authorization_attributes[:uid]).to eq uid
+      expect(authorization_attributes[:token]).to eq token
+      expect(authorization_attributes[:secret]).to eq secret
+      expect(authorization_attributes[:first_name]).to eq first_name
+      expect(authorization_attributes[:last_name]).to eq last_name
+      expect(authorization_attributes[:link]).to eq link
     end
   end
 end
