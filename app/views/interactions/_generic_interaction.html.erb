@@ -1,1 +1,4 @@
 <h1>Generic</h1>
+<%= fields_for @interaction do |f| %>
+  <%= hidden_field_tag :type, @interaction.type %>
+<% end %>
