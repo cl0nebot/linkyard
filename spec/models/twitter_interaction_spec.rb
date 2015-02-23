@@ -37,4 +37,8 @@ describe TwitterInteraction do
     end
   end
 
+  describe ".atomic?" do
+    subject { TwitterInteraction.atomic? }
+    it { should eq true }
+  end
 end

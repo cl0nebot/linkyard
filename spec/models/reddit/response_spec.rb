@@ -21,7 +21,6 @@ describe Reddit::Response do
   describe "initialize" do
     it "do something" do
       sheep = sheep_class.new(data)
-      puts sheep.name + " " + sheep.surname
     end
   end
 end

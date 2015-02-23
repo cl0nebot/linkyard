@@ -22,6 +22,7 @@ gem 'ruby-readability'
 gem "pg"
 gem 'will_paginate', '~> 3.0.6'
 gem 'pg_search'
+gem 'whenever'
 
 group :development do
   gem 'spring'
