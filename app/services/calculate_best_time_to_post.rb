@@ -1,7 +1,7 @@
 require 'chronic'
 
 class CalculateBestTimeToPost
-  TIME_FORMAT = '%A %I%P'
+  TIME_FORMAT = '%A %-l%P'
 
   def initialize(posts)
     @posts = posts
@@ -16,7 +16,14 @@ class CalculateBestTimeToPost
   def best_time
     @posts
       .group_by { |post| post.created_at.strftime(TIME_FORMAT) }
-      .max_by { |_, posts| posts.map(&:score).sum }
+      .max_by { |_, posts| posts.map(&:score).sum * posts.size }
       .first
+  end
+
+  def best_times
+    @posts
+      .group_by { |post| post.created_at.strftime(TIME_FORMAT) }
+      .map { |timestamp, posts| [timestamp, posts.map(&:score).sum, posts.size] }
+      .sort_by { |a, b, c| b }
   end
 end
