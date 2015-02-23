@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Reddit::Response do
   let(:data) {{ "identity" => { "name" => "Timmy", "surname" => "the Sheep" }}}

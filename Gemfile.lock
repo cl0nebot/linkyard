@@ -251,6 +251,8 @@ GEM
       mime-types (>= 1.16)
     roodi (3.3.1)
       ruby_parser (~> 3.2, >= 3.2.2)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.2.0)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -369,6 +371,7 @@ DEPENDENCIES
   pg_search
   pure-css-rails
   rails (= 4.1.0)
+  rspec-collection_matchers
   rspec-rails
   rubocop
   ruby-readability

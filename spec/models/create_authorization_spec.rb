@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CreateAuthorization do
-  let!(:user) { User.create!(:email => "j@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
+  let!(:user) { User.create!(:email => "ju@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
   let(:my_face_authorization) { Authorization.new(:provider => "MyFace") }
   let(:twitter_authorization) { Authorization.new(:provider => "Twitter") }
 

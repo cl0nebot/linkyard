@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
-  let!(:user) { User.create!(:email => "j@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
+  let!(:user) { User.create!(:email => "jo@oh.ny", :password => "12345678", :password_confirmation => "12345678") }
   let(:my_face_authorization) { Authorization.new(:provider => "MyFace") }
   let(:twitter_authorization) { Authorization.new(:provider => "Twitter") }
 
@@ -10,7 +10,7 @@ describe User do
     subject { user.has_authorization_for?("MyFace") }
 
     context "when has no authorizations" do
-      it { should be_false }
+      it { should eq false }
     end
 
     context "when has an authorization for provider" do
@@ -18,12 +18,12 @@ describe User do
         user.authorizations << my_face_authorization
         user.authorizations << twitter_authorization
       end
-      it { should be_true }
+      it { should eq true }
     end
 
     context "when doesn't have a right authorization" do
       before { user.authorizations << twitter_authorization }
-      it { should be_false }
+      it { should eq false }
     end
   end
 
@@ -32,11 +32,11 @@ describe User do
 
     context "when has a twitter connection" do
       before { user.authorizations << twitter_authorization }
-      it { should be_true}
+      it { should eq true}
     end
 
     context "when doesn't have a twitter connection" do
-      it { should be_false}
+      it { should eq false}
     end
   end
 
@@ -54,7 +54,7 @@ describe User do
     end
 
     context "when doesn't have twitter authorization" do
-      it { should be_nil }
+      it { should eq nil }
     end
   end
 end

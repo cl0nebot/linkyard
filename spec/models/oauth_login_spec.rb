@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe OauthLogin do
   let(:dummy_oauth_login_class) do
