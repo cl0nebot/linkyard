@@ -15,7 +15,7 @@ class ScheduledInteraction < CompositeInteraction
   def ready?(now)
     scheduled_times.detect do |time|
       offset = now.to_time - DateTime.parse(time).to_time
-      offset < 30.minutes && offset >= 0
+      offset < SCHEDULE_INTERVAL && offset >= 0
     end.present?
   end
 
