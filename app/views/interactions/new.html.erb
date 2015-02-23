@@ -18,6 +18,7 @@
     <div id="new-interaction-container"></div>
   <% end %>
 
+  <%= hidden_field_tag :type, @interaction.type %>
   <div class="pure-controls">
     <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
   </div>

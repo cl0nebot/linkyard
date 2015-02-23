@@ -1,5 +1,4 @@
 <%= fields_for @interaction do |f| %>
-  <%= hidden_field_tag :type, @interaction.type %>
   <% unless current_user.has_authorization_for?('Twitter') %>
     <div class="pure-controls">
       <%= link_to 'Assign Twittter account', edit_user_registration_path %>
