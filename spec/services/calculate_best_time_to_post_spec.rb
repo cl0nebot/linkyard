@@ -9,6 +9,6 @@ describe CalculateBestTimeToPost do
   let(:service) { CalculateBestTimeToPost.new(posts) }
 
   it 'does a thing' do
-    expect(service.call.strftime(CalculateBestTimeToPost::TIME_FORMAT)).to eq 'Friday 5am'
+    expect(service.call.strftime(CalculateBestTimeToPost::TIME_FORMAT)).to eq 'Wednesday 7am'
   end
 end
