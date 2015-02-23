@@ -23,6 +23,10 @@ class Interaction < ActiveRecord::Base
     raise 'Abstract method should be overriden on descendants.'
   end
 
+  def best_time_to_post
+    BestTime.for_interaction(type)
+  end
+
   private
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction)
 end

@@ -23,6 +23,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'pg_search'
 gem 'chronic'
 gem 'httparty'
+gem 'whenever'
 
 group :development do
   gem 'spring'
