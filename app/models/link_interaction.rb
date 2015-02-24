@@ -18,6 +18,8 @@ class LinkInteraction < ActiveRecord::Base
   def perform_or_schedule!
     if interaction.try!(:post_at_best_time?)
       ScheduleLinkAtBestTime.schedule(self)
+    elsif interaction.kind_of?(ScheduledInteraction)
+      # ignore as it is picked up by job
     else
       InteractionWorker.perform_async(id)
     end
