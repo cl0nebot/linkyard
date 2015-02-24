@@ -5,21 +5,10 @@ class ScheduledInteraction < CompositeInteraction
 
   SCHEDULE_INTERVAL = 30.minutes
 
-  def act(link_interaction)
-    interactions.each do |interaction|
-      interaction.act(link_interaction)
-      break unless link_interaction.status == :success
-    end
-  end
-
-  def interactions
-    interaction_ids.map { |id| Interaction.find(id) }
-  end
-
   def ready?(now)
     scheduled_times.detect do |time|
-      offset = now - DateTime.parse(time)
-      offset < 30.minutes && offset >= 0
+      offset = now.to_time - DateTime.parse(time).to_time
+      offset < SCHEDULE_INTERVAL && offset >= 0
     end.present?
   end
 

@@ -1,0 +1,12 @@
+<%= fields_for @interaction do |f| %>
+  <%= hidden_field_tag :type, @interaction.type %>
+  <div class="pure-controls">
+    <%= f.fields_for :interaction_ids do |ii| %>
+    <% current_user.interactions.select { |i| i.class.atomic? }.each do |atomic| %>
+      <label for=<%= "composite_interaction_interaction_ids_#{atomic.id}" %> class="pure-checkbox">
+        <%= ii.check_box atomic.id, checked: @interaction.composed_interactions.any? { |composed| composed.id == atomic.id} %> <%= atomic.class.humanized_name %>
+      </label>
+    <% end %>
+    <% end %>
+  </div>
+<% end %>

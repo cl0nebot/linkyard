@@ -11,7 +11,6 @@
 
 <%= form_for @interaction, :url => interactions_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
   <%= render "shared/errors", locals: { errors?: @interaction.errors.any?, error_message: @interaction.errors.full_messages.to_sentence } %>
-
   <% if @interaction.errors.any? %>
     <%= render @interaction.type.underscore %>
   <% else %>
