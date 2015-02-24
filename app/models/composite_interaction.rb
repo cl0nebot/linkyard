@@ -16,7 +16,7 @@ class CompositeInteraction < Interaction
 
 
   def composed_interactions
-    interaction_ids.nil? ? [] : interaction_ids.map { |id| user.interaction.find(id) }
+    interaction_ids.nil? ? [] : interaction_ids.map { |id| user.interactions.find(id) }
   end
 
   def self.prepare(attributes)

@@ -1,6 +1,7 @@
 <%= fields_for @interaction do |f| %>
   <%= hidden_field_tag :type, @interaction.type %>
   <div class="pure-controls">
+    <%= f.label :composite_interactions %>
     <%= f.fields_for :interaction_ids do |ii| %>
     <% current_user.interactions.select { |i| i.class.atomic? }.each do |atomic| %>
       <label for=<%= "composite_interaction_interaction_ids_#{atomic.id}" %> class="pure-checkbox">

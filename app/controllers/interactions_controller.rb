@@ -56,7 +56,8 @@ class InteractionsController < ApplicationController
   end
 
   def interaction_params_from(params)
-    params[params[:type].underscore].present? ? params[params[:type].underscore].permit! : {} # instead of permit everything use a helper method on models with defined permitted paramters
+    permitted_params = params[params[:type].underscore].present? ? params[params[:type].underscore].permit! : {}
+    Interaction.prepare_parameters_by_name(params[:type], permitted_params)
   end
 
   def view_exists?(type)

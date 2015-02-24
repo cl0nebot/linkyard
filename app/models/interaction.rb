@@ -8,8 +8,12 @@ class Interaction < ActiveRecord::Base
 
   def self.new_by_name(name, attributes = {})
     raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(name)
-    klass = name.constantize
-    klass.new(klass.prepare(attributes))
+    name.constantize.new(attributes)
+  end
+
+  def self.prepare_parameters_by_name(name, params = {})
+    raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(name)
+    name.constantize.prepare(params.clone)
   end
 
   def self.available_interactions
