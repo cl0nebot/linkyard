@@ -5,7 +5,7 @@ module InteractionsHelper
 
   def available_times
     (0..23).map { |h| '%02d' % h }.map do |hh|
-      ["00", "35"].map do |mm|
+      ["00", "30"].map do |mm|
         ["#{hh}:#{mm}", "#{hh}:#{mm}"]
       end
     end.flatten(1)
