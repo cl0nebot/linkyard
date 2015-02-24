@@ -5,13 +5,6 @@ class ScheduledInteraction < CompositeInteraction
 
   SCHEDULE_INTERVAL = 30.minutes
 
-  def act(link_interaction)
-    interactions.each do |interaction|
-      interaction.act(link_interaction)
-      break unless link_interaction.status == :success
-    end
-  end
-
   def ready?(now)
     scheduled_times.detect do |time|
       offset = now.to_time - DateTime.parse(time).to_time
@@ -20,10 +13,6 @@ class ScheduledInteraction < CompositeInteraction
   end
 
   private
-  def interactions
-    interaction_ids.map { |id| user.interaction.find(id) }
-  end
-
   def scheduled_times_are_valid_times
     errors.add(:scheduled_times, "should be an array") and return unless scheduled_times.respond_to?(:each)
 

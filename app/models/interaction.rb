@@ -8,7 +8,8 @@ class Interaction < ActiveRecord::Base
 
   def self.new_by_name(name, attributes = {})
     raise 'Invalid interaction type' unless AVAILABLE_INTERACTIONS.include?(name)
-    name.constantize.new(attributes)
+    klass = name.constantize
+    klass.new(klass.prepare(attributes))
   end
 
   def self.available_interactions
@@ -25,6 +26,10 @@ class Interaction < ActiveRecord::Base
 
   def act(link_interaction)
     raise 'Abstract method should be overriden on descendants.'
+  end
+
+  def self.prepare(attributes)
+    attributes
   end
 
   private
