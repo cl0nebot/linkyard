@@ -8,6 +8,6 @@ every :sunday, :at => '12pm' do
   runner "UpdateBestTimesToPost.run"
 end
 
-every 5.minutes do
+every 30.minutes do
   runner "ScheduledInteractionWorker.perform_async"
 end
