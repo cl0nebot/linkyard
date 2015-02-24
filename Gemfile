@@ -41,6 +41,14 @@ end
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
+end
+
+group :test do
   gem 'vcr'
   gem 'webmock'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver', '>=2.45.0.dev3'
+  gem 'timecop'
 end

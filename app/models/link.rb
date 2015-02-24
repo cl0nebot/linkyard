@@ -14,7 +14,7 @@ class Link < ActiveRecord::Base
 
   def save_and_publish
     save.tap do |save_succeeded|
-      link_interactions.each { |li| InteractionWorker.perform_async(li.id) if save_succeeded }
+      link_interactions.each { |li| li.perform_or_schedule! if save_succeeded }
     end
   end
 

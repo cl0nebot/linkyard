@@ -14,4 +14,12 @@ class LinkInteraction < ActiveRecord::Base
   def update_and_notify!(status, description)
     update!(:status => status, :status_description => description)
   end
+
+  def perform_or_schedule!
+    if interaction.try!(:post_at_best_time?)
+      ScheduleLinkAtBestTime.schedule(self)
+    else
+      InteractionWorker.perform_async(id)
+    end
+  end
 end

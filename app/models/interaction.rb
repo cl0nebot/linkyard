@@ -38,4 +38,5 @@ class Interaction < ActiveRecord::Base
 
   private
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction CompositeInteraction)
+  AVAILABLE_INTERACTIONS << 'DummyInteraction' if ['development', 'test'].include? Rails.env
 end
