@@ -12,6 +12,11 @@ class ScheduledInteraction < CompositeInteraction
     end.present?
   end
 
+  def self.prepare(attributes)
+    attributes[:scheduled_times] = (attributes[:scheduled_times] || {}).map { |_, time| time }
+    super
+  end
+
   private
   def scheduled_times_are_valid_times
     errors.add(:scheduled_times, "should be an array") and return unless scheduled_times.respond_to?(:each)
