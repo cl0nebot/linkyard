@@ -28,14 +28,19 @@ class Interaction < ActiveRecord::Base
     true
   end
 
-  def act(link_interaction)
-    raise 'Abstract method should be overriden on descendants.'
-  end
-
   def self.prepare(attributes)
     attributes
   end
 
+  def act(link_interaction)
+    raise 'Abstract method should be overriden on descendants.'
+  end
+
+  def best_time_to_post
+    BestTime.for_interaction(type)
+  end
+
   private
   AVAILABLE_INTERACTIONS = %w(TwitterInteraction RedditInteraction ScheduledInteraction CompositeInteraction)
+  AVAILABLE_INTERACTIONS << 'DummyInteraction' if ['development', 'test'].include? Rails.env
 end

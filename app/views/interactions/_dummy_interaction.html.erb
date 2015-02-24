@@ -1,0 +1,4 @@
+<%= fields_for @interaction do |f| %>
+  <%= hidden_field_tag :type, @interaction.type %>
+  <%= f.label :post_at_best_time %><%= f.check_box :post_at_best_time, {}, true, false %>
+<% end %>
