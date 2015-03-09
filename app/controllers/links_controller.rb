@@ -79,7 +79,7 @@ class LinksController < ApplicationController
   end
 
   def digest
-    render json: Link.for_digest
+    render json: Link.for_digest.to_json(include: :tags)
   end
 
   private
