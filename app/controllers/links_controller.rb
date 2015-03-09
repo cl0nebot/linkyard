@@ -78,6 +78,10 @@ class LinksController < ApplicationController
     render :index
   end
 
+  def digest
+    render json: Link.for_digest
+  end
+
   private
   def build_link_submission
     @link_submission = LinkSubmission.new_from_user(current_user)
