@@ -13,9 +13,12 @@ class Link < ActiveRecord::Base
   validates :url, length: { maximum: 200 }, format: { with: URI::regexp(%w(http https)), message: "should be a valid address" }
 
   def self.for_digest
-    last_sunday = Chronic.parse('sunday', :context => :past).end_of_day
-    last_monday = (last_sunday - 6.days).beginning_of_day
-    Link.where(created_at: last_monday..last_sunday)
+    Time.use_zone("Wellington") do
+      Chronic.time_class = Time.zone
+      last_sunday = Chronic.parse('sunday', :context => :past).end_of_day
+      last_monday = (last_sunday - 6.days).beginning_of_day
+      Link.where(created_at: last_monday..last_sunday)
+    end
   end
 
   def save_and_publish
