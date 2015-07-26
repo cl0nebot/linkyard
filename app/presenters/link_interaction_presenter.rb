@@ -1,19 +1,19 @@
 class LinkInteractionPresenter < SimpleDelegator
   def to_s
-    "#{interaction.class.humanized_name} (#{status_and_scheduled_time})"
+    "#{interaction.class.humanized_name} (#{status_and_best_scheduled_time})"
   end
 
   private
 
-  def status_and_scheduled_time
+  def status_and_best_scheduled_time
     [
       status,
-      scheduled_time_text
+      best_scheduled_time
     ].join(', ')
   end
 
-  def scheduled_time_text
-    "scheduled at #{format(scheduled_time)}" if scheduled_time.present?
+  def best_scheduled_time
+    "scheduled at #{format(super)}" if super.present?
   end
 
   def format(time)

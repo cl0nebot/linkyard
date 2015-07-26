@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(version: 20150726055628) do
   end
 
   create_table "link_interactions", force: true do |t|
-    t.integer  "interaction_id",     null: false
-    t.integer  "link_id",            null: false
+    t.integer  "interaction_id",      null: false
+    t.integer  "link_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
     t.string   "status_description"
-    t.datetime "scheduled_time"
+    t.datetime "best_scheduled_time"
   end
 
   create_table "link_tags", force: true do |t|
