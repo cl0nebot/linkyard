@@ -9,7 +9,7 @@ class LinkInteractionPresenter < SimpleDelegator
     [
       status,
       best_scheduled_time
-    ].join(', ')
+    ].compact.join(', ')
   end
 
   def best_scheduled_time
