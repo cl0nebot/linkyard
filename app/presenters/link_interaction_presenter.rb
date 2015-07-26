@@ -1,5 +1,4 @@
 class LinkInteractionPresenter < SimpleDelegator
-  TIME_FORMAT = '%A %-d %b %-l%P'
   def to_s
     "#{interaction.class.humanized_name} (#{status_and_scheduled_time})"
   end
