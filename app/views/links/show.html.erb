@@ -3,7 +3,7 @@
     <h1><%= link_to @link.title, @link.url %></h1>
     <aside>
       <div><%= @link.created_at.to_formatted_s(:long) %></div>
-      <div class="interactions"><%= @link.link_interactions.map { |li| "#{li.interaction.class.humanized_name} (#{li.status})" }.join(', ') %></div>
+      <div class="interactions"><%= @link.link_interactions.map(&:to_s).join(', ') %></div>
       <div class="tags"><%= @link.tags.map { |t| t.name }.join(", ") %></div>
     </aside>
   </header>

@@ -24,4 +24,8 @@ class LinkInteraction < ActiveRecord::Base
       InteractionWorker.perform_async(id)
     end
   end
+
+  def to_s
+    LinkInteractionPresenter.new(self).to_s
+  end
 end
