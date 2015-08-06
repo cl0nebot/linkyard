@@ -9,15 +9,6 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_scope :user do
-    authenticated :user do
-      root :to => 'links#new'
-    end
-
-    unauthenticated :user do
-      root :to => 'home#index', :as => :unauthenticated_root
-    end
-  end
 
   resources :links, only: [:index, :new, :create, :show, :destroy] do
     collection do
@@ -26,7 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :summaries do
+  resources :digests, :only => [:index, :show] do
+    collection do
+      put :subscribe
+    end 
   end
 
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
@@ -35,6 +29,10 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :links, only: [:index, :show, :new, :create]
   end
+
+  get "/linkyard", to: "home#index", as: "linkyard"
+
+  root :to => 'digests#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
