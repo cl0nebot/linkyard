@@ -14,4 +14,8 @@ class DigestsController < ApplicationController
     flash[:error] = "The number of the digest is invalid" and return unless WeeklyDigest.valid_issue?(params[:id].to_i)
     @digest = WeeklyDigest.new(issue: params[:id].to_i)
   end
+
+  def search
+    @links = LinkSearch.new(params[:search], Link.digestable).call if params[:search].present?
+   end
 end

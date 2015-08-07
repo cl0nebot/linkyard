@@ -62,13 +62,14 @@ table tbody tr:nth-child(odd) { background: $light-background;}
 
 .hidden { display: none !important;}
 
+.digest-article {
+  p { line-height: 115%; margin-top: 0.1em; color: $light-color; }
+  h2 { font-weight: normal; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+}
+
 .digests-show {
   body > div {
     h1 a, h1 a:visited { color: $light-color;}
-  }
-  article { 
-    p { line-height: 115%; margin-top: 0.1em; color: $light-color; }
-    h2 { font-weight: normal; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
   }
 }
 

@@ -6,12 +6,6 @@
   <h1><%= link_to "Digests", digests_path %> » <%= @digest.issue %></h1>
   <%= render partial: "subscribers/form" %>
   <% @digest.links.each do |link| %>
-    <article>
-      <h2><%= link_to link.title, link.url %></h2>
-      <aside><%= link.tags.map { |t| t.name }.join(", ") %></aside>
-      <% if link.description %>
-        <p><small><%= link.description %></small></p>
-      <% end %>
-    </article>
+    <%= render partial: "link", locals: { link: link, show_digest: false } %>
   <% end %>
 <% end %>

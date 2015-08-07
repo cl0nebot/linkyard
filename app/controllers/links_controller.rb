@@ -73,7 +73,7 @@ class LinksController < ApplicationController
     if params[:search].empty?
       @links = paginated_user_links
     else
-      @links = LinkSearch.new(params[:search], current_user).call
+      @links = LinkSearch.new(params[:search], current_user.links).call
     end
     render :index
   end
