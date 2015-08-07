@@ -22,4 +22,8 @@ module ApplicationHelper
       link_to link_text, link_path
     end
   end
+
+  def formatted_date(time)
+    time.to_date.to_formatted_s(:long)
+  end
 end

@@ -12,6 +12,8 @@ class Link < ActiveRecord::Base
   validates :title, length: { maximum: 120 }, presence: true
   validates :url, length: { maximum: 200 }, format: { with: URI::regexp(%w(http https)), message: "should be a valid address" }
 
+  scope :digestable, -> { order(description: :desc, created_at: :asc).where(user_id: 7) }
+
   def self.for_digest
     Time.use_zone("Wellington") do
       Chronic.time_class = Time.zone

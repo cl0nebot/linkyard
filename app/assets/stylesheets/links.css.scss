@@ -1,3 +1,19 @@
 // Place all the styles related to the Links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.links-new textarea.content { height: 10em; }
+
+.links-show {
+  article {
+    font-family: serif;
+    h1, h2, h3, h4, h5, h6 { font-weight: bold;}
+    header {
+      text-align: center;
+      h1 a { text-transform: none; color: #404040; }
+    }
+
+    .content { width: 720px; margin: auto;}
+  }
+}

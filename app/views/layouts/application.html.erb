@@ -2,14 +2,12 @@
 <html>
 <head>
   <title>Linkyard</title>
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= "#{params[:controller]} #{params[:controller]}-#{params[:action]}" %>">
-<div id="page">
+<div>
   <header>
     <h1><%= link_to 'Linkyard', user_signed_in? ? links_path : linkyard_path %></h1>
     <ul>

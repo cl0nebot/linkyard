@@ -1,21 +1,46 @@
+$main-color: #404040;
+$light-color: #999;
+$light-background: #ededed;
+$alternate-color: rgb(0, 120, 231);
+$darker-alternate-color: darken($alternate-color, 5%);
+
+
 header, nav, section, article, aside, footer, main { display:block; }
 
-body { font-family: 'Source Sans Pro', sans-serif; color: #404040; margin: 1em; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 19px; }
-h1, h2, h3, h4, h5, h6 { margin: 1.5em 0 1.25em 0; font-weight: 200; line-height: 125%;}
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.75em; }
-h4 { font-size: 1.5em; }
+body { font-family: sans-serif; color: $main-color; margin: 1em; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 17px; }
+h1, h2, h3, h4, h5, h6 { margin: 1.25em 0 1.25em 0; line-height: 125%;}
+h1 { font-size: 1.5em; margin-top: 0.75em; }
+h2 { font-size: 1.1em; }
+h3 { font-size: 1em; }
 p { margin: 1em 0; }
 em { font-style: italic;}
 strong, th, dt { font-weight: bold;}
-pre { font-family: 'Inconsolata', monospace; line-height: 115%; margin: 1.25em 0;}
+pre { font-family: monospace; line-height: 115%; margin: 1.25em 0;}
+small { font-size: 80%; }
 
-#page { margin: 0 auto; width: 960px;}
+body > div { margin: 0 auto; width: 760px;}
 
-header h1 a { color: gray; text-decoration: none; text-transform: uppercase;}
-header ul { margin: 0; padding: 0;}
-header ul li { list-style: none; display: inline; padding-right: 1em;}
+header {
+  h1 {
+    margin: 1em 0 0.5em 0;
+    a, a:visited { color: $alternate-color; text-decoration: none; }
+  }
+  ul { margin: 0; padding: 0; text-align: right; margin-top: 30px; }
+  ul li {
+    a, a:visited { color: $light-color; text-decoration: none; }
+    list-style: none; display: inline; padding-right: 0.5em;
+  }
+
+}
+
+footer {
+  margin-top: 2em; border-top: 1px solid $light-background; text-align: center; padding-top: 1em;
+  a, a:visited { color: $light-color; }
+}
+
+a, a:active { color: $darker-alternate-color;}
+a:visited { color: $light-color; }
+a:hover { text-decoration: none;}
 
 div.field_with_errors { display: inline;}
 .field_with_errors input { background-color: #fdf7f7;}
@@ -33,21 +58,16 @@ div.field_with_errors { display: inline;}
 table { width: 100%;}
 table td, table th { padding: 0.5em 1em }
 table th { text-align: left;}
-table tbody tr:nth-child(odd) { background: #f2f2f2;}
+table tbody tr:nth-child(odd) { background: $light-background;}
 
 .hidden { display: none !important;}
 
-.links-new textarea.content { height: 10em; }
-
-.links-show {
-  article {
-    font-family: "Lora", serif;
-    h1, h2, h3, h4, h5, h6 { font-weight: bold;}
-    header {
-      text-align: center;
-      h1 a { text-transform: none; color: #404040; }
-    }
-
-    .content { width: 720px; margin: auto;}
+.digests-show {
+  body > div {
+    h1 a, h1 a:visited { color: $light-color;}
+  }
+  article { 
+    p { line-height: 115%; margin-top: 0.1em; color: $light-color; }
+    h2 { font-weight: normal; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
   }
 }
