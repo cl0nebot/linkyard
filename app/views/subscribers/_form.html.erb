@@ -1,0 +1,6 @@
+<div class="subscribe-form">
+  <%= form_for Link.new, url: links_path(@link_submission), html: { class: "pure-form" } do |f| %>
+    <%= f.text_field :url, required: true, class: "pure-input-2-3", placeholder: "Subscribe to weekly emails! Enter your address here" %>
+  <%= f.submit "Subscribe", class: "pure-button pure-button-primary pure-input-1-3" %>
+<% end %>
+</div>

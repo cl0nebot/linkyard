@@ -1,11 +1,10 @@
+<% content_for :title do %>
+  <%= "Issue #{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
+<% end %>
+
 <% if @digest %>
   <h1><%= link_to "Digests", digests_path %> » <%= @digest.issue %></h1>
-  <div class="subscribe-form">
-    <%= form_for Link.new, url: links_path(@link_submission), html: { class: "pure-form" } do |f| %>
-      <%= f.text_field :url, required: true, class: "pure-input-2-3", placeholder: "Subscribe to weekly emails! Enter your address here" %>
-      <%= f.submit "Subscribe", class: "pure-button pure-button-primary pure-input-1-4" %>
-    <% end %>
-  </div>
+  <%= render partial: "subscribers/form" %>
   <% @digest.links.each do |link| %>
     <article>
       <h2><%= link_to link.title, link.url %></h2>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weekly Programming Digest</title>
+  <title><%= content_for?(:title) ? yield(:title) + " | " : "" %>Weekly Programming Digest</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -17,7 +17,6 @@
         <ul>
           <%= navigation_link_to 'Archive', digests_path %>
           <%= navigation_link_to 'Search', new_link_path %>
-          <%= navigation_link_to 'Contact', new_link_path %>
           <%= navigation_link_to 'RSS', new_link_path %>
         </ul>
       </div>

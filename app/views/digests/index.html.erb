@@ -1,7 +1,16 @@
+<% content_for :title do %>
+  <%= "Archives" %>
+<% end %>
+
 <h1>Archive</h1>
-<% @digests.each do |digest| %>
-  <div>
-    <h3><%= link_to("Digest #" + digest.issue.to_s, digest_path(digest.issue)) %></h3>
-    <aside><%= formatted_date(digest.to + 1.day) %></aside>
+<%= render partial: "subscribers/form" %>
+<% @digests.each_slice(3) do |digests_in_row| %>
+  <div class="pure-g">
+    <% digests_in_row.each do |digest| %>
+      <div class="pure-u-1-3 archive-item">
+        <h3><%= link_to("Digest #" + digest.issue.to_s, digest_path(digest.issue)) %></h3>
+        <aside><%= formatted_date(digest.to + 1.day) %></aside>
+      </div>
+    <% end %>
   </div>
 <% end %>
