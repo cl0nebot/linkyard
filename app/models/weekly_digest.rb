@@ -32,8 +32,4 @@ class WeeklyDigest
   def links
     Link.digestable.where(created_at: @from..@to).includes(:tags)
   end
-
-  def groupped_links
-    
-  end
 end
