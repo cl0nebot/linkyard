@@ -7,12 +7,12 @@ class DigestsController < ApplicationController
   # 92 - 118
 
   def index
-    @digests = WeeklyDigest.all.reverse
+    @digests = Weekly::Digest.all.reverse
   end
 
   def show
-    flash[:error] = "The number of the digest is invalid" and return unless WeeklyDigest.valid_issue?(params[:id].to_i)
-    @digest = WeeklyDigest.new(issue: params[:id].to_i)
+    flash[:error] = "The number of the digest is invalid" and return unless Weekly::Digest.valid_issue?(params[:id].to_i)
+    @digest = Weekly::Digest.new(issue: params[:id].to_i)
   end
 
   def search
