@@ -75,6 +75,7 @@ table tbody tr:nth-child(odd) { background: $light-background;}
 }
 
 .digests-index {
+  .subscribe-form { margin-bottom: 1em; }
   .archive-item {
     padding-top: 1.5em;
     h3 { font-size: 1em; display: inline; }
