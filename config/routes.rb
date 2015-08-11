@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :digests, :only => [:index, :show] do
     collection do
       get :search
+      get :feed
     end
   end
 

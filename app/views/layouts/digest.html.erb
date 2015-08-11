@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
+  <%= auto_discovery_link_tag(:rss, { controller: "digests", action: "feed", format: "rss" }, { title: "Weekly Programming Digest RSS" }) %>
 </head>
 <body class="digest <%= "#{params[:controller]} #{params[:controller]}-#{params[:action]}" %>">
 <div>
@@ -17,7 +18,7 @@
         <ul>
           <%= navigation_link_to 'Archive', digests_path %>
           <%= navigation_link_to 'Search', search_digests_path %>
-          <%= navigation_link_to 'RSS', new_link_path %>
+          <%= navigation_link_to 'RSS', feed_digests_path(format: "rss") %>
         </ul>
       </div>
     </div>

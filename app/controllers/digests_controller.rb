@@ -4,8 +4,6 @@ class DigestsController < ApplicationController
 
   layout "digest"
 
-  # 92 - 118
-
   def index
     @digests = Weekly::Digest.all.reverse
   end
@@ -18,4 +16,11 @@ class DigestsController < ApplicationController
   def search
     @links = LinkSearch.new(params[:search], Link.digestable).call if params[:search].present?
    end
+
+  def feed
+    @digests = Weekly::Digest.take(10).reverse
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
 end

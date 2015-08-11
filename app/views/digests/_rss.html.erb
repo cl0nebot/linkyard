@@ -1,0 +1,12 @@
+<% digest.links_by_category.each do |category, links| %>
+  <h2><%= category.name %></h2>
+  <% links.each do |link| %>
+    <article class="digest-article">
+      <div><%= link_to link.title, link.url %></div>
+      <aside><%= link.tags.map { |t| t.name }.join(", ") %></aside>
+      <% if link.description %>
+        <p><small><%= link.description %></small></p>
+      <% end %>
+    </article>
+  <% end %>
+<% end %>

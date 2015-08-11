@@ -14,6 +14,11 @@ module Weekly
       (INITIAL_ISSUE..issue_from(Time.zone.now)).map { |issue| new(issue: issue) }
     end
 
+    def self.take(number)
+      current_issue = issue_from(Time.zone.now)
+      ((current_issue - number)..current_issue).map { |issue| new(issue: issue) }
+    end
+
     def self.valid_issue?(number)
       (INITIAL_ISSUE..issue_from(Time.zone.now)).include?(number)
     end
