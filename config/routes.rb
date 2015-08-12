@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 
+  resources :subscribers, only: [:create] do
+  end
+
   scope '/api' do
     resources :links, only: [:index, :show, :new, :create]
   end

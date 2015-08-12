@@ -5,11 +5,14 @@ class DigestsController < ApplicationController
   layout "digest"
 
   def index
+    @subscriber = Subscriber.new(digest: Weekly::Digest::PROGRAMMING)
     @digests = Weekly::Digest.all.reverse
   end
 
   def show
-    flash[:error] = "The number of the digest is invalid" and return unless Weekly::Digest.valid_issue?(params[:id].to_i)
+    return unless Weekly::Digest.valid_issue?(params[:id].to_i)
+
+    @subscriber = Subscriber.new(digest: Weekly::Digest::PROGRAMMING)
     @digest = Weekly::Digest.new(issue: params[:id].to_i)
   end
 

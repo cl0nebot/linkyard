@@ -2,6 +2,7 @@ module Weekly
   class Digest
     INITIAL_ISSUE = 92
     INITIAL_ISSUE_FROM = Time.zone.parse("2015-01-26")
+    PROGRAMMING = "programming"
 
     attr_reader :from, :to, :issue
 

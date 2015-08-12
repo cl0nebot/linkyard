@@ -24,23 +24,6 @@
     </div>
   </header>
 
-  <% if notice %>
-    <div class="notice">
-      <p><%= notice %></p>
-    </div>
-  <% end %>
-  <% if alert %>
-    <div class="warning">
-      <p><%= alert %></p>
-    </div>
-  <% end %>
-  <% if flash[:error] %>
-    <div class="error">
-      <p><%= flash[:error] %></p>
-    </div>
-  <% end %>
-
-
   <%= content_for?(:content) ? yield(:content) : yield %>
 
   <footer>

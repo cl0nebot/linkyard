@@ -25,6 +25,8 @@ gem 'pg_search'
 gem 'chronic'
 gem 'httparty'
 gem 'whenever'
+gem 'activeuuid'
+gem 'validates_email_format_of'
 
 group :development do
   gem 'spring'

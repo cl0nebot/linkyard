@@ -50,6 +50,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    activeuuid (0.6.0)
+      activerecord (>= 3.1)
+      uuidtools
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     arrayfields (4.9.2)
@@ -381,6 +384,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uuidtools (2.1.4)
+    validates_email_format_of (1.6.3)
+      i18n
     vcr (2.9.3)
     warden (1.2.3)
       rack (>= 1.0)
@@ -399,6 +404,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeuuid
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)
@@ -437,7 +443,11 @@ DEPENDENCIES
   twitter
   uglifier (>= 1.3.0)
   uuidtools
+  validates_email_format_of
   vcr
   webmock
   whenever
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.10.6
