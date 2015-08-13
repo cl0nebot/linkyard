@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :subscribers, only: [:create] do
+    get :unsubscribe
   end
 
   scope '/api' do

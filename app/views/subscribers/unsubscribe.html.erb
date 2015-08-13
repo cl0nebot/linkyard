@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  <%= "Unsubscribe" %>
+<% end %>
+
+<h1>Unsubscribe</h1>
+<% if flash[:success] %>
+  <div class="success">
+    <h3>You were unsubscribed successfully</h3>
+    <p><%= flash[:success] %>.</p>
+  </div>
+<% elsif flash[:error] %>
+  <div class="error">
+    <h3>Ooops, there was an error</h3>
+    <p><%= flash[:error] %>.</p>
+  </div>
+<% end %>
