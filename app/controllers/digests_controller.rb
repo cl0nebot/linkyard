@@ -30,9 +30,7 @@ class DigestsController < ApplicationController
   end
 
   private
-  def set_time_zone
-    Time.use_zone("Wellington") do
-      yield
-    end
+  def set_time_zone(&block)
+    Time.use_zone("Wellington", &block)
   end
 end
