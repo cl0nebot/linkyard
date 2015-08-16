@@ -22,5 +22,6 @@ module Linkyard
     config.to_prepare do
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "account" : "application" }
     end
+    config.time_zone = "Wellington"
   end
 end
