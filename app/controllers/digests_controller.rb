@@ -2,6 +2,8 @@ class DigestsController < ApplicationController
   skip_before_action :authenticate_user_from_token!
   skip_before_action :authenticate_user!
 
+  around_filter :set_time_zone
+
   layout "digest"
 
   def index
@@ -25,5 +27,10 @@ class DigestsController < ApplicationController
     respond_to do |format|
       format.rss { render :layout => false }
     end
+  end
+
+  private
+  def set_time_zone(&block)
+    Time.use_zone("Wellington", &block)
   end
 end
