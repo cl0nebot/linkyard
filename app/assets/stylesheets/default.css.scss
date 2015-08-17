@@ -83,3 +83,13 @@ table tbody tr:nth-child(odd) { background: $light-background;}
     aside { display: inline; }
   }
 }
+
+.digests-home {
+  .promo {
+    text-align: center;
+    margin: 3em 4em 4em 4em;
+    p { margin: 2em 0;}
+    ul { margin: 0 auto; text-align: left; width: 250px;}
+    .large { font-size: 120%; }
+  }
+}
