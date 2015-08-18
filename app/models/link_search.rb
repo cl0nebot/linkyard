@@ -6,6 +6,6 @@ class LinkSearch
 
   def call
     documents = PgSearch.multisearch(@search_term)
-    documents.map { |document| @links.find(document.searchable_id) }.uniq
+    @links.select { |link| documents.any? { |document| link.id == document.searchable_id }}
   end
 end
