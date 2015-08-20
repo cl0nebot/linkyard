@@ -1,45 +1,54 @@
 module Weekly
   class Digest
-    INITIAL_ISSUE = 92
-    INITIAL_ISSUE_FROM = Time.zone.parse("2015-01-26")
+    PHOTOGRAPHY = "photography"
     PROGRAMMING = "programming"
+    TYPES = [PHOTOGRAPHY, PROGRAMMING]
+    CONFIGURATION = {
+      PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
+      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-24") }
+    }
 
-    attr_reader :from, :to, :issue
+    attr_reader :from, :to, :issue, :type
 
-    def self.current_digest
-      self.new(issue: self.issue_from(Time.zone.now))
+    def self.current_digest(type)
+      self.new(type, issue: self.issue_from(type, Time.zone.now))
     end
 
-    def self.issue_from(date)
-      days_from_initial_issue = (date - INITIAL_ISSUE_FROM) / (3600 * 24)
-      ((days_from_initial_issue / 7) + INITIAL_ISSUE - 1).floor
+    def self.issue_from(type, date)
+      days_from_initial_issue = (date - CONFIGURATION[type][:from]) / (3600 * 24)
+      ((days_from_initial_issue / 7) + CONFIGURATION[type][:initial_issue] - 1).floor
     end
 
-    def self.all
-      (INITIAL_ISSUE..issue_from(Time.zone.now)).map { |issue| new(issue: issue) }
+    def self.all(type)
+      (CONFIGURATION[type][:initial_issue]..issue_from(type, Time.zone.now)).map { |issue| new(type, issue: issue) }
     end
 
-    def self.take(number)
-      current_issue = issue_from(Time.zone.now)
-      ((current_issue - number)..current_issue).map { |issue| new(issue: issue) }
+    def self.take(type, number)
+      current_issue = issue_from(type, Time.zone.now)
+      ((current_issue - number)..current_issue).map { |issue| new(type, issue: issue) }
     end
 
-    def self.valid_issue?(number)
-      (INITIAL_ISSUE..issue_from(Time.zone.now)).include?(number)
+    def self.valid_issue?(type, number)
+      (CONFIGURATION[type][:initial_issue]..issue_from(type, Time.zone.now)).include?(number)
     end
 
-    def initialize(issue: Digest.issue_from(Time.zone.now))
+    def initialize(type, issue: Digest.issue_from(Time.zone.now))
       @issue = issue
-      @from = INITIAL_ISSUE_FROM + (7 * (@issue - INITIAL_ISSUE)).days
+      @from = CONFIGURATION[type][:from] + (7 * (@issue - CONFIGURATION[type][:initial_issue])).days
       @to = (@from + 6.days).end_of_day
+      @type = type
     end
 
     def links
-      @links ||= Link.digestable.where(created_at: @from..@to).includes(:tags)
+      @links ||= Link.digestable(type).where(created_at: @from..@to).includes(:tags)
+    end
+
+    def domain
+      "#{type}digest.net"
     end
 
     def links_by_category
-      @links_by_category ||= links.group_by { |l| CategoryMatcher.match(l) }
+      @links_by_category ||= links.group_by { |l| CategoryMatcher.match(type, l) }
                                   .sort_by { |k, v| k.order }
                                   .to_h
     end

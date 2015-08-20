@@ -4,6 +4,6 @@ class SendDigests
   end
 
   def call
-    DigestMailer.delay.weekly
+    DigestMailer.delay.weekly(Weekly::Digest::PROGRAMMING)
   end
 end

@@ -2,7 +2,7 @@
   <h3><%= link_to link.title, link.url %></h3>
   <aside><%= link.tags.map { |t| t.name }.join(", ") %></aside>
   <% if show_digest %>
-    <% issue = Weekly::Digest.issue_from(link.created_at) %>
+    <% issue = Weekly::Digest.issue_from(@digest_type, link.created_at) %>
     <p><small>from <%= link_to "digest ##{issue}", digest_path(issue) %></small></p>
   <% end %>
   <% if link.description %>

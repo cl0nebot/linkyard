@@ -1,16 +1,31 @@
 <% content_for :title do %>
-  <%= "Stay up to date with the best programming newsletter" %>
+  <%= "Stay up to date with the best #{@digest_type} newsletter" %>
 <% end %>
 
-<div class="promo">
-  <h1>Stay up to date with current technologies</h1>
-  <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development.</p>
-  <%= render partial: "subscribers/form" %>
-  <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-  <ul>
-    <li><strong>One email</strong> per week,</li>
-    <li><strong>no spam</strong>,</li>
-    <li>the most <strong>interesting news</strong>.</li>
-  </ul>
-  <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>, <strong>C#</strong> and <strong>Web development</strong>.</p>
-</div>
+<% if @digest_type == Weekly::Digest::PROGRAMMING %>
+  <div class="promo">
+    <h1>Stay up to date with current technologies</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development.</p>
+    <%= render partial: "subscribers/form" %>
+    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
+    <ul>
+      <li><strong>One email</strong> per week,</li>
+      <li><strong>no spam</strong>,</li>
+      <li>the most <strong>interesting news</strong>.</li>
+    </ul>
+    <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>, <strong>C#</strong> and <strong>Web development</strong>.</p>
+  </div>
+<% elsif @digest_type == Weekly::Digest::PHOTOGRAPHY %>
+  <div class="promo">
+    <h1>Stay up to date with news in photography</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in photography, tutorials and gear tests.</p>
+    <%= render partial: "subscribers/form" %>
+    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
+    <ul>
+      <li><strong>One email</strong> per week,</li>
+      <li><strong>no spam</strong>,</li>
+      <li>the most <strong>interesting news</strong>.</li>
+    </ul>
+    <p>The only news source you need targeted on (but not limited to) <strong>photography</strong>, <strong>tutorials</strong>, <strong>gear</strong> and <strong>photo software</strong>.</p>
+  </div>
+<% end %>
