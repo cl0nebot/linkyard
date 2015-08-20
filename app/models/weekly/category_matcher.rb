@@ -2,7 +2,7 @@ module Weekly
   class CategoryMatcher
 
     CONFIGURATION = {
-      Digest::PROGRAMMING => {
+      Weekly::Digest::PROGRAMMING => {
         default: Category.new("general", 1, []),
         categories: [
           Category.new("ruby", 2, ["ruby", "rails"]),
@@ -11,7 +11,7 @@ module Weekly
           Category.new("fun", 5, ["programmingfun", "funny"])
         ]
       },
-      Digest::PHOTOGRAPHY => {
+      Weekly::Digest::PHOTOGRAPHY => {
         default: Category.new("general", 1, []),
         categories: [
           Category.new("photos of the week", 2, ["photo"]),
