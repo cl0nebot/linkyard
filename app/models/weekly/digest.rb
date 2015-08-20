@@ -6,6 +6,10 @@ module Weekly
 
     attr_reader :from, :to, :issue
 
+    def self.current_issue
+      self.new(issue: self.issue_from(Time.zone.now))
+    end
+
     def self.issue_from(date)
       days_from_initial_issue = (date - INITIAL_ISSUE_FROM) / (3600 * 24)
       ((days_from_initial_issue / 7) + INITIAL_ISSUE - 1).floor

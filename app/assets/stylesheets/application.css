@@ -13,6 +13,6 @@
  *= require pure
  *= require jquery-ui
  *= require jquery.tagit
- *= require_tree .
+ *= require default
  *= require_self
  */

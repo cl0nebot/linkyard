@@ -1,0 +1,26 @@
+$main-color: #404040;
+$light-color: #999;
+$light-background: #ededed;
+$alternate-color: rgb(0, 120, 231);
+$darker-alternate-color: darken($alternate-color, 5%);
+
+header, nav, section, article, aside, footer, main { display:block; }
+
+body { font-family: sans-serif; color: $main-color; margin: 1em; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 15px; }
+h1, h2, h3, h4, h5, h6 { line-height: 125%;}
+h1 { font-size: 1.5em; margin-top: 0.75em; }
+h2 { font-size: 1.3em; margin: 2em 0 0 0; }
+h3 { font-weight: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 0.75em 0 0 0; }
+p { margin: 1em 0; }
+small { font-size: 80%; }
+
+a, a:active { color: $darker-alternate-color;}
+a:visited { color: $light-color; }
+a:hover { text-decoration: none;}
+
+.digest-article {
+  font-size: 90%;
+  p { line-height: 115%; margin-top: 0.1em; color: $light-color; }
+}
+
+footer { margin-top: 3em; }

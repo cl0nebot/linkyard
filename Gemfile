@@ -27,6 +27,7 @@ gem 'httparty'
 gem 'whenever'
 gem 'activeuuid'
 gem 'validates_email_format_of'
+gem 'premailer-rails'
 
 group :development do
   gem 'spring'

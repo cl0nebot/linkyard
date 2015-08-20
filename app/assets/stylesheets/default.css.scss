@@ -93,3 +93,18 @@ table tbody tr:nth-child(odd) { background: $light-background;}
     .large { font-size: 120%; }
   }
 }
+
+.links-new textarea.content { height: 10em; }
+
+.links-show {
+  article {
+    font-family: serif;
+    h1, h2, h3, h4, h5, h6 { font-weight: bold;}
+    header {
+      text-align: center;
+      h1 a { text-transform: none; color: #404040; }
+    }
+
+    .content { width: 720px; margin: auto;}
+  }
+}

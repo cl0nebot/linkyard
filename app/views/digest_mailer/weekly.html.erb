@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag    'emails', media: 'all' %>
+  </head>
+<body>
+  <h1><%= "Weekly Programming Digest ##{@digest.issue}" %></h1>
+  <% @digest.links_by_category.each do |category, links| %>
+    <h2><%= category.name %></h2>
+    <% links.each do |link| %>
+      <%= render partial: "digests/link", locals: { link: link, show_digest: false } %>
+    <% end %>
+  <% end %>
+  <footer>
+    <p><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: "programmingdigest.net") %>.</small></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+Weekly Programming Digest #<%= @digest.issue %>
+----------------------------------------------
+
+<% @digest.links_by_category.each do |category, links| %>
+  <%= category.name %>
+  ==============================================
+
+  <% links.each do |link| %>
+    # <%= link.title %> - <%= link.url %>
+    <%= link.tags.map(&:name).join(", ") %>
+    <% if link.description %>
+      <%= link.description %>
+    <% end %>
+
+  <% end %>
+<% end %>

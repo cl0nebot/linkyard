@@ -1,3 +1,6 @@
+# Don't forget to set the timezone on the server to the one you want
+# Wellington/Auckland is used at the moment
+
 set :env_path,    '"$HOME/.rbenv/shims":"$HOME/.rbenv/bin"'
 
 job_type :rake,   %q{ cd :path && PATH=:env_path:"$PATH" RAILS_ENV=:environment bundle exec rake :task --silent :output }
@@ -10,4 +13,8 @@ end
 
 every 30.minutes do
   runner "ScheduledInteractionWorker.perform_async"
+end
+
+every :thursday, :at => '14:37' do
+  runner "SendDigests.run"
 end
