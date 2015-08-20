@@ -26,4 +26,13 @@ module ApplicationHelper
   def formatted_date(time)
     time.to_date.to_formatted_s(:long)
   end
+
+  def tracking_id(digest_type)
+    case digest_type
+    when Weekly::Digest::PHOTOGRAPHY
+      "UA-66393277-2"
+    else
+      "UA-66393277-1"
+    end
+  end
 end
