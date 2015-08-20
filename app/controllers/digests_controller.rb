@@ -33,7 +33,16 @@ class DigestsController < ApplicationController
 
   private
   def set_digest_type
-    @digest_type = Weekly::Digest::PROGRAMMING
+    @digest_type = case request.host
+    when "programmingdigest.net"
+      Weekly::Digest::PROGRAMMING
+    when "photographydigest.net"
+      Weekly::Digest::PHOTOGRAPHY
+    when "localhost"
+      Weekly::Digest::PROGRAMMING
+    else
+      raise "Domain #{request.host} is not supported for digests"
+    end
   end
 
   def initialize_subscriber
