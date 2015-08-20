@@ -6,7 +6,7 @@ module Weekly
 
     attr_reader :from, :to, :issue
 
-    def self.current_issue
+    def self.current_digest
       self.new(issue: self.issue_from(Time.zone.now))
     end
 

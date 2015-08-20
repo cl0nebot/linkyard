@@ -1,8 +1,8 @@
 class DigestMailer < ActionMailer::Base
   def weekly
-    @digest = Weekly::Digest.new(issue: 119) # TODO current_issue
+    @digest = Weekly::Digest.current_digest
     headers['X-MC-PreserveRecipients'] = false
-    Subscriber.where(digest: "programming").each do |subscriber|
+    Subscriber.where(email: "jakub.chodounsky@gmail.com").where(digest: "programming").each do |subscriber|
       @subscriber = subscriber
       mail to: @subscriber.email,
            from: "jakub@programmingdigest.net",
