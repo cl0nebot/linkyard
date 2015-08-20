@@ -7,7 +7,7 @@ class Link < ActiveRecord::Base
   has_many :tags, through: :link_tags
   belongs_to :user
 
-  before_validation :normalize_url
+  before_validation :normalize
 
   validates :title, length: { maximum: 120 }, presence: true
   validates :url, length: { maximum: 200 }, format: { with: URI::regexp(%w(http https)), message: "should be a valid address" }
@@ -35,7 +35,8 @@ class Link < ActiveRecord::Base
   end
 
   protected
-  def normalize_url
+  def normalize
     self.url = "http://#{url}" unless url.blank? || url.start_with?("http")
+    self.digest = nil unless Weekly::Digest::TYPES.include?(digest)
   end
 end

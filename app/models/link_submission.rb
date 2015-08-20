@@ -38,7 +38,7 @@ class LinkSubmission
 
   protected
   def build_link
-    user.links.build(title: title, url: url, description: description, content: content)
+    user.links.build(title: title, url: url, description: description, content: content, digest: digest)
   end
 
   def build_link_interactions_from(ids)

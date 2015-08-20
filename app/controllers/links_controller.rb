@@ -13,6 +13,7 @@ class LinksController < ApplicationController
   end
 
   def new
+    @available_types = Weekly::Digest::TYPES + ["-----------"]
     respond_to do |format|
       format.html
       format.json do
@@ -20,7 +21,7 @@ class LinksController < ApplicationController
         if url.present?
           article_content = ArticleContentFetcher.new(url).fetch
           without_html_escaping_in_json do
-            render json: ArticleContentPresenter.new(article_content, current_user.interactions).to_h, status: :ok
+            render json: ArticleContentPresenter.new(article_content, current_user.interactions, @available_types).to_h, status: :ok
           end
         else
           render json: { error: "Parameter url is missing" }, status: :bad_request
@@ -32,6 +33,7 @@ class LinksController < ApplicationController
   def create
     url = params[:link_submission][:url]
     title = params[:link_submission][:title]
+    digest = params[:link_submission][:digest]
     tags = params[:link_submission][:tags]
     description = params[:link_submission][:description]
     content = params[:link_submission][:content]
@@ -39,7 +41,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html do
         active_interactions = (params[:link_submission][:link_interactions] || {}).select { |_, checked| checked == "1" }.map { |id, _| id }
-        if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
+        if @link_submission.save(url: url, title: title, digest: digest, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           flash[:success] = "Link added successfully."
           redirect_to links_path
         else

@@ -28,7 +28,7 @@
 
   <div class="pure-control-group">
     <%= f.label :digest %>
-    <%= f.select :digest, Weekly::Digest::TYPES + ["-----------"] %>
+    <%= f.select :digest, @available_types %>
   </div>
 
   <div class="pure-controls">
