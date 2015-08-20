@@ -5,7 +5,8 @@ class SubscribersController < ApplicationController
   layout "digest"
 
   def create
-    subscriber = Subscriber.new(params[:subscriber].permit(:email, :digest))
+    subscriber = Subscriber.find_by_email(params[:subscriber][:email]) || Subscriber.new(params[:subscriber].permit(:email, :digest))
+    subscriber.unsubscribed_at = nil
     if subscriber.save
       flash[:success] = "You've been subscribed successfully"
       redirect_to :back
