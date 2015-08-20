@@ -26,6 +26,11 @@
     <%= f.text_area :content, { class: "pure-input-1 content", disabled: true } %>
   </div>
 
+  <div class="pure-control-group">
+    <%= f.label :digest %>
+    <%= f.select :digest, Weekly::Digest::TYPES + ["-----------"] %>
+  </div>
+
   <div class="pure-controls">
     <%= f.fields_for :link_interactions do |li| %>
       <% @link_submission.interactions.each do |interaction| %>

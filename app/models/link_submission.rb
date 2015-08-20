@@ -1,7 +1,7 @@
 class LinkSubmission
   include ActiveModel::Model
 
-  attr_accessor :user, :url, :title, :tags, :description, :content, :link_interactions, :link
+  attr_accessor :user, :url, :title, :digest, :tags, :description, :content, :link_interactions, :link
 
   def self.new_from_user(user)
     new(user: user, link_interactions: {})
@@ -10,6 +10,7 @@ class LinkSubmission
   def save(options)
     self.url = options[:url]
     self.title = options[:title]
+    self.digest = options[:digest]
     self.tags = options[:tags]
     self.description = options[:description]
     self.content = options[:content]
