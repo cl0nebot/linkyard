@@ -4,6 +4,8 @@ class SendDigests
   end
 
   def call
-    DigestMailer.delay.weekly(Weekly::Digest::PROGRAMMING)
+    Weekly::Digest::TYPES.each do |type|
+      DigestMailer.delay.weekly(type)
+    end
   end
 end
