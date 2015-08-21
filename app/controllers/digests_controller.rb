@@ -59,8 +59,6 @@ class DigestsController < ApplicationController
       Weekly::Digest::ELIXIR
     when "reactdigest.net"
       Weekly::Digest::REACT
-    when "localhost"
-      Weekly::Digest::PROGRAMMING
     else
       Weekly::Digest::CSHARP
       #raise "Domain #{request.host} is not supported for digests"

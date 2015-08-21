@@ -35,4 +35,13 @@ module ApplicationHelper
       "UA-66393277-1"
     end
   end
+
+  def digest_name(type)
+    case type
+    when Weekly::Digest::CSHARP
+      "C#"
+    else
+      type.capitalize
+    end
+  end
 end
