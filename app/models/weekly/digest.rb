@@ -5,7 +5,7 @@ module Weekly
     TYPES = [PROGRAMMING, PHOTOGRAPHY]
     CONFIGURATION = {
       PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
-      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-17") }
+      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10") }
     }
 
     attr_reader :from, :to, :issue, :type
