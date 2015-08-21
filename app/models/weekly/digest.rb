@@ -2,7 +2,7 @@ module Weekly
   class Digest
     PHOTOGRAPHY = "photography"
     PROGRAMMING = "programming"
-    CSHARP = "c#"
+    CSHARP = "csharp"
     ELIXIR = "elixir"
     REACT = "react"
     TYPES = [PROGRAMMING, PHOTOGRAPHY, CSHARP, ELIXIR, REACT]
