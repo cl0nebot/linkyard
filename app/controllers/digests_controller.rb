@@ -53,6 +53,12 @@ class DigestsController < ApplicationController
       Weekly::Digest::PROGRAMMING
     when "photographydigest.net"
       Weekly::Digest::PHOTOGRAPHY
+    when "csharpdigest.net"
+      Weekly::Digest::CSHARP
+    when "elixirdigest.net"
+      Weekly::Digest::ELIXIR
+    when "reactdigest.net"
+      Weekly::Digest::REACT
     when "localhost"
       Weekly::Digest::PROGRAMMING
     else

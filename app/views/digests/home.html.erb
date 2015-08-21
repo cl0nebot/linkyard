@@ -4,8 +4,8 @@
 
 <% if @digest_type == Weekly::Digest::PROGRAMMING %>
   <div class="promo">
-    <h1>Stay up to date with current technologies</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development.</p>
+    <h1>Stay up to date with current web technologies</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development in web.</p>
     <%= render partial: "subscribers/form" %>
     <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
     <ul>
@@ -13,7 +13,7 @@
       <li><strong>no spam</strong>,</li>
       <li>the most <strong>interesting news</strong>.</li>
     </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>, <strong>C#</strong> and <strong>Web development</strong>.</p>
+    <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>  and <strong>Web development</strong>.</p>
   </div>
 <% elsif @digest_type == Weekly::Digest::PHOTOGRAPHY %>
   <div class="promo">
@@ -27,5 +27,44 @@
       <li>the most <strong>interesting news</strong>.</li>
     </ul>
     <p>The only news source you need targeted on (but not limited to) <strong>photography</strong>, <strong>tutorials</strong>, <strong>gear</strong> and <strong>photo software</strong>.</p>
+  </div>
+<% elsif @digest_type == Weekly::Digest::CSHARP %>
+  <div class="promo">
+    <h1>Stay up to date with C# and .NET Framework</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in .NET Framework and Microsoft technologies.</p>
+    <%= render partial: "subscribers/form" %>
+    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
+    <ul>
+      <li><strong>One email</strong> per week,</li>
+      <li><strong>no spam</strong>,</li>
+      <li>the most <strong>interesting news</strong>.</li>
+    </ul>
+    <p>The only news source you need targeted on (but not limited to) <strong>C#</strong>, <strong>.NET Framework</strong>, <strong>Azure</strong>, <strong>ASP.NET</strong>  and <strong>WPF</strong>.</p>
+  </div>
+<% elsif @digest_type == Weekly::Digest::ELIXIR %>
+  <div class="promo">
+    <h1>Stay up to date with Elixir</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in functional programming with Elixir.</p>
+    <%= render partial: "subscribers/form" %>
+    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
+    <ul>
+      <li><strong>One email</strong> per week,</li>
+      <li><strong>no spam</strong>,</li>
+      <li>the most <strong>interesting news</strong>.</li>
+    </ul>
+    <p>The only news source you need targeted on (but not limited to) <strong>Elixir</strong>, <strong>functional programming</strong>, <strong>Phoenix</strong>> and <strong>Ecto</strong>.</p>
+  </div>
+<% elsif @digest_type == Weekly::Digest::REACT %>
+  <div class="promo">
+    <h1>Stay up to date with React.js</h1>
+    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in React Javascript community.</p>
+    <%= render partial: "subscribers/form" %>
+    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
+    <ul>
+      <li><strong>One email</strong> per week,</li>
+      <li><strong>no spam</strong>,</li>
+      <li>the most <strong>interesting news</strong>.</li>
+    </ul>
+    <p>The only news source you need targeted on (but not limited to) <strong>React</strong>, <strong>Javascript</strong>, <strong>Flux</strong> and <strong>functional programming</strong>.</p>
   </div>
 <% end %>

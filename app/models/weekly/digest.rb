@@ -2,10 +2,16 @@ module Weekly
   class Digest
     PHOTOGRAPHY = "photography"
     PROGRAMMING = "programming"
-    TYPES = [PROGRAMMING, PHOTOGRAPHY]
+    CSHARP = "c#"
+    ELIXIR = "elixir"
+    REACT = "react"
+    TYPES = [PROGRAMMING, PHOTOGRAPHY, CSHARP, ELIXIR, REACT]
     CONFIGURATION = {
       PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
-      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10") }
+      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10") },
+      CSHARP => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
+      ELIXIR => { initial_issue: 1, from: Time.zone.parse("2015-08-17") },
+      REACT => { initial_issue: 1, from: Time.zone.parse("2015-08-17") }
     }
 
     attr_reader :from, :to, :issue, :type
