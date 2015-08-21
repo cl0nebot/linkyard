@@ -32,7 +32,7 @@ module Weekly
           Category.new("phoenix", 2, ["phoenix"])
         ]
       },
-      Weekly::React::REACT => {
+      Weekly::Digest::REACT => {
         default: Category.new("react", 1, []),
         categories: []
       }
