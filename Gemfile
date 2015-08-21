@@ -28,6 +28,7 @@ gem 'whenever'
 gem 'activeuuid'
 gem 'validates_email_format_of'
 gem 'premailer-rails'
+gem 'mail_form'
 
 group :development do
   gem 'spring'

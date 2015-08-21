@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'contact', to: "digests#contact"
+  post 'contact', to: "digests#send_contact"
+
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end
 

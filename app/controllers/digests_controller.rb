@@ -31,6 +31,21 @@ class DigestsController < ApplicationController
     @latest_issue = Weekly::Digest.issue_from(@digest_type, Time.zone.now)
   end
 
+  def contact
+    @contact = ContactForm.new(digest: @digest_type)
+  end
+
+  def send_contact
+    @contact = ContactForm.new(params[:contact_form].permit([:name, :email, :message, :digest, :nickname]))
+    if @contact.valid?
+      @contact.deliver
+      flash[:success] = "Your message was sent to us."
+      redirect_to :contact
+    else
+      render :contact
+    end
+  end
+
   private
   def set_digest_type
     @digest_type = case request.host

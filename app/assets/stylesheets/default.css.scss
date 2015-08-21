@@ -60,6 +60,8 @@ table td, table th { padding: 0.5em 1em }
 table th { text-align: left;}
 table tbody tr:nth-child(odd) { background: $light-background;}
 
+textarea { &.l10 { height: 14em; }}
+
 .hidden { display: none !important;}
 
 .digest-article {

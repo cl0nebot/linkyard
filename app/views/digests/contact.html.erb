@@ -1,0 +1,29 @@
+<h1>Contact us</h1>
+<% if @contact.errors.any? %>
+  <div class="alert-box alert">
+  <ul>
+    <% @contact.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="success">
+    <h3>Success!</h3>
+    <p><%= flash[:success] %>.</p>
+  </div>
+<% end %>
+<%= form_for @contact, url: contact_path(@contact), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+  <fieldset class="row">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+    <%= f.label :message %>
+    <%= f.text_area :message, required: true, class: "pure-input-2-3 l10" %>
+  </fieldset>
+  <%= f.hidden_field :digest %>
+  <%= f.text_field :nickname, style: "display: none;" %>
+  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+<% end %>
