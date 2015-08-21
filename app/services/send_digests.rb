@@ -5,7 +5,7 @@ class SendDigests
 
   def call
     Weekly::Digest::TYPES.each do |type|
-      DigestMailer.delay.weekly(type)
+      DigestMailer.delay.weekly(type) if Weekly::Digest.issue_from(type, Time.zone.now) > 0
     end
   end
 end
