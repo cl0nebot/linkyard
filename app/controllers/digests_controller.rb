@@ -62,7 +62,8 @@ class DigestsController < ApplicationController
     when "localhost"
       Weekly::Digest::PROGRAMMING
     else
-      raise "Domain #{request.host} is not supported for digests"
+      Weekly::Digest::CSHARP
+      #raise "Domain #{request.host} is not supported for digests"
     end
   end
 

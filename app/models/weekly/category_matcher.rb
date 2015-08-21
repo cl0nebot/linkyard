@@ -21,7 +21,7 @@ module Weekly
       Weekly::Digest::CSHARP => {
         default: Category.new(".net", 1, []),
         categories: [
-          Category.new("asp.net", 2, ["asp.net"]),
+          Category.new("asp.net", 2, ["aspnet", "iis"]),
           Category.new("azure", 3, ["azure"]),
           Category.new("wpf", 4, ["wpf"])
         ]
