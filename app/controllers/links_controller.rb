@@ -50,7 +50,7 @@ class LinksController < ApplicationController
       end
       format.json do
         active_interactions = (params[:link_submission][:link_interactions] || {}).select { |o| o[:checked] == "1" }.map { |o| o[:id] }
-        if @link_submission.save(url: url, title: title, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
+        if @link_submission.save(url: url, title: title, digest: digest, tags: tags, description: description, content: content, link_interaction_ids: active_interactions)
           render json: @link_submission
         else
           render json: { error: @link_submission.errors.full_messages.to_sentence }, status: :not_acceptable
