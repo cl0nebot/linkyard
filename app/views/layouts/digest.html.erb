@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="all, follow" />
   <title><%= content_for?(:title) ? yield(:title) + " | " : "" %>Weekly <%= digest_name(@digest_type) %> Digest</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>

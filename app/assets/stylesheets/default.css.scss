@@ -110,3 +110,13 @@ textarea { &.l10 { height: 14em; }}
     .content { width: 720px; margin: auto;}
   }
 }
+
+@media screen and (max-width: 729px) {
+  header div ul { margin: 1em 0; text-align: center;}
+  header h1 { text-align: center;}
+  body > div { width: 100%; }
+  .digests-home .promo { margin: 1em 0; }
+  .links-show .content { width: 100%; }
+  .pure-g { .pure-u-2-3, .pure-u-1-3 { width: 100%; }}
+  .pure-form { .pure-input-2-3, .pure-input-1-3 { width: 100%; }}
+}

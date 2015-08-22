@@ -60,7 +60,7 @@ class DigestsController < ApplicationController
     when "reactdigest.net"
       Weekly::Digest::REACT
     else
-      Weekly::Digest::CSHARP
+      Weekly::Digest::PROGRAMMING
       #raise "Domain #{request.host} is not supported for digests"
     end
   end
