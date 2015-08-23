@@ -9,9 +9,9 @@ module Weekly
     CONFIGURATION = {
       PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
       PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10") },
-      CSHARP => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
-      ELIXIR => { initial_issue: 1, from: Time.zone.parse("2015-08-17") },
-      REACT => { initial_issue: 1, from: Time.zone.parse("2015-08-17") }
+      CSHARP => { initial_issue: 35, from: Time.zone.parse("2015-01-26") },
+      ELIXIR => { initial_issue: 8, from: Time.zone.parse("2015-08-17") },
+      REACT => { initial_issue: 5, from: Time.zone.parse("2015-08-17") }
     }
 
     attr_reader :from, :to, :issue, :type
