@@ -3,9 +3,12 @@ class SendDigests
     new.call
   end
 
-  def call
-    Weekly::Digest::TYPES.each do |type|
-      DigestMailer.delay.weekly(type) if Weekly::Digest.issue_from(type, Time.zone.now) > 0
+  def call(types=Weekly::Digest::TYPES)
+    types.each do |type|
+      digest = Weekly::Digest.current_digest(type)
+      Subscriber.active.where(digest: type).each do |subscriber|
+        DigestMailer.weekly(digest, subscriber).deliver
+      end
     end
   end
 end
