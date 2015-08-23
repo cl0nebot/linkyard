@@ -31,7 +31,7 @@ module Weekly
 
     def self.take(type, number)
       current_issue = issue_from(type, Time.zone.now)
-      ([(current_issue - number), 1].max..current_issue).map { |issue| new(type, issue: issue) }
+      ([(current_issue - number), CONFIGURATION[type][:initial_issue]].max..current_issue).map { |issue| new(type, issue: issue) }
     end
 
     def self.valid_issue?(type, number)
