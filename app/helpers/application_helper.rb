@@ -31,6 +31,12 @@ module ApplicationHelper
     case digest_type
     when Weekly::Digest::PHOTOGRAPHY
       "UA-66393277-2"
+    when Weekly::Digest::CSHARP
+      "UA-66393277-3"
+    when Weekly::Digest::ELIXIR
+      "UA-66393277-4"
+    when Weekly::Digest::REACT
+      "UA-66393277-5"
     else
       "UA-66393277-1"
     end
