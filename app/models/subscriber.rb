@@ -5,4 +5,5 @@ class Subscriber < ActiveRecord::Base
   validates :digest, length: { maximum: 20 }, presence: true
 
   scope :active, -> { where unsubscribed_at: nil }
+  scope :for_email, -> { active.where("last_sent_at IS NULL OR last_sent_at < ?", Time.zone.now - 5.days) }
 end
