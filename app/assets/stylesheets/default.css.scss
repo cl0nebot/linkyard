@@ -111,6 +111,14 @@ textarea { &.l10 { height: 14em; }}
   }
 }
 
+.dashboard {
+  div { margin: 0; width: 100%;}
+  .stats {
+    ul { padding: 0;}
+    li { list-style: none; display: inline; }
+  }
+}
+
 @media screen and (max-width: 729px) {
   header div ul { margin: 1em 0; text-align: center;}
   header h1 { text-align: center;}

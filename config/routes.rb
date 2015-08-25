@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'dashboard' => 'dashboard#index'
+
   namespace :api do
     devise_scope :user do
       post 'registrations' => 'registrations#create', :as => 'register'

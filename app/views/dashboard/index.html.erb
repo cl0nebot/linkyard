@@ -1,0 +1,28 @@
+<h1>Dashboard</h1>
+
+<div class="stats">
+  <h2>Subscribers</h2>
+  <ul>
+    <% @subscriber_stats.each do |s| %>
+     <li><%= s.first %>: <strong><%= s.last %></strong></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="digests">
+  <h2>Future Digests</h2>
+  <% @future_digests.each do |d| %>
+    <h3><%= "#{d.type} ##{d.issue}" %></h3>
+    <% d.links_by_category.each do |category, links| %>
+      <h4><%= category.name %></h4>
+      <ul>
+        <% links.each do |link| %>
+          <li>
+            <%= link_to link.title, link.url %> :: <%= link.tags.map(&:name).join(", ") %>
+            <br /><%= link.description %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
