@@ -50,7 +50,7 @@ class LinkSubmission
   end
 
   def build_link_tags
-    tags.split(',').map.with_index do |tag, index|
+    tags.split(',').map(&:strip).map.with_index do |tag, index|
       tag = user.tags.where(name: tag).first_or_initialize
       LinkTag.new(tag: tag, default: index == 0)
     end
