@@ -7,6 +7,10 @@ class LinkInteraction < ActiveRecord::Base
     where(id: ids).includes(:interaction).includes(:link)
   end
 
+  def self.scheduled_pending_for(user)
+    joins(:interaction).where(status: "pending", interactions: { type: "ScheduledInteraction", user_id: user.id })
+  end
+
   def act
     interaction.act(self)
   end

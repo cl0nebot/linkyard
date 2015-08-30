@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
   def index
     @subscriber_stats = Dashboard.subscriber_stats
     @future_digests = Dashboard.future_digests
+    @scheduled_links_count = LinkInteraction.scheduled_pending_for(current_user).count
   end
 
   private
