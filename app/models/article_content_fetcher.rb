@@ -15,6 +15,15 @@ class ArticleContentFetcher
 
   private
   def normalize(url)
-    url.starts_with?("http") ? url : "http://" + url
+    uri = URI(url.starts_with?("http") ? url : "http://" + url)
+    if uri.query.present?
+      params = CGI.parse(uri.query)
+      params.delete("utm_source")
+      params.delete("utm_medium")
+      params.delete("utm_content")
+      params.delete("utm_campaign")
+      uri.query = params.blank? ? nil : URI.encode_www_form(params)
+    end
+    uri.to_s
   end
 end

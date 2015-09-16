@@ -417,6 +417,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeuuid
+  addressable
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)
@@ -462,3 +463,6 @@ DEPENDENCIES
   webmock
   whenever
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.10.6
