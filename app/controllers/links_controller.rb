@@ -68,7 +68,7 @@ class LinksController < ApplicationController
 
   def destroy
     @link.destroy
-    redirect_to links_path
+    redirect_to :back
   end
 
   def search
