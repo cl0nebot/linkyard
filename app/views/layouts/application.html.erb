@@ -9,11 +9,11 @@
 <body class="<%= "#{params[:controller]} #{params[:controller]}-#{params[:action]}" %>">
 <div>
   <header>
-    <h1><%= link_to 'Linkyard', user_signed_in? ? links_path : linkyard_path %></h1>
     <ul>
     <% if user_signed_in? %>
       <%= navigation_link_to 'Add', new_link_path %>
       <%= navigation_link_to 'Links', links_path %>
+      <%= navigation_link_to 'Dashboard', dashboard_path %>
       <%= navigation_link_to 'Account Settings', edit_user_registration_path %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>

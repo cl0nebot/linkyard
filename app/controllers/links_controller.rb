@@ -111,6 +111,6 @@ class LinksController < ApplicationController
   end
 
   def paginated_user_links
-    current_user.links.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
+    current_user.links.order(created_at: :desc).paginate(:page => params[:page], :per_page => 50)
   end
 end

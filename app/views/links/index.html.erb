@@ -7,10 +7,8 @@
   <%= submit_tag "Search", class: "pure-button pure-button-primary" %>
 <% end %>
 
-<p><%= link_to 'New', new_link_path, :class => "pure-button pure-button-primary" %></p>
-
 <% if @links.any? %>
-<table>
+<table class="links-list">
   <thead>
     <tr>
       <th>Id</th>
@@ -19,6 +17,7 @@
       <th>Publishers</th>
       <th>Tags</th>
       <th>Created</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +29,7 @@
       <td><%= link.link_interactions.map(&:to_s).join(', ') %></td>
       <td><%= link.tags.map { |t| t.name }.join(", ") %></td>
       <td><%= link.created_at.to_formatted_s(:long) %></td>
+      <td><%= link_to "Delete", link, method: :delete  %></td>
     </tr>
   <% end %>
   </tbody>

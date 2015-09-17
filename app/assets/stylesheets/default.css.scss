@@ -96,6 +96,12 @@ textarea { &.l10 { height: 14em; }}
   }
 }
 
+.links {
+  & > div { margin: 0; width: 100%; }
+  .pure-button:visited { color: #ffffff; }
+  .links-list { margin-top: 1em; }
+}
+
 .links-new textarea.content { height: 10em; }
 
 .links-show {
@@ -112,7 +118,7 @@ textarea { &.l10 { height: 14em; }}
 }
 
 .dashboard {
-  div { margin: 0; width: 100%;}
+  & > div { margin: 0; width: 100%;}
   .stats {
     ul { padding: 0;}
     li { list-style: none; display: inline; }
