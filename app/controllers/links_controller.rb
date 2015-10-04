@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_filter :build_link_submission, only: [:new, :create]
-  before_filter :find_link_and_redirect_if_not_exists, only: [:show, :destroy]
+  before_filter :find_link_and_redirect_if_not_exists, only: [:show, :destroy, :edit, :update]
 
   def index
     respond_to do |format|
@@ -56,6 +56,20 @@ class LinksController < ApplicationController
           render json: { error: @link_submission.errors.full_messages.to_sentence }, status: :not_acceptable
         end
       end
+    end
+  end
+
+  def edit
+    @available_types = Weekly::Digest::TYPES + ["-----------"]
+  end
+
+  def update
+    if @link.update_attributes(params.require(:link).permit(:url, :title, :digest, :description, :content))
+      flash[:success] = "Link updated successfully."
+      redirect_to links_path
+    else
+      edit
+      render :edit
     end
   end
 

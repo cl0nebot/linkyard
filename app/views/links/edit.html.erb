@@ -1,0 +1,31 @@
+<%= form_for @link, html: { class: "pure-form pure-form-stacked" } do |f| %>
+  <%= render "shared/errors", locals: { errors?: @link.errors.any?, error_message: @link.errors.full_messages.to_sentence } %>
+  <div class="pure-control-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, { required: true, autofocus: true, class: "pure-input-2-3" } %>
+  </div>
+
+  <div class="pure-control-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, { class: "pure-input-1" } %>
+  </div>
+
+  <div class="pure-control-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, { required: true, class: "pure-input-1-2" } %>
+  </div>
+
+  <div class="pure-control-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, { class: "pure-input-1 content" } %>
+  </div>
+
+  <div class="pure-control-group">
+    <%= f.label :digest %>
+    <%= f.select :digest, @available_types %>
+  </div>
+
+  <div class="pure-controls">
+    <%= f.submit 'Update', class: "pure-button pure-button-primary pure-input-1-4" %>
+  </div>
+<% end %>
