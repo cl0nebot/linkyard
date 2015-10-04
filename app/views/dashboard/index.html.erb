@@ -19,7 +19,7 @@
       <ul>
         <% links.each do |link| %>
           <li>
-            <%= link_to link.title, link.url %> :: <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" } %> :: <%= link.tags.map(&:name).join(", ") %>
+            <%= link_to link.title, link.url %> :: <%= link_to "Edit", edit_link_path(link) %> :: <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" } %> :: <%= link.tags.map(&:name).join(", ") %>
             <br /><%= link.description %>
           </li>
         <% end %>
