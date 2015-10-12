@@ -3,7 +3,7 @@ class LinkInteraction < ActiveRecord::Base
   belongs_to :link
 
   def self.top_scheduled_pending
-    ids = joins(:interaction).select("MIN(link_interactions.id) as id").where({ status: "pending", interactions: { type: "ScheduledInteraction" }}).group("interactions.user_id").map(&:id)
+    ids = joins(:interaction).joins(:link).select("MIN(link_interactions.id) as id").where({ status: "pending", interactions: { type: "ScheduledInteraction" }}).group("links.digest, interactions.user_id").map(&:id)
     where(id: ids).includes(:interaction).includes(:link)
   end
 

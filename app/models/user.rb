@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     reddit_authorization.present?
   end
 
-  def twitter_authorization
-    authorizations.where(provider: "Twitter").first
+  def twitter_authorization(digest: nil)
+    authorizations.where(provider: "Twitter", digest: digest).first
   end
 
   def reddit_authorization
