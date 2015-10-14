@@ -50,4 +50,19 @@ module ApplicationHelper
       type.capitalize
     end
   end
+
+  def twitter_username(digest_type)
+    case digest_type
+    when Weekly::Digest::PHOTOGRAPHY
+      "35mmdigest"
+    when Weekly::Digest::CSHARP
+      "csharpdigest"
+    when Weekly::Digest::ELIXIR
+      "elixirdigest"
+    when Weekly::Digest::REACT
+      "reactjsdigest"
+    else
+      "softwaredigest"
+    end
+  end
 end

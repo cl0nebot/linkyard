@@ -64,6 +64,13 @@ textarea { &.l10 { height: 14em; }}
 
 .hidden { display: none !important;}
 
+.digests {
+  .social, .share {
+    text-align: center; margin: 2em 0;
+    ul li { list-style: none; display: inline; }
+  }
+}
+
 .digest-article {
   font-size: 90%;
   p { line-height: 115%; margin-top: 0.1em; color: $light-color; }
@@ -89,7 +96,7 @@ textarea { &.l10 { height: 14em; }}
 .digests-home {
   .promo {
     text-align: center;
-    margin: 3em 4em 4em 4em;
+    margin: 3em 4em 0em 4em;
     p { margin: 2em 0;}
     ul { margin: 0 auto; text-align: left; width: 250px;}
     .large { font-size: 120%; }

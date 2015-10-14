@@ -30,6 +30,12 @@
 
   <%= content_for?(:content) ? yield(:content) : yield %>
 
+  <div class="social">
+    <ul>
+      <li class="follow-twitter"><a href="https://twitter.com/intent/user?screen_name=<%= twitter_username(@digest_type) %>">Follow @<%= twitter_username(@digest_type) %></a></li>
+    </ul>
+  </div>
+
   <footer>
     &copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %>
   </footer>

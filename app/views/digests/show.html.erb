@@ -10,6 +10,14 @@
       <%= render partial: "link", locals: { link: link, show_digest: false } %>
     <% end %>
   <% end %>
+  <div class="share">
+    <ul>
+      <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(content_for :title) %>&url=<%= request.original_url %>&via=<%= twitter_username(@digest_type) %>">Tweet</a></li>
+      <li class="reddit"><a href="//www.reddit.com/submit?url=<%= request.url %>&title=<%= CGI.escape(content_for :title) %>">Reddit</a></li>
+      <li class="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>">Facebook</a></li>
+      <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= request.url %>&title=<%= CGI.escape(content_for :title) %>&source=<%= request.host %>">LinkedIn</a></li>
+    </ul>
+  </div>
 <% else %>
   <h1>Invalid issue of the digest</h1>
 <% end %>
