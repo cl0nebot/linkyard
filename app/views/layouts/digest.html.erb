@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="all, follow" />
-  <title><%= content_for?(:title) ? yield(:title) + " | " : "" %>Weekly <%= digest_name(@digest_type) %> Digest</title>
+  <title><%= content_for?(:title) ? yield(:title).strip + " | " : "" %>Weekly <%= digest_name(@digest_type) %> Newsletter</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>

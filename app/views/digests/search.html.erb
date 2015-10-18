@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= "Search" %>
+<% end %>
+
 <h1>Search</h1>
 <div class="search-form">
   <%= form_tag({ :controller => 'digests', :action => 'search' }, :method => 'get', class: "pure-form")  do %>

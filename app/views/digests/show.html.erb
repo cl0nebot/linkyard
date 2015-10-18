@@ -1,6 +1,6 @@
 <% if @digest %>
   <% content_for :title do %>
-    <%= "Issue #{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
+    <%= "#{digest_name(@digest_type)} Digest ##{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
   <% end %>
   <h1><%= link_to "Digests", digests_path %> » <%= @digest.issue %></h1>
   <%= render partial: "subscribers/form" %>
