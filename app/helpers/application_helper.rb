@@ -28,41 +28,18 @@ module ApplicationHelper
   end
 
   def tracking_id(digest_type)
-    case digest_type
-    when Weekly::Digest::PHOTOGRAPHY
-      "UA-66393277-2"
-    when Weekly::Digest::CSHARP
-      "UA-66393277-3"
-    when Weekly::Digest::ELIXIR
-      "UA-66393277-4"
-    when Weekly::Digest::REACT
-      "UA-66393277-5"
-    else
-      "UA-66393277-1"
-    end
+    DigestsController::DIGEST_MAPPINGS[digest_type][:analytics]
   end
 
-  def digest_name(type)
-    case type
-    when Weekly::Digest::CSHARP
-      "C#"
-    else
-      type.capitalize
-    end
+  def digest_name(digest_type)
+    DigestsController::DIGEST_MAPPINGS[digest_type][:name]
   end
 
   def twitter_username(digest_type)
-    case digest_type
-    when Weekly::Digest::PHOTOGRAPHY
-      "35mmdigest"
-    when Weekly::Digest::CSHARP
-      "csharpdigest"
-    when Weekly::Digest::ELIXIR
-      "elixirdigest"
-    when Weekly::Digest::REACT
-      "reactjsdigest"
-    else
-      "softwaredigest"
-    end
+    DigestsController::DIGEST_MAPPINGS[digest_type][:twitter]
+  end
+
+  def other_digests(digest_type)
+    DigestsController::DOMAIN_TO_DIGEST.reject { |k, v| v == digest_type }
   end
 end

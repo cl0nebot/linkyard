@@ -6,6 +6,22 @@ class DigestsController < ApplicationController
 
   layout "digest"
 
+  DOMAIN_TO_DIGEST = {
+    "programmingdigest.net" => Weekly::Digest::PROGRAMMING,
+    "photographydigest.net" => Weekly::Digest::PHOTOGRAPHY,
+    "csharpdigest.net" => Weekly::Digest::CSHARP,
+    "elixirdigest.net"=> Weekly::Digest::ELIXIR,
+    "reactdigest.net" => Weekly::Digest::REACT
+  }
+
+  DIGEST_MAPPINGS = {
+    Weekly::Digest::PROGRAMMING => { name: "Programming", analytics: "UA-66393277-1", twitter: "softwaredigest" },
+    Weekly::Digest::PHOTOGRAPHY => { name: "Photography", analytics: "UA-66393277-2", twitter: "35mmdigest" },
+    Weekly::Digest::CSHARP => { name: "C#", analytics: "UA-66393277-3", twitter: "csharpdigest" },
+    Weekly::Digest::ELIXIR => { name: "Elixir", analytics: "UA-66393277-4", twitter: "elixirdigest" },
+    Weekly::Digest::REACT => { name: "React", analytics: "UA-66393277-5", twitter: "reactjsdigest" }
+  }
+
   def index
     @digests = Weekly::Digest.all(@digest_type).reverse
   end
@@ -48,21 +64,7 @@ class DigestsController < ApplicationController
 
   private
   def set_digest_type
-    @digest_type = case request.host
-    when "programmingdigest.net"
-      Weekly::Digest::PROGRAMMING
-    when "photographydigest.net"
-      Weekly::Digest::PHOTOGRAPHY
-    when "csharpdigest.net"
-      Weekly::Digest::CSHARP
-    when "elixirdigest.net"
-      Weekly::Digest::ELIXIR
-    when "reactdigest.net"
-      Weekly::Digest::REACT
-    else
-      Weekly::Digest::PROGRAMMING
-      #raise "Domain #{request.host} is not supported for digests"
-    end
+    @digest_type = DOMAIN_TO_DIGEST[request.host] || Weekly::Digest::PROGRAMMING
   end
 
   def initialize_subscriber

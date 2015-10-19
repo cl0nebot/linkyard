@@ -36,6 +36,7 @@ header {
 footer {
   margin-top: 2em; border-top: 1px solid $light-background; text-align: center; padding-top: 1em;
   a, a:visited { color: $light-color; }
+  ul li { display: inline; list-style: none; }
 }
 
 a, a:active { color: $darker-alternate-color;}
@@ -67,7 +68,14 @@ textarea { &.l10 { height: 14em; }}
 .digests {
   .social, .share {
     text-align: center; margin: 2em 0;
+    ul { padding: 0 }
     ul li { list-style: none; display: inline; }
+  }
+  .other-newsletters {
+    text-align: center;
+    h3 { margin-top: 2em; }
+    ul { padding: 0 }
+    ul li { list-style: none; display: inline; padding-right: 1em; }
   }
 }
 
