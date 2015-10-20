@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   get 'contact', to: "digests#contact"
   post 'contact', to: "digests#send_contact"
+  get 'privacy-policy', to: "digests#privacy_policy"
+  get 'spam-policy', to: "digests#spam_policy"
 
   resources :interactions, :only => [:index, :new, :edit, :create, :update, :destroy] do
   end

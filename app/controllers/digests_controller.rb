@@ -62,6 +62,12 @@ class DigestsController < ApplicationController
     end
   end
 
+  def spam_policy
+  end
+
+  def privacy_policy
+  end
+
   private
   def set_digest_type
     @digest_type = DOMAIN_TO_DIGEST[request.host] || Weekly::Digest::PROGRAMMING
