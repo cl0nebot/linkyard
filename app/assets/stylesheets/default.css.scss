@@ -138,6 +138,8 @@ textarea { &.l10 { height: 14em; }}
     ul { padding: 0;}
     li { list-style: none; display: inline; }
   }
+  hr { margin: 3em 0; }
+  .digest-name { margin: 2em 0; text-transform: uppercase;}
 }
 
 @media screen and (max-width: 729px) {
