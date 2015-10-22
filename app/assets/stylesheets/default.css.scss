@@ -132,9 +132,13 @@ textarea { &.l10 { height: 14em; }}
   }
 }
 
+
+body.dashboard { top: 0; left: 0; margin: 0; padding: 0; }
 .dashboard {
   & > div { margin: 0; width: 100%;}
-  hr { margin: 3em 0; }
+  .stats { padding: 0 1em; margin-bottom: 2em; }
+  .digest { padding: 0.25em 1em 2em 1em; }
+  .digest:nth-of-type(odd) { background: #EDF1F2; }
   .digest-name { margin: 2em 0; text-transform: uppercase;}
 }
 

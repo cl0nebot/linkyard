@@ -15,18 +15,19 @@
 
 <div class="digests">
   <% @future_digests.each do |d| %>
-    <h2 class="digest-name"><%= "#{d.type} ##{d.issue}" %></h2>
-    <% d.links_by_category.each do |category, links| %>
-      <h4><%= category.name %></h4>
-      <ul>
-        <% links.each do |link| %>
-          <li>
-            <%= link_to link.title, link.url %> :: <%= link_to "Edit", edit_link_path(link) %> :: <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" } %> :: <%= link.tags.map(&:name).join(", ") %>
-            <br /><%= link.description %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-    <hr />
+    <div class="digest">
+      <h2 class="digest-name"><%= "#{d.type} ##{d.issue}" %></h2>
+      <% d.links_by_category.each do |category, links| %>
+        <h4><%= category.name %></h4>
+        <ul>
+          <% links.each do |link| %>
+            <li>
+              <%= link_to link.title, link.url %> :: <%= link_to "Edit", edit_link_path(link) %> :: <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" } %> :: <%= link.tags.map(&:name).join(", ") %>
+              <br /><%= link.description %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   <% end %>
 </div>
