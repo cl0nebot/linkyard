@@ -14,9 +14,8 @@
 </div>
 
 <div class="digests">
-  <h2>Future Digests</h2>
   <% @future_digests.each do |d| %>
-    <h3 class="digest-name"><%= "#{d.type} ##{d.issue}" %></h3>
+    <h2 class="digest-name"><%= "#{d.type} ##{d.issue}" %></h2>
     <% d.links_by_category.each do |category, links| %>
       <h4><%= category.name %></h4>
       <ul>
