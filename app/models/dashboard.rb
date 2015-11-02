@@ -2,7 +2,7 @@ class Dashboard
   def self.subscriber_stats
     this_week = Time.zone.now.beginning_of_week..Time.zone.now.end_of_week
     last_week = (this_week.first - 7.days)..(this_week.last - 7.days)
-    all_subscribers = Subscriber.active.group(:digest).count
+    all_subscribers = Subscriber.active.group(:digest).count.map { |k, v| [k, [v]] }.to_h
     new_subscribers_this_week = Subscriber.active.where(created_at: this_week).group(:digest).count
     new_subscribers_last_week = Subscriber.active.where(created_at: last_week).group(:digest).count
 
