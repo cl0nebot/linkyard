@@ -8,12 +8,31 @@
   </head>
 <body>
   <h1><%= "Weekly #{digest_name(@digest.type)} Digest ##{@digest.issue}" %></h1>
+  <p><small><%= formatted_date(@digest.to + 1.day) %> // <%= link_to "view in browser", digest_url(@digest.issue, host: @digest.domain) %></small></p>
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>
       <%= render partial: "digests/link", locals: { link: link, show_digest: false } %>
     <% end %>
   <% end %>
+  <div class="share">
+    <% title = "#{digest_name(@digest.type)} Digest ##{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
+    <h3>Share</h3>
+    <ul>
+      <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(title) %>&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&via=<%= twitter_username(@digest.type) %>">Tweet</a></li>
+      <li class="reddit"><a href="//www.reddit.com/submit?url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>">Reddit</a></li>
+      <li class="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=<%= digest_url(@digest.issue, host: @digest.domain) %>">Facebook</a></li>
+      <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>&source=<%= @digest.domain %>">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="other-newsletters">
+    <h3>Other Newsletters</h3>
+    <ul>
+      <% other_digests(@digest.type).each do |url, type| %>
+        <li><%= link_to "#{digest_name(type)} Digest", "http://#{url}" %></li>
+      <% end %>
+    </ul>
+  </div>
   <footer>
     <p><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @digest.domain) %>.</small></p>
   </footer>

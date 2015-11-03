@@ -24,3 +24,9 @@ a:hover { text-decoration: none;}
 }
 
 footer { margin-top: 7em; }
+
+.share, .other-newsletters {
+  margin: 2em 0;
+  ul { padding: 0 }
+  ul li { list-style: none; display: inline; padding-right: 1em; }
+}
