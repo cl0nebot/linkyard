@@ -2,21 +2,18 @@ class BufferInteraction < Interaction
   validate :must_be_connected_to_buffer
 
   def act(link_interaction)
-    client_for(link_interaction.link.digest).update("#{link_interaction.link.title} #{link_interaction.link.url} #{ tags_to_hashtag_list(link_interaction.link.tags) }")
+    client = client_for(link_interaction.link.digest)
+    profile_ids = client.profiles.map(&:id)
+    text = "#{link_interaction.link.title} #{link_interaction.link.url} #{ tags_to_hashtag_list(link_interaction.link.tags) }"
+    client.create_update(body: { text: text, profile_ids: profile_ids })
     link_interaction.update_and_notify!(:success, "submitted")
-  rescue Buffer::Error => e #todo check if really error
+  rescue => e
     link_interaction.update_and_notify!(:error, e.message)
   end
 
   protected
   def client_for(digest)
-    #todo redo client to buffer
-    @client ||= Twitter::REST::Client.new do |config|
-      config.consumer_key = Rails.application.secrets.twitter_api_key
-      config.consumer_secret = Rails.application.secrets.twitter_api_secret
-      config.access_token = user.twitter_authorization(digest).token
-      config.access_token_secret = user.twitter_authorization(digest).secret
-    end
+    @client ||= Buffer::Client.new(user.buffer_authorization(digest).token)
   end
 
   def must_be_connected_to_buffer
