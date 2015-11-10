@@ -34,7 +34,7 @@ class OauthLogin
   end
 
   protected
-  def parse_attributes
+  def parse_attributes(attributes)
     raise 'Abstract method should be overriden by subclass'
   end
 end

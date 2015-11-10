@@ -29,6 +29,9 @@ gem 'activeuuid'
 gem 'validates_email_format_of'
 gem 'premailer-rails'
 gem 'mail_form'
+gem 'buffer', :github => 'bufferapp/buffer-ruby'
+gem 'omniauth-buffer2'
+
 
 group :development do
   gem 'spring'

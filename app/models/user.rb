@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:twitter, :reddit]
+         :omniauthable, omniauth_providers: [:twitter, :reddit, :buffer]
 
   has_many :links, dependent: :destroy
   has_many :interactions, dependent: :destroy
@@ -20,12 +20,20 @@ class User < ActiveRecord::Base
     twitter_authorization.present?
   end
 
+  def has_buffer_access?
+    buffer_authorization.present?
+  end
+
   def has_reddit_access?
     reddit_authorization.present?
   end
 
   def twitter_authorization(digest = nil)
     authorizations.where(provider: "Twitter", digest: digest).first
+  end
+
+  def buffer_authorization(digest = nil)
+    authorizations.where(provider: "Buffer", digest: digest).first
   end
 
   def reddit_authorization

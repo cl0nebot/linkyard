@@ -7,6 +7,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     authenticate(RedditOauthLogin.new(current_user, access_token("reddit")))
   end
 
+  def buffer
+    authenticate(BufferOauthLogin.new(current_user, access_token("buffer")))
+  end
+
   protected
   def access_token(provider)
     session["devise.#{provider}_data"] = env["omniauth.auth"].except("extra")

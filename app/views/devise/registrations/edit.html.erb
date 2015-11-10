@@ -44,6 +44,14 @@
     <% end %>
   </div>
   <div class="pure-control-group">
+    <label>Buffer</label>
+    <% if current_user.has_authorization_for?('Buffer') %>
+      <span class="pure-button pure-button-disabled">Connected</span>
+    <% else %>
+      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "buffer"), :class => "pure-button" %>
+    <% end %>
+  </div>
+  <div class="pure-control-group">
     <label>Reddit</label>
     <% if current_user.has_authorization_for?('Reddit') %>
       <span class="pure-button pure-button-disabled">Connected</span>
