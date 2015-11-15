@@ -5,7 +5,7 @@ set :application, 'Linkyard'
 set :repo_url, 'git@github.com:jakubgarfield/linkyard.git'
 
 set :deploy_to, '/home/deploy/linkyard'
-
+set :bundle_binstubs, nil
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
