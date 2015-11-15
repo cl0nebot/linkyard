@@ -15,6 +15,6 @@ every 30.minutes do
   runner "ScheduledInteractionWorker.perform_async"
 end
 
-every :monday, :at => '07:20' do
+every :monday, :at => '03:20' do
   runner "SendDigests.run"
 end
