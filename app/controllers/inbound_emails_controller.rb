@@ -15,7 +15,7 @@ class InboundEmailsController < ApplicationController
         text = message["text"]
         spam_score = message["spam_report"]["score"]
 
-        InboundMailer.inbound(to, from, subject, text).deliver_now unless spam_score > 5
+        InboundMailer.inbound(to, from, subject, text).deliver unless spam_score > 5
       end
     end
 
