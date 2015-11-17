@@ -16,7 +16,7 @@ class InboundEmailsController < ApplicationController
 
         InboundMailer.inbound(to, from, subject, text).deliver_now unless spam_score > 5
       end
-    endo
+    end
 
     head :ok
   end
