@@ -3,8 +3,7 @@
 <head lang="en">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <head>
-    <%= stylesheet_link_tag 'emails', media: 'all' %>
+  <%= stylesheet_link_tag 'emails', media: 'all' %>
   </head>
 <body>
   <h1><%= "Weekly #{digest_name(@digest.type)} Digest ##{@digest.issue}" %></h1>

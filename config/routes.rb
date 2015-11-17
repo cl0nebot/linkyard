@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   end
 
   get "/linkyard", to: "home#index", as: "linkyard"
+  post "/inbound_emails/mandrill", to: "inbound_emails#mandrill", as: "inbound_emails_mandrill"
 
   root :to => 'digests#home'
 
