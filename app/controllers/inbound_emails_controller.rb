@@ -8,12 +8,12 @@ class InboundEmailsController < ApplicationController
 
     if events.present?
       events.each do |event|
-        message = event[:msg]
-        to = message[:to]
-        from = "#{message[:from_email]} (#{message[:from_name]})"
-        subject = message[:subject]
-        text = message[:text]
-        spam_score = message[:spam_report][:score]
+        message = event["msg"]
+        to = message["to"]
+        from = "#{message["from_email"]} (#{message["from_name"]})"
+        subject = message["subject"]
+        text = message["text"]
+        spam_score = message["spam_report"]["score"]
 
         InboundMailer.inbound(to, from, subject, text).deliver_now unless spam_score > 5
       end
