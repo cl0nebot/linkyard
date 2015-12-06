@@ -22,4 +22,8 @@ class Dashboard
       .group("links.digest")
       .map { |i| [i.digest, i.count] }
   end
+
+  def self.unsubscribed
+    Subscriber.where.not(unsubscribed_at: nil).group(:digest).count
+  end
 end

@@ -6,6 +6,7 @@
     <% end %>
   </ul>
   <p>For email: <strong><%= @subscribers_for_email %></strong></p>
+  <p>Unsubscribed: <%= @unsubscribed.map { |k, v| "#{key}: #{value}" }.join(" ") %></p>
 </div>
 
 <div class="digests">
