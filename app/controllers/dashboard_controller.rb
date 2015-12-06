@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   def index
     @subscriber_stats = Dashboard.subscriber_stats
     @future_digests = Dashboard.future_digests
-    @pending_interactions = Dashboard.pending_interactions
+    @subscribers_for_email = Subscriber.for_email.size
   end
 
   private

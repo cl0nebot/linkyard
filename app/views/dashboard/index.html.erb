@@ -5,12 +5,7 @@
      <li><%= s.first %>: <strong><%= s.last.join(" : ") %></strong></li>
     <% end %>
   </ul>
-  <h2>Pending Interactions</h2>
-  <ul>
-    <% @pending_interactions.each do |s| %>
-     <li><%= s.first %>: <strong><%= s.last %></strong></li>
-    <% end %>
-  </ul>
+  <p>For email: <strong><%= @subscribers_for_email %></strong></p>
 </div>
 
 <div class="digests">
