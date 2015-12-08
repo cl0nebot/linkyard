@@ -9,6 +9,6 @@ job_type :runner, %q{ cd :path && PATH=:env_path:"$PATH" bundle exec rails runne
 job_type :script, %q{ cd :path && PATH=:env_path:"$PATH" RAILS_ENV=:environment bundle exec script/:task :output }
 
 
-every :monday, :at => '08:00' do
+every :wednesday, :at => '08:00' do
   runner "SendDigests.run"
 end
