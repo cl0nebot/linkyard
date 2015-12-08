@@ -40,6 +40,6 @@ module ApplicationHelper
   end
 
   def other_digests(digest_type)
-    DigestsController::DOMAIN_TO_DIGEST.reject { |k, v| v == digest_type }
+    DigestsController::DOMAIN_TO_DIGEST.reject { |k, v| v == digest_type || Weekly::Digest::INACTIVE_DIGESTS.include?(v) }
   end
 end

@@ -5,10 +5,11 @@ module Weekly
     CSHARP = "csharp"
     ELIXIR = "elixir"
     REACT = "react"
-    TYPES = [PROGRAMMING, PHOTOGRAPHY, CSHARP, ELIXIR, REACT]
+    TYPES = [PROGRAMMING, CSHARP, ELIXIR, REACT]
+    INACTIVE_DIGESTS = [PHOTOGRAPHY]
     CONFIGURATION = {
       PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
-      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10") },
+      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10"), last_issue: 17 },
       CSHARP => { initial_issue: 35, from: Time.zone.parse("2015-01-26") },
       ELIXIR => { initial_issue: 8, from: Time.zone.parse("2015-08-17") },
       REACT => { initial_issue: 5, from: Time.zone.parse("2015-08-17") }
@@ -21,6 +22,8 @@ module Weekly
     end
 
     def self.issue_from(type, date)
+      return CONFIGURATION[type][:last_issue] if INACTIVE_DIGESTS.include?(type)
+
       days_from_initial_issue = (date - CONFIGURATION[type][:from]) / (3600 * 24)
       ((days_from_initial_issue / 7) + CONFIGURATION[type][:initial_issue] - 1).floor
     end
