@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   def index
     @subscriber_stats = Dashboard.subscriber_stats
     @future_digests = Dashboard.future_digests
-    @subscribers_for_email = Subscriber.where(digest: Weekly::Digest::TYPES).for_email.size
+    @subscribers_for_email = Subscriber.for_email.size
     @unsubscribed = Dashboard.unsubscribed
   end
 
