@@ -11,7 +11,7 @@
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>
-      <%= render partial: "digests/link", locals: { link: link, show_digest: false } %>
+      <%= render partial: "digests/link", locals: { link: link, show_digest: false, url_params: { utm_source: @digest_type, utm_medium: "email", utm_campaign: "digest" }} %>
     <% end %>
   <% end %>
   <div class="share">

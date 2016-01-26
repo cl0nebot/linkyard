@@ -1,12 +1,6 @@
 <% digest.links_by_category.each do |category, links| %>
   <h2><%= category.name %></h2>
   <% links.each do |link| %>
-    <article class="digest-article">
-      <div><%= link_to link.title, link.url %></div>
-      <aside><%= link.tags.map { |t| t.name }.join(", ") %></aside>
-      <% if link.description %>
-        <p><small><%= link.description %></small></p>
-      <% end %>
-    </article>
+    <%= render partial: "link", locals: { link: link, show_digest: false, url_params: { utm_source: @digest_type, utm_medium: "rss", utm_campaign: "digest" }  } %>
   <% end %>
 <% end %>
