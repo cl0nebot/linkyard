@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get :search
       get :digest
     end
+    member do
+      get :redirect
+    end
   end
 
   resources :digests, :only => [:index, :show] do

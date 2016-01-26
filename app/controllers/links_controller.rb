@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_filter :build_link_submission, only: [:new, :create]
   before_filter :find_link_and_redirect_if_not_exists, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:redirect]
 
   def index
     respond_to do |format|
@@ -96,6 +97,15 @@ class LinksController < ApplicationController
 
   def digest
     render json: Link.for_digest.to_json(include: :tags)
+  end
+
+  def redirect
+    link = Link.find(params[:id])
+    link.with_lock do
+      link.clicks += 1
+      link.save!
+    end
+    redirect_to link.url
   end
 
   private
