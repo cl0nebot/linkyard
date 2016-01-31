@@ -1,5 +1,5 @@
 <article class="digest-article">
-<h3><%= link_to link.title, redirect_link_path(link, url_params || {}) %></h3>
+<h3><%= link_to link.title, redirect_link_url(link, { host: Weekly::Digest.domain_from(@digest_type) }.merge(url_params || {})) %></h3>
   <aside><%= link.tags.map { |t| t.name }.join(", ") %></aside>
   <% if show_digest %>
     <% issue = Weekly::Digest.issue_from(@digest_type, link.created_at) %>

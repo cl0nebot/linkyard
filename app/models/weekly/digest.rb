@@ -41,6 +41,10 @@ module Weekly
       (CONFIGURATION[type][:initial_issue]..issue_from(type, Time.zone.now)).include?(number)
     end
 
+    def self.domain_from(type)
+      "#{type}digest.net"
+    end
+
     def initialize(type, issue: Digest.issue_from(Time.zone.now))
       @issue = issue
       @from = CONFIGURATION[type][:from] + (7 * (@issue - CONFIGURATION[type][:initial_issue])).days
@@ -53,7 +57,7 @@ module Weekly
     end
 
     def domain
-      "#{type}digest.net"
+      self.class.domain_from(type)
     end
 
     def links_by_category
