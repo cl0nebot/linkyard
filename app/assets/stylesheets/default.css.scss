@@ -142,6 +142,28 @@ body.dashboard { top: 0; left: 0; margin: 0; padding: 0; }
   .digest-name { margin: 2em 0; text-transform: uppercase;}
 }
 
+body.news {
+  top: 0; left: 0; margin: 0; padding: 0;
+  & > div { margin: 0; width: 100%;}
+  .links {
+    padding: 1em;
+    width: 440px;
+    float: left;
+    font-size: 0.8em;
+    a { text-decoration: none; }
+
+    table tr td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 300px;
+      width: 300px;
+      &:first-child { max-width: 32px; }
+      &:last-child { max-width: 33px; font-size: 0.8em;}
+    }
+  }
+}
+
 @media screen and (max-width: 729px) {
   header div ul { margin: 1em 0; text-align: center;}
   header h1 { text-align: center;}

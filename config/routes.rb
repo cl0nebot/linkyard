@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboard#index'
+  get 'news' => 'news#index'
 
   namespace :api do
     devise_scope :user do

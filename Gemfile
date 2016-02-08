@@ -31,6 +31,7 @@ gem 'premailer-rails'
 gem 'mail_form'
 gem 'buffer', :github => 'bufferapp/buffer-ruby'
 gem 'omniauth-buffer2'
+gem 'redditkit', '~> 1.0.1'
 
 
 group :development do

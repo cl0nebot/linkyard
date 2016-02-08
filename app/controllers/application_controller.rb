@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user_from_token!
   before_action :authenticate_user!
 
+  protected
+
+  def only_administrator
+    redirect_to root_path and return false unless current_user.id == 7
+  end
+
   private
 
   def after_sign_out_path_for(resource_or_scope)

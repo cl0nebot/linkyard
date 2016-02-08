@@ -328,6 +328,10 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
     redcard (1.1.0)
+    redditkit (1.0.2)
+      faraday (~> 0.8)
+      htmlentities (~> 4.3)
+      multi_json (~> 1.8)
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -505,6 +509,7 @@ DEPENDENCIES
   pry-byebug
   pure-css-rails
   rails (= 4.1.14)
+  redditkit (~> 1.0.1)
   rspec-collection_matchers
   rspec-rails
   rubocop
