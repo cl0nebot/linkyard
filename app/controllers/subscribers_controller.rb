@@ -23,5 +23,7 @@ class SubscribersController < ApplicationController
 
     subscriber.update_attributes!(unsubscribed_at: Time.zone.now)
     flash[:success] = "We are sad that you are going away, but you are unsubscribed from the newsletter"
+
+    render layout: false
   end
 end
