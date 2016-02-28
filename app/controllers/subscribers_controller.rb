@@ -2,7 +2,7 @@ class SubscribersController < ApplicationController
   skip_before_action :authenticate_user_from_token!
   skip_before_action :authenticate_user!
 
-  layout "digest"
+  layout false
 
   def create
     digest = params[:subscriber][:digest]
@@ -18,12 +18,10 @@ class SubscribersController < ApplicationController
   end
 
   def unsubscribe
-    subscriber = Subscriber.find(params[:subscriber_id]) if params[:subscriber_id]
+    subscriber = Subscriber.find_by(id: params[:subscriber_id]) if params[:subscriber_id]
     flash[:error] = "This subscriber doesn't exist" and return unless subscriber
 
     subscriber.update_attributes!(unsubscribed_at: Time.zone.now)
     flash[:success] = "We are sad that you are going away, but you are unsubscribed from the newsletter"
-
-    render layout: false
   end
 end
