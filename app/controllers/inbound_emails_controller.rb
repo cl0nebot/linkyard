@@ -27,7 +27,7 @@ class InboundEmailsController < ApplicationController
     from = params[:from]
     subject = params[:subject]
     text = params[:html] || params[:text]
-    spam_score = params[:spam_score]
+    spam_score = params[:spam_score].to_f
 
     InboundMailer.inbound(to, from, subject, text).deliver unless spam_score > 5
   end
