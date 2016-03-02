@@ -21,4 +21,14 @@ class InboundEmailsController < ApplicationController
 
     head :ok
   end
+
+  def sendgrid
+    to = params[:to]
+    from = params[:from]
+    subject = params[:subject]
+    text = params[:html] || params[:text]
+    spam_score = params[:spam_score]
+
+    InboundMailer.inbound(to, from, subject, text).deliver unless spam_score > 5
+  end
 end
