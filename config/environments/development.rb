@@ -37,11 +37,11 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings =
   {
-    address: 'smtp.mandrillapp.com',
+    address: 'smtp.sendgrid.net',
     port: 587,
     enable_starttls_auto: true,
-    user_name: 'jakub.chodounsky@gmail.com',
-    password: Rails.application.secrets.mandrill_key,
-    authentication: 'login',
+    user_name: Rails.application.secrets.sendgrid_username,
+    password: Rails.application.secrets.sendgrid_password,
+    authentication: :plain
   }
 end
