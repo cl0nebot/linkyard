@@ -26,4 +26,9 @@ class Dashboard
   def self.unsubscribed
     Subscriber.where.not(unsubscribed_at: nil).group(:digest).count
   end
+
+  def self.sponsor_stats
+    sponsor_tag_id = 268
+    Weekly::Digest::TYPES.map { |digest| Tag.find(sponsor_tag_id).links.where(digest: digest).order(created_at: :desc).first(10) }
+  end
 end

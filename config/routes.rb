@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboard#index'
+  get 'dashboard/sponsors' => 'dashboard#sponsors'
   get 'news' => 'news#index'
 
   namespace :api do

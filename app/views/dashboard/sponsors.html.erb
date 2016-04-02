@@ -1,0 +1,13 @@
+<div class="sponsors stats">
+  <% @sponsor_stats.each do |links| %>
+    <% if links.any? %>
+      <h2><%= links.first.digest %></h2>
+      <ul>
+      <% links.each do |link| %>
+        <% issue = Weekly::Digest.issue_from(link.digest, link.created_at) %>
+        <li><%= link.title %> (#<%= issue %>) : <%= link.clicks %> clicks</li>
+      <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

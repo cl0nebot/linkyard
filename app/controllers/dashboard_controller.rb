@@ -7,4 +7,8 @@ class DashboardController < ApplicationController
     @subscribers_for_email = Subscriber.for_email.size
     @unsubscribed = Dashboard.unsubscribed
   end
+
+  def sponsors
+    @sponsor_stats = Dashboard.sponsor_stats
+  end
 end
