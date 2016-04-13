@@ -47,18 +47,48 @@ class DigestsController < ApplicationController
     @latest_issue = Weekly::Digest.issue_from(@digest_type, Time.zone.now)
   end
 
-  def contact
-    @contact = ContactForm.new(digest: @digest_type)
+  def submission
+    @submission = SubmissionForm.new(digest: @digest_type)
   end
 
-  def send_contact
-    @contact = ContactForm.new(params[:contact_form].permit([:name, :email, :message, :digest, :nickname]))
-    if @contact.valid?
-      @contact.deliver
-      flash[:success] = "Your message was sent to us."
-      redirect_to :contact
+  def send_submission
+    @submission = SubmissionForm.new(params[:submission_form].permit([:name, :email, :message, :digest, :nickname]))
+    if @submission.valid?
+      @submission.deliver
+      flash[:success] = "Your link was sent to us."
+      redirect_to :submit
     else
-      render :contact
+      render :submission
+    end
+  end
+
+  def advertisement
+    @advertisement = AdvertisementForm.new(digest: @digest_type)
+  end
+
+  def send_advertisement
+    @advertisement = AdvertisementForm.new(params[:advertisement_form].permit([:company, :email, :questions, :url, :keywords, :description, :digest, :nickname]))
+    if @advertisement.valid?
+      @advertisement.deliver
+      flash[:success] = "Your request was sent to us."
+      redirect_to :advertisement
+    else
+      render :advertisement
+    end
+  end
+
+  def job_listing
+    @job_listing = AdvertisementForm.new(digest: @digest_type)
+  end
+
+  def send_job_listing
+    @job_listing = AdvertisementForm.new(params[:advertisement_form].permit([:company, :email, :questions, :url, :keywords, :description, :digest, :nickname]))
+    if @job_listing.valid?
+      @job_listing.deliver
+      flash[:success] = "Your request was sent to us."
+      redirect_to :job_listing
+    else
+      render :job_listing
     end
   end
 

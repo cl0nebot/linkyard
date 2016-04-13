@@ -1,0 +1,65 @@
+<% content_for :title do %>
+  <%= "Promote your company and get hire the best" %>
+<% end %>
+
+<h1>Job Advertisement</h1>
+
+<p><%= digest_name(@digest_type) %> Digest is a highly targeted weekly newsletter for software programmers, freelancers, consultants, IT professionals and entrepreneurs that keeps them up to date on the latest news from the niche technology segment.</p>
+<p>If you are hiring for a technical position we can guarantee that our readers are the best source of talent as they are hungry to learn, self-drive and they are proud and passionate about their craft.</p>
+
+<p>Your job listing  will appear in the special section for job listings.</p>
+
+<p>You might check out our <%= link_to "advertisement page", advertise_path %> if you want to promote your service or product.</p>
+
+<h2>Ad details and statistics</h2>
+
+<ul>
+  <li class="important">Cost: <strong>$<%= @job_listing.job_listing_cost_per_issue.ceil %> per issue</strong></li>
+  <li>Subscribers: <%= @job_listing.number_of_subscribers %></li>
+  <li>Click rate: <%= @job_listing.average_click_rate.ceil %>%</li>
+</ul>
+
+<% if @job_listing.errors.any? %>
+  <div class="alert-box alert">
+  <ul>
+    <% @job_listing.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="success">
+    <h3>Success!</h3>
+    <p><%= flash[:success] %>.</p>
+  </div>
+<% end %>
+<%= form_for @job_listing, url: submit_path(@job_listing), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+  <fieldset class="row">
+    <legend>Details about you</legend>
+    <%= f.label :company %>
+    <%= f.text_field :company, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+  </fieldset>
+  <fieldset>
+    <legend>Let us know if you have any questions</legend>
+    <%= f.label :questions %>
+    <%= f.text_area :questions, class: "pure-input-2-3" %>
+  </fieldset>
+  <fieldset>
+    <legend>Tell us something about the job</legend>
+    <%= f.label :url %>
+    <%= f.text_field :url, class: "pure-input-2-3" %>
+    <%= f.label :keywords %>
+    <%= f.text_field :keywords, class: "pure-input-2-3" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "pure-input-2-3" %>
+  </fieldset>
+  <%= f.hidden_field :digest %>
+  <%= f.text_field :nickname, style: "display: none;" %>
+  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+<% end %>
+
+<p>We can give you additional statistics and are happy to advice you on the best format of the job posting.</p>
+<p>Also, if you'd like to promote a product or a service, checkout our <%= link_to "advertisement offerings", advertise_path %>.</p>

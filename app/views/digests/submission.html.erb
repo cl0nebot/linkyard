@@ -1,0 +1,41 @@
+<% content_for :title do %>
+  <%= "Submit your article" %>
+<% end %>
+
+<h1>Submit article</h1>
+<p>Let us know if you wrote an interesting article that you want to share with the world.</p>
+<p>If you are a company please consider <%= link_to "becoming a sponsor", advertise_path %> of the newsletter.</p>
+<% if @submission.errors.any? %>
+  <div class="alert-box alert">
+  <ul>
+    <% @submission.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="success">
+    <h3>Success!</h3>
+    <p><%= flash[:success] %>.</p>
+  </div>
+<% end %>
+<%= form_for @submission, url: submit_path(@submission), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+  <fieldset class="row">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+    <%= f.label :url %>
+    <%= f.text_field :url, required: true, class: "pure-input-2-3" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, required: true, class: "pure-input-2-3" %>
+  </fieldset>
+  <%= f.hidden_field :digest %>
+  <%= f.text_field :nickname, style: "display: none;" %>
+  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+<% end %>
+
+<p>All articles are still manually curated so please don't be upset if it doesn't make it to the list and try next time.</p>
+
+<p>For any forms of company or product advertisement, please have a look at the <%= link_to "sponsor page", advertise_path %>.</p>

@@ -1,0 +1,67 @@
+<% content_for :title do %>
+  <%= "Become a sponsor and advertise" %>
+<% end %>
+
+<h1>Advertisement and Sponsorship</h1>
+
+<p><%= digest_name(@digest_type) %> Digest is a highly targeted weekly newsletter for software programmers, freelancers, consultants, IT professionals and entrepreneurs that keeps them up to date on the latest news from the niche technology segment. If you want to reach out to this audience, an ad in this newsletter is perfect for it.</p>
+
+<p>Your ad will appear as a first link in the newsletter under a sponsor section (see an <a href="http://csharpdigest.net/digests/68">example</a>).</p>
+
+<p>If your company is hiring, you might check out our <%= link_to "job listings page", job_path %> that could help you find highly qualified and motivated people.</p>
+
+<h2>Ad details adn newsletter statistics</h2>
+
+<ul>
+  <li class="important">Cost: <strong>$<%= @advertisement.ad_cost_per_issue.ceil %> per issue</strong></li>
+  <li>Subscribers: <%= @advertisement.number_of_subscribers %></li>
+  <li>Click rate: <%= @advertisement.average_click_rate.ceil %>%</li>
+  <li>PPC value: $<%= @advertisement.pay_per_click %></li>
+</ul>
+
+<p>If you chose to sponsor the newsletter for 4 issues you will get a 10% discount.</p>
+
+<% if @advertisement.errors.any? %>
+  <div class="alert-box alert">
+  <ul>
+    <% @advertisement.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="success">
+    <h3>Success!</h3>
+    <p><%= flash[:success] %>.</p>
+  </div>
+<% end %>
+<%= form_for @advertisement, url: submit_path(@advertisement), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+  <fieldset class="row">
+    <legend>Details about you</legend>
+    <%= f.label :company %>
+    <%= f.text_field :company, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+  </fieldset>
+  <fieldset>
+    <legend>Let us know if you have any questions</legend>
+    <%= f.label :questions %>
+    <%= f.text_area :questions, class: "pure-input-2-3" %>
+  </fieldset>
+  <fieldset>
+    <legend>Tells us something the link or advertisement you'd like to share</legend>
+    <%= f.label :url %>
+    <%= f.text_field :url, class: "pure-input-2-3" %>
+    <%= f.label :keywords %>
+    <%= f.text_field :keywords, class: "pure-input-2-3" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "pure-input-2-3" %>
+  </fieldset>
+  <%= f.hidden_field :digest %>
+  <%= f.text_field :nickname, style: "display: none;" %>
+  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+<% end %>
+
+<p>We can give you additional statistics and are happy to advice you on the format of the ad.</p>
+<p>Also, if you'd like to share a <%= link_to "job listing", job_path %> we can do that as well.</p>

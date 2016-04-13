@@ -31,8 +31,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'contact', to: "digests#contact"
-  post 'contact', to: "digests#send_contact"
+  get 'submit', to: "digests#submission"
+  post 'submit', to: "digests#send_submission"
+  get 'advertise', to: "digests#advertisement"
+  post 'advertise', to: "digests#send_advertisement"
+  get 'job', to: "digests#job_listing"
+  post 'job', to: "digests#send_job_listing"
   get 'privacy-policy', to: "digests#privacy_policy"
   get 'spam-policy', to: "digests#spam_policy"
 
