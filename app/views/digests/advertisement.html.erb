@@ -36,7 +36,7 @@
     <p><%= flash[:success] %>.</p>
   </div>
 <% end %>
-<%= form_for @advertisement, url: submit_path(@advertisement), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+<%= form_for @advertisement, url: advertise_path(@advertisement), html: { class: "pure-form pure-form-stacked" } do |f|  %>
   <fieldset class="row">
     <legend>Details about you</legend>
     <%= f.label :company %>

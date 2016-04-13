@@ -12,7 +12,7 @@ class AdvertisementForm < MailForm::Base
     {
       :subject => "Advertisement request from #{digest} digest",
       :to => "jakub.chodounsky@gmail.com",
-      :from => %("#{name}" <#{email}>)
+      :from => %("#{company}" <#{email}>)
     }
   end
 

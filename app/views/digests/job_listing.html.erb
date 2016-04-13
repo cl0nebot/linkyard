@@ -34,7 +34,7 @@
     <p><%= flash[:success] %>.</p>
   </div>
 <% end %>
-<%= form_for @job_listing, url: submit_path(@job_listing), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+<%= form_for @job_listing, url: job_path(@job_listing), html: { class: "pure-form pure-form-stacked" } do |f|  %>
   <fieldset class="row">
     <legend>Details about you</legend>
     <%= f.label :company %>

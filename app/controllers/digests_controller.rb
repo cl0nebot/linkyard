@@ -71,7 +71,7 @@ class DigestsController < ApplicationController
     if @advertisement.valid?
       @advertisement.deliver
       flash[:success] = "Your request was sent to us."
-      redirect_to :advertisement
+      redirect_to :advertise
     else
       render :advertisement
     end
@@ -86,7 +86,7 @@ class DigestsController < ApplicationController
     if @job_listing.valid?
       @job_listing.deliver
       flash[:success] = "Your request was sent to us."
-      redirect_to :job_listing
+      redirect_to :job
     else
       render :job_listing
     end
