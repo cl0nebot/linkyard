@@ -55,7 +55,7 @@ class DigestsController < ApplicationController
     @submission = SubmissionForm.new(params[:submission_form].permit([:name, :email, :url, :description, :digest, :nickname]))
     if @submission.valid?
       @submission.deliver
-      flash[:success] = "Your link was sent to us."
+      flash[:success] = "Your link was sent to us"
       redirect_to :submit
     else
       render :submission
@@ -70,7 +70,7 @@ class DigestsController < ApplicationController
     @advertisement = AdvertisementForm.new(params[:advertisement_form].permit([:company, :email, :questions, :url, :keywords, :description, :digest, :nickname]))
     if @advertisement.valid?
       @advertisement.deliver
-      flash[:success] = "Your request was sent to us."
+      flash[:success] = "Your request was sent to us"
       redirect_to :advertise
     else
       render :advertisement
@@ -85,7 +85,7 @@ class DigestsController < ApplicationController
     @job_listing = AdvertisementForm.new(params[:advertisement_form].permit([:company, :email, :questions, :url, :keywords, :description, :digest, :nickname]))
     if @job_listing.valid?
       @job_listing.deliver
-      flash[:success] = "Your request was sent to us."
+      flash[:success] = "Your request was sent to us"
       redirect_to :job
     else
       render :job_listing
