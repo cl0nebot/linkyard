@@ -52,7 +52,7 @@ class DigestsController < ApplicationController
   end
 
   def send_submission
-    @submission = SubmissionForm.new(params[:submission_form].permit([:name, :email, :message, :digest, :nickname]))
+    @submission = SubmissionForm.new(params[:submission_form].permit([:name, :email, :url, :description, :digest, :nickname]))
     if @submission.valid?
       @submission.deliver
       flash[:success] = "Your link was sent to us."
