@@ -24,6 +24,12 @@
       <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>&source=<%= @digest.domain %>">LinkedIn</a></li>
     </ul>
   </div>
+  <div class="ads">
+    <ul>
+      <li>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_url(host: @digest.domain) %>.</li>
+      <li>Do you want to post a job? Check out our <%= link_to "job listings page", job_url(host: @digest.domain) %> </li>
+    </ul>
+  </div>
   <div class="other-newsletters">
     <h3>Other Newsletters</h3>
     <ul>

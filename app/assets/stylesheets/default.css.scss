@@ -90,6 +90,10 @@ textarea { &.l10 { height: 14em; }}
   body > div {
     h1 a, h1 a:visited { color: $light-color;}
   }
+  .ads {
+    ul { margin: 0; padding: 0; }
+    li { list-style: none; }
+  }
 }
 
 .digests-index {

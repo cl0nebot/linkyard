@@ -18,6 +18,12 @@
       <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= request.url %>&title=<%= CGI.escape(content_for(:title).strip) %>&source=<%= request.host %>">LinkedIn</a></li>
     </ul>
   </div>
+  <div class="ads">
+    <ul>
+      <li>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_path %>.</li>
+      <li>Do you want to post a job? Check out our <%= link_to "job listings page", job_path %> </li>
+    </ul>
+  </div>
 <% else %>
   <h1>Invalid issue of the digest</h1>
 <% end %>
