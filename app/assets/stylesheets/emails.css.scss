@@ -30,11 +30,6 @@ a, a:active { color: $light-color; }
 a:visited { color: $light-color; }
 a:hover { text-decoration: none;}
 
-.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-.clearfix { display: inline-block; }
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-
 .programming {
   header, .perex { color: $programming-alternate-color; }
 }
@@ -53,12 +48,8 @@ a:hover { text-decoration: none;}
 
 body { padding: 20px; max-width: 700px; }
 header {
-  a:hover { text-decoration: underline; }
-  h1 {
-    float: left; font-weight: normal;
-    a, a:visited { color: $alternate-color; text-decoration: none; }
-  }
-  aside { text-align: right; padding-top: 55px; font-size: 1.5em; }
+  table { width: 100%; }
+  aside { text-align: right; font-size: 1.5em; }
 }
 
 .share a { font-weight: bold; }
@@ -78,6 +69,7 @@ footer {
 
 @media screen and (max-width: 400px) {
   header { display: block !important; }
-  header h1, header aside { display: block !important; padding-top: 0 !important; text-align: left !important;}
+  header h1, header aside { display: block !important; padding-top: 0 !important; text-align: left !important; font-size: 1em !important;}
   .share li { display: block !important; margin-top: 1em !important;}
+  .perex { font-size: 1.5em !important; }
 }
