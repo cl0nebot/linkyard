@@ -50,12 +50,14 @@ a:hover { text-decoration: none;}
 
 body { padding: 20px; max-width: 700px; }
 header {
+  display: flex;
+  justify-content: space-between;
   a:hover { text-decoration: underline; }
   h1 {
-    width: 205px; float: left; font-weight: normal;
+   font-weight: normal;
     a, a:visited { color: $alternate-color; text-decoration: none; }
   }
-  aside { float: right; padding-top: 55px; font-size: 1.5em; }
+  aside { text-align: right; padding-top: 55px; font-size: 1.5em; }
 }
 
 .share a { font-weight: bold; }
@@ -72,3 +74,8 @@ footer {
   ul { padding: 0; margin-bottom: 3em; }
   li { list-style: none; display: inline; padding-right: 3em; }
 }
+
+    @media screen and (max-width: 400px) {
+      header { display: block !important; }
+      header h1, header aside { display: block !important; padding-top: 0 !important; text-align: left !important;}
+    }
