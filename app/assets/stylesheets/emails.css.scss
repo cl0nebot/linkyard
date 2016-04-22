@@ -30,7 +30,10 @@ a, a:active { color: $light-color; }
 a:visited { color: $light-color; }
 a:hover { text-decoration: none;}
 
-.clearfix:after { content: ""; display: table; clear: both; }
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
 
 .programming {
   header, .perex { color: $programming-alternate-color; }
@@ -73,7 +76,7 @@ footer {
   li { list-style: none; display: inline; padding-right: 3em; }
 }
 
-    @media screen and (max-width: 400px) {
-      header { display: block !important; }
-      header h1, header aside { display: block !important; padding-top: 0 !important; text-align: left !important;}
-    }
+@media screen and (max-width: 400px) {
+  header { display: block !important; }
+  header h1, header aside { display: block !important; padding-top: 0 !important; text-align: left !important;}
+}
