@@ -1,47 +1,31 @@
-<%= form_for @link_submission, url: links_path(@link_submission), html: { class: "pure-form pure-form-stacked" } do |f| %>
+<%= form_for @link_submission, url: links_path(@link_submission) do |f| %>
   <%= render "shared/errors", locals: { errors?: @link_submission.errors.any?, error_message: @link_submission.errors.full_messages.to_sentence } %>
-  <div class="pure-control-group">
-    <%= f.label :url %>
-    <%= f.text_field :url, { required: true, autofocus: true, class: "pure-input-2-3" } %>
-  </div>
+  <%= f.label :url %>
+  <%= f.text_field :url, { required: true, autofocus: true } %>
 
-  <div class="pure-control-group">
-    <%= f.label :tags %>
-    <%= f.text_field :tags, { class: "hidden", data: { tags: @link_submission.available_tags.to_json }} %>
-    <ul id="tags"></ul>
-  </div>
+  <%= f.label :tags %>
+  <%= f.text_field :tags, { class: "hidden", data: { tags: @link_submission.available_tags.to_json }} %>
+  <ul id="tags"></ul>
 
-  <div class="pure-control-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, { class: "pure-input-1" } %>
-  </div>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
 
-  <div class="pure-control-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, { required: true, class: "pure-input-1-2", disabled: true } %>
-  </div>
+  <%= f.label :title %>
+  <%= f.text_field :title, { required: true, disabled: true } %>
 
-  <div class="pure-control-group">
-    <%= f.label :content %>
-    <%= f.text_area :content, { class: "pure-input-1 content", disabled: true } %>
-  </div>
+  <%= f.label :content %>
+  <%= f.text_area :content, { class: "content", disabled: true } %>
 
-  <div class="pure-control-group">
-    <%= f.label :digest %>
-    <%= f.select :digest, @available_types %>
-  </div>
+  <%= f.label :digest %>
+  <%= f.select :digest, @available_types %>
 
-  <div class="pure-controls">
-    <%= f.fields_for :link_interactions do |li| %>
-      <% @link_submission.interactions.each do |interaction| %>
-        <label for=<%= "link_link_interactions_#{interaction.id}" %> class="pure-checkbox">
-          <%= li.check_box interaction.id, checked: @link_submission.link_interactions.any? { |li| li.interaction.id == interaction.id} %> <%= interaction.class.humanized_name %>
-        </label>
-      <% end %>
+  <%= f.fields_for :link_interactions do |li| %>
+    <% @link_submission.interactions.each do |interaction| %>
+      <label for=<%= "link_link_interactions_#{interaction.id}" %>>
+        <%= li.check_box interaction.id, checked: @link_submission.link_interactions.any? { |li| li.interaction.id == interaction.id} %> <%= interaction.class.humanized_name %>
+      </label>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="pure-controls">
-    <%= f.submit 'Add', class: "pure-button pure-button-primary pure-input-1-4" %>
-  </div>
+  <%= f.submit 'Add' %>
 <% end %>

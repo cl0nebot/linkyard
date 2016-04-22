@@ -36,31 +36,31 @@
     <p><%= flash[:success] %>.</p>
   </div>
 <% end %>
-<%= form_for @advertisement, url: advertise_path(@advertisement), html: { class: "pure-form pure-form-stacked" } do |f|  %>
+<%= form_for @advertisement, url: advertise_path(@advertisement) do |f|  %>
   <fieldset class="row">
     <legend>Details about you</legend>
     <%= f.label :company %>
-    <%= f.text_field :company, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.text_field :company, required: true, autofocus: true %>
     <%= f.label :email %>
-    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+    <%= f.email_field :email, required: true %>
   </fieldset>
   <fieldset>
     <legend>Let us know if you have any questions</legend>
     <%= f.label :questions %>
-    <%= f.text_area :questions, class: "pure-input-2-3" %>
+    <%= f.text_area :questions %>
   </fieldset>
   <fieldset>
-    <legend>Tells us something the link or advertisement you'd like to share</legend>
+    <legend>Tells us something about the advertisement</legend>
     <%= f.label :url %>
-    <%= f.text_field :url, class: "pure-input-2-3" %>
+    <%= f.text_field :url %>
     <%= f.label :keywords %>
-    <%= f.text_field :keywords, class: "pure-input-2-3" %>
+    <%= f.text_field :keywords %>
     <%= f.label :description %>
-    <%= f.text_area :description, class: "pure-input-2-3" %>
+    <%= f.text_area :description %>
   </fieldset>
   <%= f.hidden_field :digest %>
   <%= f.text_field :nickname, style: "display: none;" %>
-  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+  <%= f.submit "Send" %>
 <% end %>
 
 <p>We can give you additional statistics and are happy to advice you on the format of the ad.</p>

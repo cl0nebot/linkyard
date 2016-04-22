@@ -11,10 +11,10 @@
         <p><%= flash[:error] %>.</p>
       </div>
     <% end %>
-    <%= form_for @subscriber, url: subscribers_path(@subscriber), html: { class: "pure-form" } do |f| %>
-      <%= f.text_field :email, required: true, class: "pure-input-2-3", placeholder: "Subscribe to weekly updates! Enter your email here" %>
+    <%= form_for @subscriber, url: subscribers_path(@subscriber), html: { class: "subscribe-form" } do |f| %>
+      <%= f.text_field :email, required: true, placeholder: "< Your email address >" %>
       <%= f.hidden_field :digest, :value => @subscriber.digest %>
-    <%= f.submit "Subscribe", class: "pure-button pure-button-primary pure-input-1-3" %>
+    <%= f.submit "Subscribe" %>
     <% end %>
   <% end %>
 </div>

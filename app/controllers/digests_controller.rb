@@ -1,7 +1,7 @@
 class DigestsController < ApplicationController
   skip_before_action :authenticate_user_from_token!
   skip_before_action :authenticate_user!
-  before_action :set_digest_type
+  before_action :set_digest_type, :set_latest_issue
   before_action :initialize_subscriber, only: [:index, :show, :home]
 
   layout "digest"
@@ -44,7 +44,6 @@ class DigestsController < ApplicationController
   end
 
   def home
-    @latest_issue = Weekly::Digest.issue_from(@digest_type, Time.zone.now)
   end
 
   def submission
@@ -101,6 +100,10 @@ class DigestsController < ApplicationController
   private
   def set_digest_type
     @digest_type = DOMAIN_TO_DIGEST[request.host] || Weekly::Digest::PROGRAMMING
+  end
+
+  def set_latest_issue
+    @latest_issue = Weekly::Digest.issue_from(@digest_type, Time.zone.now)
   end
 
   def initialize_subscriber

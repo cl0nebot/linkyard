@@ -1,16 +1,10 @@
 <h2>Resend confirmation instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, :class => "pure-form pure-form-aligned" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="pure-control-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="pure-controls">
-    <%= f.submit "Resend confirmation instructions", :class => "pure-button pure-button-primary pure-input-1-4" %>
-  </div>
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true %>
+  <%= f.submit "Resend confirmation instructions" %>
 <% end %>
 
 <%= render "devise/shared/links" %>

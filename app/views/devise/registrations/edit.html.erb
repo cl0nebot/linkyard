@@ -1,62 +1,44 @@
 <h1>Edit Account</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => "pure-form pure-form-aligned" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="pure-control-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, class: "pure-input-1-2" %>
- </div>
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <div class="pure-control-group">
     <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-  </div>
   <% end %>
 
-  <div class="pure-control-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %> <i>(leave blank if you don't want to change it)</i>
-  </div>
+  <%= f.label :password %>
+  <%= f.password_field :password, autocomplete: "off" %> <i>(leave blank if you don't want to change it)</i>
 
-  <div class="pure-control-group"><%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
-  <div class="pure-control-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "off" %> <i>(to confirm your changes)</i>
-  </div>
+  <%= f.label :current_password %>
+  <%= f.password_field :current_password, autocomplete: "off" %> <i>(to confirm your changes)</i>
 
-  <div class="pure-controls">
-    <%= f.submit "Update", :class => "pure-button pure-button-primary pure-input-1-4" %>
-  </div>
+  <%= f.submit "Update" %>
 <% end %>
 
 <h2>Social Connections</h2>
-<div class="pure-form pure-form-aligned">
-  <div class="pure-control-group">
     <label>Twitter</label>
     <% if current_user.has_authorization_for?('Twitter') %>
-      <span class="pure-button pure-button-disabled">Connected</span>
+      <span>Connected</span>
     <% else %>
-      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "twitter"), :class => "pure-button" %>
+      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "twitter") %>
     <% end %>
-  </div>
-  <div class="pure-control-group">
     <label>Buffer</label>
     <% if current_user.has_authorization_for?('Buffer') %>
-      <span class="pure-button pure-button-disabled">Connected</span>
+      <span>Connected</span>
     <% else %>
-      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "buffer"), :class => "pure-button" %>
+      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "buffer") %>
     <% end %>
-  </div>
-  <div class="pure-control-group">
     <label>Reddit</label>
     <% if current_user.has_authorization_for?('Reddit') %>
-      <span class="pure-button pure-button-disabled">Connected</span>
+      <span>Connected</span>
     <% else %>
-      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "reddit"), :class => "pure-button" %>
+      <%= link_to 'Connect', user_omniauth_authorize_path(:provider => "reddit") %>
     <% end %>
-  </div>
 </div>

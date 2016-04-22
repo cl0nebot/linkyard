@@ -2,9 +2,9 @@
 
 <%= render "shared/notifications" %>
 
-<%= form_tag({ :controller => 'links', :action => 'search' }, :method => 'get', class: "pure-form")  do %>
-  <%= text_field_tag :search, params[:search], { class: "pure-input-2-3" } %>
-  <%= submit_tag "Search", class: "pure-button pure-button-primary" %>
+<%= form_tag({ :controller => 'links', :action => 'search' }, :method => 'get')  do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
 <% end %>
 
 <% if @links.any? %>

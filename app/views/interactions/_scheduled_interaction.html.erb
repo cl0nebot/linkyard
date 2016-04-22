@@ -1,28 +1,26 @@
 <%= render "composite_interaction" %>
 <%= fields_for @interaction do |f| %>
   <%= f.fields_for :scheduled_times do |i| %>
-    <div class="pure-controls">
       <% if @interaction.scheduled_times.present? %>
         <%= i.label :scheduled_times %>
         <% (@interaction.scheduled_times || []).each_with_index do |time, index| %>
           <div class="time-select">
-            <%= i.select "time_#{index}", options_for_select(available_times, time), :class => "pure-input-1-4" %>
+            <%= i.select "time_#{index}", options_for_select(available_times, time) %>
           </div>
         <% end %>
       <% else %>
         <div class="time-select">
-          <%= i.select :time_1, options_for_select(available_times, nil), :class => "pure-input-1-4" %>
+          <%= i.select :time_1, options_for_select(available_times, nil) %>
         </div>
         <div class="time-select">
-          <%= i.select :time_2, options_for_select(available_times, nil), :class => "pure-input-1-4" %>
+          <%= i.select :time_2, options_for_select(available_times, nil) %>
         </div>
         <div class="time-select">
-          <%= i.select :time_3, options_for_select(available_times, nil), :class => "pure-input-1-4" %>
+          <%= i.select :time_3, options_for_select(available_times, nil) %>
         </div>
         <div class="time-select">
-          <%= i.select :time_4, options_for_select(available_times, nil), :class => "pure-input-1-4" %>
+          <%= i.select :time_4, options_for_select(available_times, nil) %>
         </div>
       <% end %>
-    </div>
   <% end %>
 <% end %>

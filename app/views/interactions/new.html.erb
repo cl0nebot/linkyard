@@ -1,22 +1,16 @@
 <h1>New Interaction</h1>
 
 <% unless @interaction.errors.any? %>
-  <div class="pure-form pure-form-aligned">
-    <div class="pure-control-group">
-      <label for="type">Type</label>
-      <%= select_tag :type, options_for_select(available_interaction_options, @interaction.try(:type)), :class => "pure-input-1-4" %>
-    </div>
-  </div>
+  <label for="type">Type</label>
+  <%= select_tag :type, options_for_select(available_interaction_options, @interaction.try(:type)) %>
 <% end %>
 
-<%= form_for @interaction, :url => interactions_path, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
+<%= form_for @interaction, :url => interactions_path do |f| %>
   <%= render "shared/errors", locals: { errors?: @interaction.errors.any?, error_message: @interaction.errors.full_messages.to_sentence } %>
   <% if @interaction.errors.any? %>
     <%= render @interaction.type.underscore %>
   <% else %>
     <div id="new-interaction-container"></div>
   <% end %>
-  <div class="pure-controls">
-    <%= f.submit 'Add', :class => "pure-button pure-button-primary pure-input-1-4" %>
-  </div>
+  <%= f.submit 'Add' %>
 <% end %>

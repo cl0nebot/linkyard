@@ -20,20 +20,21 @@
     <p><%= flash[:success] %>.</p>
   </div>
 <% end %>
-<%= form_for @submission, url: submit_path(@submission), html: { class: "pure-form pure-form-stacked" } do |f|  %>
-  <fieldset class="row">
+<%= form_for @submission, url: submit_path(@submission) do |f|  %>
+  <fieldset>
+    <legend>Tell us something about the article</legend>
     <%= f.label :name %>
-    <%= f.text_field :name, required: true, autofocus: true, class: "pure-input-1-2" %>
+    <%= f.text_field :name, required: true, autofocus: true %>
     <%= f.label :email %>
-    <%= f.email_field :email, required: true, class: "pure-input-1-2" %>
+    <%= f.email_field :email, required: true %>
     <%= f.label :url %>
-    <%= f.text_field :url, required: true, class: "pure-input-2-3" %>
+    <%= f.text_field :url, required: true %>
     <%= f.label :description %>
-    <%= f.text_area :description, class: "pure-input-2-3" %>
+    <%= f.text_area :description %>
+    <%= f.hidden_field :digest %>
+    <%= f.text_field :nickname, style: "display: none;" %>
   </fieldset>
-  <%= f.hidden_field :digest %>
-  <%= f.text_field :nickname, style: "display: none;" %>
-  <%= f.submit "Send", class: "pure-button pure-button-primary" %>
+  <%= f.submit "Send" %>
 <% end %>
 
 <p>All articles are still manually curated so please don't be upset if it doesn't make it to the list and try next time.</p>

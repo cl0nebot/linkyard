@@ -11,6 +11,7 @@
     <% end %>
   <% end %>
   <div class="share">
+    <h2>share</h2>
     <ul>
       <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(content_for(:title).strip) %>&url=<%= request.original_url %>&via=<%= twitter_username(@digest_type) %>">Tweet</a></li>
       <li class="reddit"><a href="//www.reddit.com/submit?url=<%= request.url %>&title=<%= CGI.escape(content_for(:title).strip) %>">Reddit</a></li>
@@ -19,10 +20,7 @@
     </ul>
   </div>
   <div class="ads">
-    <ul>
-      <li>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_path %>.</li>
-      <li>Do you want to post a job? Check out our <%= link_to "job listings page", job_path %> </li>
-    </ul>
+    <p>Wanna sponsor the digest? See our <%= link_to "advertisement options", advertise_path %>.<br />Wanna post a job? Check out our <%= link_to "job listings", job_path %>.</p>
   </div>
 <% else %>
   <h1>Invalid issue of the digest</h1>

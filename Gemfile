@@ -11,7 +11,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rspec-rails'
 gem 'rspec-collection_matchers'
 gem 'devise'
-gem 'pure-css-rails'
 gem 'jquery-ui-rails'
 gem 'sidekiq'
 gem 'twitter'

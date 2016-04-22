@@ -15,16 +15,21 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def navigation_link_to(link_text, link_path)
+  def navigation_link_to(link_text, link_path, attributes = {})
     class_name = current_page?(link_path) ? 'active' : ''
 
-    content_tag(:li, :class => class_name) do
-      link_to link_text, link_path
+    content_tag(:li, :class => class_name + " " + attributes.fetch(:class, "")) do
+      link_to link_text, link_path, attributes
     end
   end
 
   def formatted_date(time)
     time.to_date.to_formatted_s(:long)
+  end
+
+  def issue_date(type, issue)
+    digest = Weekly::Digest.new(type, issue: issue)
+    digest.from.strftime("%d/%m/%Y")
   end
 
   def tracking_id(digest_type)

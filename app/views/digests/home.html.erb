@@ -3,68 +3,38 @@
 <% end %>
 
 <% if @digest_type == Weekly::Digest::PROGRAMMING %>
-  <div class="promo">
-    <h1>Stay up to date with current web technologies</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development in web.</p>
-    <%= render partial: "subscribers/form" %>
-    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-    <ul>
-      <li><strong>One email</strong> per week,</li>
-      <li><strong>no spam</strong>,</li>
-      <li>the most <strong>interesting news</strong>.</li>
-    </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>  and <strong>Web development</strong>.</p>
-  </div>
+  <h1>One email per week,<br />no spam.</h1>
+  <hr />
+  <p>Stay up to date with current web technologies.</p>
+  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development in web.</p>
+  <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>  and <strong>Web development</strong>.</p>
+  <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::PHOTOGRAPHY %>
-  <div class="promo">
-    <h1>Stay up to date with news in photography</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in photography, tutorials and gear tests.</p>
-    <%= render partial: "subscribers/form" %>
-    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-    <ul>
-      <li><strong>One email</strong> per week,</li>
-      <li><strong>no spam</strong>,</li>
-      <li>the most <strong>interesting news</strong>.</li>
-    </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>photography</strong>, <strong>tutorials</strong>, <strong>gear</strong> and <strong>photo software</strong>.</p>
-  </div>
+  <h1>One email per week,<br />no spam.</h1>
+  <hr />
+  <p>Stay up to date with news in photography.</p>
+  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in photography, tutorials and gear tests.</p>
+  <p>The only news source you need targeted on (but not limited to) <strong>photography</strong>, <strong>tutorials</strong>, <strong>gear</strong> and <strong>photo software</strong>.</p>
+  <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::CSHARP %>
-  <div class="promo">
-    <h1>Stay up to date with C# and .NET Framework</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in .NET Framework and Microsoft technologies.</p>
-    <%= render partial: "subscribers/form" %>
-    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-    <ul>
-      <li><strong>One email</strong> per week,</li>
-      <li><strong>no spam</strong>,</li>
-      <li>the most <strong>interesting news</strong>.</li>
-    </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>C#</strong>, <strong>.NET Framework</strong>, <strong>Azure</strong>, <strong>ASP.NET</strong>  and <strong>WPF</strong>.</p>
-  </div>
+  <h1>One email per week,<br />no spam.</h1>
+  <hr />
+  <p>Stay up to date with C# and .NET Framework</p>
+  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in .NET Framework and Microsoft technologies.</p>
+  <p>The only news source you need targeted on (but not limited to) <strong>C#</strong>, <strong>.NET Framework</strong>, <strong>Azure</strong>, <strong>ASP.NET</strong>  and <strong>WPF</strong>.</p>
+  <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::ELIXIR %>
-  <div class="promo">
-    <h1>Stay up to date with Elixir</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in functional programming with Elixir.</p>
-    <%= render partial: "subscribers/form" %>
-    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-    <ul>
-      <li><strong>One email</strong> per week,</li>
-      <li><strong>no spam</strong>,</li>
-      <li>the most <strong>interesting news</strong>.</li>
-    </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>Elixir</strong>, <strong>functional programming</strong>, <strong>Phoenix</strong> and <strong>Ecto</strong>.</p>
-  </div>
+  <h1>One email per week,<br />no spam.</h1>
+  <hr />
+  <p>Stay up to date with Elixir.</p>
+  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in functional programming with Elixir.</p>
+  <p>The only news source you need targeted on (but not limited to) <strong>Elixir</strong>, <strong>functional programming</strong>, <strong>Phoenix</strong> and <strong>Ecto</strong>.</p>
+  <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::REACT %>
-  <div class="promo">
-    <h1>Stay up to date with React.js</h1>
-    <p class="large">Get a <strong>free</strong>, weekly newsletter about the latest news in React Javascript community.</p>
-    <%= render partial: "subscribers/form" %>
-    <p class="large">Check out the <%= link_to "latest issue (#{@latest_issue})", digest_path(@latest_issue) %>.</p>
-    <ul>
-      <li><strong>One email</strong> per week,</li>
-      <li><strong>no spam</strong>,</li>
-      <li>the most <strong>interesting news</strong>.</li>
-    </ul>
-    <p>The only news source you need targeted on (but not limited to) <strong>React</strong>, <strong>Javascript</strong>, <strong>Flux</strong> and <strong>functional programming</strong>.</p>
-  </div>
+  <h1>One email per week,<br />no spam.</h1>
+  <hr />
+  <p>Stay up to date with react.js.</p>
+  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in React Javascript community.</p>
+  <p>The only news source you need targeted on (but not limited to) <strong>React</strong>, <strong>Javascript</strong>, <strong>Flux</strong> and <strong>functional programming</strong>.</p>
+  <%= render partial: "subscribers/form" %>
 <% end %>
