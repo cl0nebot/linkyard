@@ -6,9 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag 'emails', media: 'all' %>
   </head>
-<body>
-  <h1><%= "Weekly #{digest_name(@digest.type)} Digest ##{@digest.issue}" %></h1>
-  <p><small><%= formatted_date(@digest.to + 1.day) %> // <%= link_to "view in browser", digest_url(@digest.issue, host: @digest.domain) %></small></p>
+<body class="<%= @digest.type %>">
+  <header class="clearfix">
+    <h1><%= digest_name(@digest.type).downcase %><br />digest</h1>
+    <aside>issue <%= link_to "##{@digest.issue}", digest_url(@digest.issue, host: @digest.domain) %></aside>
+  </header>
+
+  <hr />
+  <p class="perex">Ping &mdash;<br />you've got a mail</p>
+  <hr />
+
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>
@@ -17,7 +24,7 @@
   <% end %>
   <div class="share">
     <% title = "#{digest_name(@digest.type)} Digest ##{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
-    <h3>Share</h3>
+    <h2>share</h2>
     <ul>
       <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(title) %>&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&via=<%= twitter_username(@digest.type) %>">Tweet</a></li>
       <li class="reddit"><a href="//www.reddit.com/submit?url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>">Reddit</a></li>
@@ -26,21 +33,11 @@
     </ul>
   </div>
   <div class="ads">
-    <ul>
-      <li>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_url(host: @digest.domain) %>.</li>
-      <li>Do you want to post a job? Check out our <%= link_to "job listings page", job_url(host: @digest.domain) %> </li>
-    </ul>
+    <p>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_url(host: @digest.domain) %>.<br />Do you want to post a job? Check out our <%= link_to "job listings", job_url(host: @digest.domain) %>.</p>
   </div>
-  <div class="other-newsletters">
-    <h3>Other Newsletters</h3>
-    <ul>
-      <% other_digests(@digest.type).each do |url, type| %>
-        <li><%= link_to "#{digest_name(type)} Digest", "http://#{url}" %></li>
-      <% end %>
-    </ul>
-  </div>
+  <hr />
   <footer>
-    <p><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @digest.domain) %>.</small></p>
+    <p>&copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %><br /><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @digest.domain) %>.</small></p>
   </footer>
 </body>
 </html>
