@@ -7,7 +7,7 @@
   <%= stylesheet_link_tag 'emails', media: 'all' %>
   </head>
 <body class="<%= @digest.type %>">
-  <header>
+  <header class="clearfix">
     <h1><%= digest_name(@digest.type).downcase %><br />digest</h1>
     <aside>issue <%= link_to "##{@digest.issue}", digest_url(@digest.issue, host: @digest.domain) %></aside>
   </header>
