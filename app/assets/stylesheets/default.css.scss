@@ -206,12 +206,14 @@ body.news {
   .desktop { display: none; }
   .mobile { display: initial; }
   .digests {
+    &.programming header h1 { a, a:visited { color: $programming-alternate-color; }}
+    &.elixir header h1 { a, a:visited {color: $elixir-alternate-color; }}
+    &.csharp header h1 { a, a:visited {color: $csharp-alternate-color; }}
+    &.react header h1 { a, a:visited {color: $react-alternate-color; }}
+
     background-image: none !important; width: 100%;
     header {
-      h1 {
-        float: none; width: 100%;
-        a, a:visited {color: $programming-alternate-color; }
-      }
+      h1 { float: none; width: 100%; }
       ul li {
         width: 100%; margin-right: 0; float: none; display: block; text-align: left !important; padding: 0.5em 0;
       }
