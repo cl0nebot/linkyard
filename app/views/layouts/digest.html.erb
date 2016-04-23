@@ -24,7 +24,7 @@
   <hr class="separator" />
 
   <div class="clearfix">
-    <section class="sidebar">
+    <section class="sidebar desktop">
       <h3>Check out the latest issue</h3>
       <ul>
         <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue), digest_path(@latest_issue) %></li>
@@ -51,15 +51,36 @@
     </div>
   </div>
 
+
+  <section class="sidebar mobile">
+    <h3>Check out the latest issue</h3>
+    <ul>
+      <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue), digest_path(@latest_issue) %></li>
+    </ul>
+
+    <h3>Recent newsletters</h3>
+    <ul>
+      <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue - 1), digest_path(@latest_issue - 1) %></li>
+      <li><%= @latest_issue - 2 %> <%= link_to issue_date(@digest_type, @latest_issue - 2), digest_path(@latest_issue - 2) %></li>
+      <li><%= @latest_issue - 3 %> <%= link_to issue_date(@digest_type, @latest_issue - 3), digest_path(@latest_issue - 3) %></li>
+    </ul>
+
+    <h3>Other newsletters</h3>
+    <ul>
+      <% other_digests(@digest_type).each do |url, type| %>
+        <li><%= link_to "#{digest_name(type).downcase} digest", "http://#{url}" %></li>
+      <% end %>
+    </ul>
+  </section>
   <hr class="separator" />
 
   <footer>
     <ul>
-      <li><%= link_to "SPAM policy", spam_policy_path %> &middot; </li>
-      <li><%= link_to "Privacy policy", privacy_policy_path %> &middot; </li>
-      <li><%= link_to 'RSS', "http://feeds.feedburner.com/digest-#{@digest_type}" %> &middot; </li>
-      <li><%= link_to 'Search', search_digests_path %> &middot; </li>
-      <li><%= link_to 'Archive', digests_path %></li><br />
+      <li><%= link_to "SPAM policy", spam_policy_path %><span class="desktop"> &middot; </span></li>
+      <li><%= link_to "Privacy policy", privacy_policy_path %><span class="desktop"> &middot; </span></li>
+      <li><%= link_to 'RSS', "http://feeds.feedburner.com/digest-#{@digest_type}" %><span class="desktop"> &middot; </span></li>
+      <li><%= link_to 'Search', search_digests_path %><span class="desktop"> &middot; </span></li>
+      <li><%= link_to 'Archive', digests_path %></li><br class="desktop" />
       <li class="copy">&copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %></li>
     </ul>
   </footer>

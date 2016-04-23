@@ -56,6 +56,9 @@ textarea { &.l10 { height: 14em; }}
 
 .clearfix:after { content: ""; display: table; clear: both; }
 
+.desktop { display: initial; }
+.mobile { display: none; }
+
 .digests {
   &.programming {
     background-image: -webkit-gradient(linear, 0% 245px, 100% 245px, color-stop(0%, $programming-background ), color-stop(245px, $programming-background ), color-stop(245px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%); background-image: -webkit-linear-gradient(left, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%); background-image: linear-gradient(to right, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%);
@@ -97,7 +100,7 @@ textarea { &.l10 { height: 14em; }}
   :-moz-placeholder { font-style: italic; }
   ::-moz-placeholder { font-style: italic; }
   :-ms-input-placeholder { font-style: italic; }
-  input[type="submit"] { color: #fff; font-family: "Courier New", Courier, monospace; font-size: 0.9em; border-radius: 7px; padding: 6px 10px; min-width: 150px; }
+  input[type="submit"] { color: $alternate-color; font-family: "Courier New", Courier, monospace; font-size: 0.9em; border-radius: 7px; padding: 6px 10px; min-width: 150px; }
 
 
   .content { padding: 20px; }
@@ -115,8 +118,8 @@ textarea { &.l10 { height: 14em; }}
   }
 
   .sidebar {
-    width: 205px; float: left; margin-right: 100px; color: #fff; padding-top: 10px;
-    a, a:visited { color: #fff; }
+    width: 205px; float: left; margin-right: 100px; color: $alternate-color; padding-top: 10px;
+    a, a:visited { color: $alternate-color; }
     h3 { margin: 10px 0; }
     ul { padding-left: 0; margin-bottom: 50px;}
     li { list-style: none; }
@@ -148,6 +151,8 @@ textarea { &.l10 { height: 14em; }}
     ul { padding: 0; margin-bottom: 3em; }
     li { list-style: none; display: inline; padding-right: 3em; }
   }
+
+  .share ul li { font-weight: bold; }
 }
 
 .links {
@@ -203,6 +208,48 @@ body.news {
   }
 }
 
-@media screen and (max-width: 729px) {
+@media screen and (max-width: 980px) {
+  .desktop { display: none; }
+  .mobile { display: initial; }
+  .digests {
+    background-image: none !important; width: 100%;
+    header {
+      h1 {
+        float: none; width: 100%;
+        a, a:visited {color: $programming-alternate-color; }
+      }
+      ul li {
+        width: 100%; margin-right: 0; float: none; display: block; text-align: left !important; padding: 0.5em 0;
+      }
+    }
+
+    input, textarea { width: 100% !important; min-width: 100% !important; }
+    input[type=submit] { padding: 10px; margin: 1em 0; }
+    .main {
+      width: 100%; float: none;
+      .subscribe-form, .search-form {
+        margin: 3em 0;
+      }
+      .social-follow { margin: 2em 0; }
+    }
+
+    .sidebar {
+      color: $main-color; width: 100%; float: none; margin-right: 0;
+      a, a:visited { color: $light-color; }
+    }
+
+    footer {
+      ul {
+        margin: 0; padding: 0; text-align: left;
+        li { display: block; margin: 1em 0; }
+      }
+    }
+
+    .share {
+      ul {
+        li { display: block; padding-right: 0; margin: 0.5em 0; }
+      }
+    }
+  }
   .links.show .content { width: 100%; }
 }
