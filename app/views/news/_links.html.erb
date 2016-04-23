@@ -4,7 +4,7 @@
     <% news.each do |link| %>
       <tr>
         <td><%= link.upvotes %></td>
-        <td><%= link_to link.title, link.url %></td>
+        <td><%= link_to link.title, link.url, title: link.title %></td>
         <td><%= distance_of_time_in_words(Time.now, link.created_at) %></td>
       </tr>
     <% end %>

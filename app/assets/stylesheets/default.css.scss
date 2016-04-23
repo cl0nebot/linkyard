@@ -177,9 +177,12 @@ textarea { &.l10 { height: 14em; }}
 
 
 
-body.dashboard { top: 0; left: 0; margin: 0; padding: 0; }
+body.dashboard, body.news, body.links {
+  top: 0; left: 0; margin: 0; padding: 0; font-family: sans-serif;
+}
+
 .dashboard {
-  & > div { margin: 0; width: 100%;}
+  .digests { width: 100%; }
   .stats { padding: 0 1em; margin-bottom: 2em; }
   .digest { padding: 0.25em 1em 2em 1em; }
   .digest:nth-of-type(odd) { background: #EDF1F2; }
@@ -187,21 +190,12 @@ body.dashboard { top: 0; left: 0; margin: 0; padding: 0; }
 }
 
 body.news {
-  top: 0; left: 0; margin: 0; padding: 0;
-  & > div { margin: 0; width: 100%;}
   .links {
-    padding: 1em;
-    width: 440px;
-    float: left;
-    font-size: 0.8em;
+    padding: 1em; width: 440px; float: left; font-size: 0.8em;
     a { text-decoration: none; }
 
     table tr td {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 300px;
-      width: 300px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px; width: 300px;
       &:first-child { max-width: 32px; }
       &:last-child { max-width: 33px; font-size: 0.8em;}
     }
@@ -251,5 +245,15 @@ body.news {
       }
     }
   }
+
   .links.show .content { width: 100%; }
+  body.news .links {
+    width: 100%; padding: 1em 0; float: none;
+    table { table-layout: fixed; }
+    table tr td {
+      display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 99%; max-width: 99%; box-sizing: border-box;
+      &:first-child { display: none; }
+      &:last-child { display: none; }
+    }
+  }
 }
