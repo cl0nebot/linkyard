@@ -6,8 +6,8 @@ $programming-background: #CC342D;
 $programming-alternate-color: #CC342D;
 $elixir-background: #732673;
 $elixir-alternate-color: #732673;
-$csharp-background: #0078d7;
-$csharp-alternate-color: #0078d7;
+$csharp-background: #0000ee;
+$csharp-alternate-color: #0000ee;
 $react-background: #2F92CC;
 $react-alternate-color: #2F92CC;
 
@@ -61,34 +61,34 @@ textarea { &.l10 { height: 14em; }}
 
 .digests {
   &.programming {
-    background-image: -webkit-gradient(linear, 0% 245px, 100% 245px, color-stop(0%, $programming-background ), color-stop(245px, $programming-background ), color-stop(245px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%); background-image: -webkit-linear-gradient(left, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%); background-image: linear-gradient(to right, $programming-background  0%, $programming-background  245px, #FFF 245px, #FFF 100%);
+    background-image: -webkit-gradient(linear, 0% 305px, 100% 305px, color-stop(0%, $programming-background ), color-stop(305px, $programming-background ), color-stop(305px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $programming-background  0%, $programming-background  305px, #FFF 305px, #FFF 100%); background-image: -webkit-linear-gradient(left, $programming-background  0%, $programming-background  305px, #FFF 305px, #FFF 100%); background-image: linear-gradient(to right, $programming-background  0%, $programming-background  305px, #FFF 305px, #FFF 100%);
     input[type="text"], input[type="email"], textarea { &:focus { border-bottom: 1px solid $programming-background; } }
     input[type="submit"] { background: $programming-background; border: 2px solid $programming-background; }
     &.home .main h1 { color: $programming-alternate-color; }
   }
 
   &.elixir {
-    background-image: -webkit-gradient(linear, 0% 245px, 100% 245px, color-stop(0%, $elixir-background ), color-stop(245px, $elixir-background ), color-stop(245px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $elixir-background  0%, $elixir-background  245px, #FFF 245px, #FFF 100%); background-image: -webkit-linear-gradient(left, $elixir-background  0%, $elixir-background  245px, #FFF 245px, #FFF 100%); background-image: linear-gradient(to right, $elixir-background  0%, $elixir-background  245px, #FFF 245px, #FFF 100%);
+    background-image: -webkit-gradient(linear, 0% 305px, 100% 305px, color-stop(0%, $elixir-background ), color-stop(305px, $elixir-background ), color-stop(305px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $elixir-background  0%, $elixir-background  305px, #FFF 305px, #FFF 100%); background-image: -webkit-linear-gradient(left, $elixir-background  0%, $elixir-background  305px, #FFF 305px, #FFF 100%); background-image: linear-gradient(to right, $elixir-background  0%, $elixir-background  305px, #FFF 305px, #FFF 100%);
     input[type="text"], input[type="email"], textarea { &:focus { border-bottom: 1px solid $elixir-background; } }
     input[type="submit"] { background: $elixir-background; border: 2px solid $elixir-background; }
     &.home .main h1 { color: $elixir-alternate-color; }
   }
 
   &.react {
-    background-image: -webkit-gradient(linear, 0% 245px, 100% 245px, color-stop(0%, $react-background ), color-stop(245px, $react-background ), color-stop(245px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $react-background  0%, $react-background  245px, #FFF 245px, #FFF 100%); background-image: -webkit-linear-gradient(left, $react-background  0%, $react-background  245px, #FFF 245px, #FFF 100%); background-image: linear-gradient(to right, $react-background  0%, $react-background  245px, #FFF 245px, #FFF 100%);
+    background-image: -webkit-gradient(linear, 0% 305px, 100% 305px, color-stop(0%, $react-background ), color-stop(305px, $react-background ), color-stop(305px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $react-background  0%, $react-background  305px, #FFF 305px, #FFF 100%); background-image: -webkit-linear-gradient(left, $react-background  0%, $react-background  305px, #FFF 305px, #FFF 100%); background-image: linear-gradient(to right, $react-background  0%, $react-background  305px, #FFF 305px, #FFF 100%);
     input[type="text"], input[type="email"], textarea { &:focus { border-bottom: 1px solid $react-background; } }
     input[type="submit"] { background: $react-background; border: 2px solid $react-background; }
     &.home .main h1 { color: $react-alternate-color; }
   }
 
   &.csharp {
-    background-image: -webkit-gradient(linear, 0% 245px, 100% 245px, color-stop(0%, $csharp-background ), color-stop(245px, $csharp-background ), color-stop(245px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $csharp-background  0%, $csharp-background  245px, #FFF 245px, #FFF 100%); background-image: -webkit-linear-gradient(left, $csharp-background  0%, $csharp-background  245px, #FFF 245px, #FFF 100%); background-image: linear-gradient(to right, $csharp-background  0%, $csharp-background  245px, #FFF 245px, #FFF 100%);
+    background-image: -webkit-gradient(linear, 0% 305px, 100% 305px, color-stop(0%, $csharp-background ), color-stop(305px, $csharp-background ), color-stop(305px, #FFF), color-stop(100%, #FFF)); background-image: -moz-linear-gradient(left, $csharp-background  0%, $csharp-background  305px, #FFF 305px, #FFF 100%); background-image: -webkit-linear-gradient(left, $csharp-background  0%, $csharp-background  305px, #FFF 305px, #FFF 100%); background-image: linear-gradient(to right, $csharp-background  0%, $csharp-background  305px, #FFF 305px, #FFF 100%);
     input[type="text"], input[type="email"], textarea { &:focus { border-bottom: 1px solid $csharp-background; } }
     input[type="submit"] { background: $csharp-background; border: 2px solid $csharp-background; }
     &.home .main h1 { color: $csharp-alternate-color; }
 
   }
-  width: 980px; background-repeat: no-repeat;
+  width: 1115px; background-repeat: no-repeat;
 
   input[type="text"], input[type="email"], textarea {
     border: none; border-bottom: 1px solid $main-color; font-size: 0.9em; display: block; margin: 1em 0; padding: 2px; font-family: "Courier New", Courier, monospace; min-width: 317px;
@@ -100,14 +100,14 @@ textarea { &.l10 { height: 14em; }}
   :-moz-placeholder { font-style: italic; }
   ::-moz-placeholder { font-style: italic; }
   :-ms-input-placeholder { font-style: italic; }
-  input[type="submit"] { color: $alternate-color; font-family: "Courier New", Courier, monospace; font-size: 0.9em; border-radius: 7px; padding: 6px 10px; min-width: 150px; }
+  input[type="submit"] { color: $alternate-color; font-family: "Courier New", Courier, monospace; font-size: 0.9em; border-radius: 20px; padding: 6px 10px; min-width: 200px; }
 
 
-  .content { padding: 20px; }
+  .content { padding: 20px 20px 20px 60px; }
   header {
     a:hover { text-decoration: underline; }
     h1 {
-      width: 205px; margin-right: 100px; float: left; font-weight: normal;
+      width: 205px; margin-right: 175px; float: left; font-weight: normal;
       a, a:visited { color: $alternate-color; text-decoration: none; }
     }
     ul { margin: 0; padding: 0; }
@@ -118,7 +118,7 @@ textarea { &.l10 { height: 14em; }}
   }
 
   .sidebar {
-    width: 205px; float: left; margin-right: 100px; color: $alternate-color; padding-top: 10px;
+    width: 205px; float: left; margin-right: 175px; color: $alternate-color; padding-top: 10px;
     a, a:visited { color: $alternate-color; }
     h3 { margin: 10px 0; }
     ul { padding-left: 0; margin-bottom: 50px;}
@@ -126,7 +126,7 @@ textarea { &.l10 { height: 14em; }}
   }
 
   &.home .main {
-    h1 { font-family: Verdana, Geneva, sans-serif; font-size: 50px; margin: 20px 0 25px 0; letter-spacing: 2px;}
+    h1 { font-family: sk-modernistbold, Verdana, Geneva, sans-serif; font-size: 65px; font-weight: bold; margin: 20px 0 40px 0; line-height: 100%; }
   }
 
   .main {
@@ -139,7 +139,7 @@ textarea { &.l10 { height: 14em; }}
 
   footer {
     a, a:visited { color: $light-color; }
-    ul { text-align: right;}
+    ul { text-align: right; padding-left: 0; }
     ul li { display: inline; list-style: none; }
   }
 
@@ -202,7 +202,7 @@ body.news {
   }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1115px) {
   .desktop { display: none; }
   .mobile { display: initial; }
   .digests {
@@ -212,6 +212,7 @@ body.news {
     &.react header h1 { a, a:visited {color: $react-alternate-color; }}
 
     background-image: none !important; width: 100%;
+    .content { padding: 20px; }
     header {
       h1 { float: none; width: 100%; }
       ul li {
@@ -223,6 +224,7 @@ body.news {
     input[type=submit] { padding: 10px; margin: 1em 0; }
     .main {
       width: 100%; float: none;
+      h1 { font-size: 45px; }
       .subscribe-form, .search-form {
         margin: 3em 0;
       }
@@ -232,17 +234,15 @@ body.news {
     .sidebar {
       color: $main-color; width: 100%; float: none; margin-right: 0;
       a, a:visited { color: $light-color; }
-    }
-
-    footer {
       ul {
         margin: 0; padding: 0; text-align: left;
         li { display: block; margin: 1em 0; }
       }
     }
 
-    .share {
+    .share, footer {
       ul {
+        text-align: left;
         li { display: block; padding-right: 0; margin: 0.5em 0; }
       }
     }

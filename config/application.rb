@@ -23,5 +23,6 @@ module Linkyard
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "account" : "application" }
     end
     config.time_zone = "Wellington"
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

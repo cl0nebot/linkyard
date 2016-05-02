@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="all, follow" />
   <title><%= content_for?(:title) ? content_for(:title).strip + " | " : "" %>Weekly <%= digest_name(@digest_type) %> Newsletter</title>
+  <style type="text/css" media="all">
+    @font-face {
+        font-family: 'sk-modernistbold';
+        src: url('<%= asset_path "sk-modernist-bold-webfont.eot" %>');
+        src: url('<%= asset_path "sk-modernist-bold-webfont.eot" %>?#iefix') format('embedded-opentype'),
+             url('<%= asset_path "sk-modernist-bold-webfont.woff2" %>') format('woff2'),
+             url('<%= asset_path "sk-modernist-bold-webfont.woff" %>') format('woff'),
+             url('<%= asset_path "sk-modernist-bold-webfont.ttf" %>') format('truetype'),
+             url('<%= asset_path "sk-modernist-bold-webfont.svg" %>#sk-modernistbold') format('svg');
+        font-weight: bold;
+        font-style: normal;
+
+    }
+  </style>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -14,7 +28,7 @@
 <div class="content">
   <header class="clearfix">
     <h1><a href="<%= root_path %>"><%= digest_name(@digest_type).downcase%><br /> digest</a></h1>
-    <ul class="clearfix">
+    <ul class="clearfix desktop">
       <%= navigation_link_to 'Submit', submit_path %>
       <%= navigation_link_to 'Advertise', advertise_path, class: "tcenter" %>
       <%= navigation_link_to 'Post job', job_path, class: "tright" %>
@@ -53,6 +67,11 @@
 
 
   <section class="sidebar mobile">
+    <ul>
+      <%= navigation_link_to 'Submit', submit_path %>
+      <%= navigation_link_to 'Advertise', advertise_path %>
+      <%= navigation_link_to 'Post job', job_path %>
+    </ul>
     <h3>Check out the latest issue</h3>
     <ul>
       <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue), digest_path(@latest_issue) %></li>
