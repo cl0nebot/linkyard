@@ -46,7 +46,7 @@
 
       <h3>Recent newsletters</h3>
       <ul>
-        <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue - 1), digest_path(@latest_issue - 1) %></li>
+        <li><%= @latest_issue - 1 %> <%= link_to issue_date(@digest_type, @latest_issue - 1), digest_path(@latest_issue - 1) %></li>
         <li><%= @latest_issue - 2 %> <%= link_to issue_date(@digest_type, @latest_issue - 2), digest_path(@latest_issue - 2) %></li>
         <li><%= @latest_issue - 3 %> <%= link_to issue_date(@digest_type, @latest_issue - 3), digest_path(@latest_issue - 3) %></li>
       </ul>
@@ -79,7 +79,7 @@
 
     <h3>Recent newsletters</h3>
     <ul>
-      <li><%= @latest_issue %> <%= link_to issue_date(@digest_type, @latest_issue - 1), digest_path(@latest_issue - 1) %></li>
+      <li><%= @latest_issue - 1 %> <%= link_to issue_date(@digest_type, @latest_issue - 1), digest_path(@latest_issue - 1) %></li>
       <li><%= @latest_issue - 2 %> <%= link_to issue_date(@digest_type, @latest_issue - 2), digest_path(@latest_issue - 2) %></li>
       <li><%= @latest_issue - 3 %> <%= link_to issue_date(@digest_type, @latest_issue - 3), digest_path(@latest_issue - 3) %></li>
     </ul>
