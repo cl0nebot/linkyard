@@ -58,6 +58,8 @@ footer {
   a, a:visited { color: $light-color; }
 }
 
+.digest-article.no-description { padding-bottom: 1em; }
+
 .digest-article, .share {
   a { color: #0000EE; }
   a:visited { color: #551a8b; }
