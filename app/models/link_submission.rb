@@ -21,6 +21,7 @@ class LinkSubmission
     link.link_tags = build_link_tags
 
     if link.save_and_publish
+      DuplicateChecker.perform_async(link.id)
       true
     else
       link.errors.each { |attribute, message| errors.add(attribute, message) }

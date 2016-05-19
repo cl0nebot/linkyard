@@ -160,6 +160,9 @@ textarea { &.l10 { height: 14em; }}
 .links {
   & > div { margin: 0; width: 100%; }
   .links-list { margin-top: 1em; }
+  textarea, input[type="text"], select { display: block; min-width: 15em; line-height: 150%; font-size: 1em; margin-bottom: 1em; }
+  label input[type="checkbox"] { }
+  input[type="submit"], button { font-size: 1em; width: 150px;  display: block; margin-top: 1em; }
 
   &.new textarea.content { height: 10em; }
 
@@ -189,6 +192,9 @@ body.dashboard, body.news, body.links {
   .digest { padding: 0.25em 1em 2em 1em; }
   .digest:nth-of-type(odd) { background: #EDF1F2; }
   .digest-name { margin: 2em 0; text-transform: uppercase;}
+  a.link { color: blue !important; }
+  a.duplicate { color: red !important; }
+  a.action { text-decoration: none; }
 }
 
 body.news {
