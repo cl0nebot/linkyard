@@ -11,8 +11,8 @@ class Dashboard
     end
   end
 
-  def self.future_digests
-    Weekly::Digest::TYPES.map { |type| Weekly::Digest.new(type, issue: Weekly::Digest.issue_from(type, Time.zone.now) + 1) }
+  def self.digests(week_offset)
+    Weekly::Digest::TYPES.map { |type| Weekly::Digest.new(type, issue: Weekly::Digest.issue_from(type, Time.zone.now) + week_offset) }
   end
 
   def self.pending_interactions

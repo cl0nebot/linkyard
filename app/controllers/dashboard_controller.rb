@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     @subscriber_stats = Dashboard.subscriber_stats
-    @future_digests = Dashboard.future_digests
+    @future_digests = Dashboard.digests(params[:week_offset].present? ? params[:week_offset].to_i : 1)
     @subscribers_for_email = Subscriber.for_email.size
     @unsubscribed = Dashboard.unsubscribed
   end
