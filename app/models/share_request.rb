@@ -4,7 +4,7 @@ class ShareRequest < ActiveRecord::Base
   belongs_to :link
 
   def tweet_text
-    "Hi @#{twitter_contact} - your article #{link.title} was featured in #{link.digest.capitalize} Digest. Please, share it by #{tweet_url}."
+    "@#{twitter_contact} #{link.title} was featured in #{twitter_username(link.digest)}. Please, share it by #{tweet_url}."
   end
 
   def tweet_url
