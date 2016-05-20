@@ -27,11 +27,6 @@
     </ul>
   </header>
 
-  <% if success %>
-    <div class="success">
-      <p><%= success %></p>
-    </div>
-  <% end %>
   <% if notice %>
     <div class="notice">
       <p><%= notice %></p>
@@ -42,11 +37,18 @@
       <p><%= alert %></p>
     </div>
   <% end %>
-  <% if error %>
-    <div class="error">
-      <p><%= error %></p>
+  <% if flash[:success].present? %>
+    <div class="success">
+      <p><%= flash[:success] %></p>
     </div>
   <% end %>
+  <% if flash[:error].present? %>
+    <div class="error">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+  
+  
 
   <%= content_for?(:content) ? yield(:content) : yield %>
 </div>
