@@ -1,5 +1,5 @@
 class Tweet
-  def initalize(text, user, digest_type)
+  def initialize(text, user, digest_type)
     @text = text
     @user = user
     @digest_type = digest_type
