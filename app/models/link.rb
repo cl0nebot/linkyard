@@ -5,6 +5,7 @@ class Link < ActiveRecord::Base
   has_many :link_interactions, dependent: :destroy
   has_many :link_tags, dependent: :destroy
   has_many :tags, through: :link_tags
+  has_many :share_requests
   belongs_to :user
 
   before_validation :normalize

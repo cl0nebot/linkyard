@@ -1,0 +1,12 @@
+<h1>Create a share request</h1>
+<p><%= link_to @link.title, @link.url %></p>
+
+<%= form_for @share_request, url: share_requests_create_link_path(@link, @share_request) do |f| %>
+  <%= render "shared/errors", locals: { errors?: @share_request.errors.any?, error_message: @share_request.errors.full_messages.to_sentence } %>
+  <%= f.label :twitter_contact %>
+  <%= f.text_field :twitter_contact, { required: true, autofocus: true } %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<h3>Share text</h3>
+<p><%= @share_request.tweet_text %></p>

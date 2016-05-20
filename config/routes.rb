@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
     member do
       get :redirect
+      get 'share_requests/new'
+      post 'share_requests/create'
     end
   end
 

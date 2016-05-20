@@ -157,7 +157,7 @@ textarea { &.l10 { height: 14em; }}
   .share ul li { font-weight: bold; }
 }
 
-.links {
+.links, .share_requests {
   & > div { margin: 0; width: 100%; }
   .links-list { margin-top: 1em; }
   textarea, input[type="text"], select { display: block; min-width: 15em; line-height: 150%; font-size: 1em; margin-bottom: 1em; }
@@ -182,7 +182,7 @@ textarea { &.l10 { height: 14em; }}
 
 
 
-body.dashboard, body.news, body.links {
+body.dashboard, body.news, body.links, body.share_requests {
   top: 0; left: 0; margin: 0; padding: 0; font-family: sans-serif;
 }
 
