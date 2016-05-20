@@ -12,9 +12,10 @@ class ShareRequestsController < ApplicationController
     current_issue = Weekly::Digest.issue_from(@link.digest, Time.zone.now)
     share_request = @link.share_requests.build(params[:share_request].permit(:twitter_contact))
 
-    if share_request.save
+    if share_request.valid?
       begin
         Tweet.new(share_request.tweet_text, current_user, @link.digest).call
+        share_request.save!
         flash[:success] = "Share request created successfully"
       rescue Twitter::Error => e
         flash[:error] = e.message
