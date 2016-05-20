@@ -10,7 +10,7 @@ class ShareRequestsController < ApplicationController
     @link = Link.find(params[:id])
     link_issue = Weekly::Digest.issue_from(@link.digest, @link.created_at)
     current_issue = Weekly::Digest.issue_from(@link.digest, Time.zone.now)
-    share_request = @link.share_requests.new(params[:share_request].permit(:twitter_contact))
+    share_request = @link.share_requests.build(params[:share_request].permit(:twitter_contact))
 
     if share_request.save
       begin
