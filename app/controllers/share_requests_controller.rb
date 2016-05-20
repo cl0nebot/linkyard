@@ -15,7 +15,7 @@ class ShareRequestsController < ApplicationController
     if share_request.save
       begin
         Tweet.new(share_request.tweet_text, current_user, @link.digest).call
-        flash[:notice] = "Share request created successfully"
+        flash[:success] = "Share request created successfully"
       rescue Twitter::Error => e
         flash[:error] = e.message
       end

@@ -27,6 +27,11 @@
     </ul>
   </header>
 
+  <% if success %>
+    <div class="success">
+      <p><%= success %></p>
+    </div>
+  <% end %>
   <% if notice %>
     <div class="notice">
       <p><%= notice %></p>
@@ -35,6 +40,11 @@
   <% if alert %>
     <div class="warning">
       <p><%= alert %></p>
+    </div>
+  <% end %>
+  <% if error %>
+    <div class="error">
+      <p><%= error %></p>
     </div>
   <% end %>
 
