@@ -4,7 +4,7 @@ class ShareRequest < ActiveRecord::Base
   belongs_to :link
 
   def tweet_text
-    issue = Weekly::Digest.issue_from(link.digest, link.created_at)
+    issue = Weekly::Digest.issue_from(link.digest, link.created_at) + 1
     url = Rails.application.routes.url_helpers.digest_url(issue, host: Weekly::Digest.domain_from(link.digest))
     ".@#{twitter_contact} \"#{title(link)}\" was featured in last digest at #{url}"
   end
