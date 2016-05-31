@@ -13,7 +13,7 @@ class ShareRequest < ActiveRecord::Base
   def title(link)
     title_length = 65
     if link.title.length > title_length
-      link.title.slice(0..(title - 3)) + "..."
+      link.title.slice(0..(title_length - 3)) + "..."
     else
       link.title
     end
