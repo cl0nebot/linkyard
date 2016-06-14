@@ -9,6 +9,6 @@ class NewsController < ApplicationController
     @ruby_news = FetchRedditNews.new("ruby", period).call
     @elixir_news = FetchRedditNews.new("elixir", period).call
     @react_news = FetchRedditNews.new("reactjs", period).call
-    @react_news = FetchRedditNews.new("reactnative", period).call
+    @react_native_news = FetchRedditNews.new("reactnative", period).call
   end
 end
