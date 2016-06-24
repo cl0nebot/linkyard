@@ -2,8 +2,8 @@ require 'open-uri'
 
 class ArticleContentFetcher
   def initialize(url, remove_utm_params: true)
-    @url = normalize(url)
     @remove_utm_params = remove_utm_params
+    @url = normalize(url)
   end
 
   def fetch

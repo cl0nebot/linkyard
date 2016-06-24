@@ -55,7 +55,7 @@ $(function() {
         if (!$(this).val()) return;
 
         view.loading();
-        $.getJSON(api + $(this).val())
+        $.getJSON(api + encodeURIComponent($(this).val()))
           .done(function(data) { view.update(data.link_submission.url, data.link_submission.title, data.link_submission.content); })
           .fail(function(error) { view.update("", ""); });
       };

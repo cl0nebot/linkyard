@@ -20,7 +20,8 @@ class LinksController < ApplicationController
       format.json do
         url = params[:url]
         if url.present?
-          article_content = ArticleContentFetcher.new(url, remove_utm_params: params[:remove_utm_params].present? ? params[:remove_utm_params] : true).fetch
+          remove_utm_params = !(params[:remove_utm_params].present? && params[:remove_utm_params] == "false")
+          article_content = ArticleContentFetcher.new(url, remove_utm_params: remove_utm_params).fetch
           without_html_escaping_in_json do
             render json: ArticleContentPresenter.new(article_content, current_user.interactions, @available_types).to_h, status: :ok
           end
