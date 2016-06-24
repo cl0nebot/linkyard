@@ -1,8 +1,9 @@
 require 'open-uri'
 
 class ArticleContentFetcher
-  def initialize(url)
+  def initialize(url, remove_utm_params: true)
     @url = normalize(url)
+    @remove_utm_params = remove_utm_params
   end
 
   def fetch
@@ -16,7 +17,7 @@ class ArticleContentFetcher
   private
   def normalize(url)
     uri = URI(url.starts_with?("http") ? url : "http://" + url)
-    if uri.query.present?
+    if @remove_utm_params && uri.query.present?
       params = CGI.parse(uri.query)
       params.delete("utm_source")
       params.delete("utm_medium")

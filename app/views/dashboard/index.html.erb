@@ -9,10 +9,11 @@
   <p>Unsubscribed: <%= @unsubscribed.map { |key, value| "#{key}: #{value}" }.join(" ") %></p>
 </div>
 
+<div class="offset-selection"><%= link_to "<<<<", dashboard_path(week_offset: params[:week_offset] ? params[:week_offset].to_i - 1 : 0) %> offset <%= link_to ">>>>", dashboard_path(week_offset: params[:week_offset] ? params[:week_offset].to_i + 1 : 2) %></div>
 <div class="digests">
   <% @future_digests.each do |d| %>
     <div class="digest">
-      <h2 class="digest-name"><%= "#{d.type} ##{d.issue}" %></h2>
+      <h2 class="digest-name"><%= "#{d.type} ##{d.issue} (#{(d.to + 1.day).strftime("%d.%m %Y")})" %></h2>
       <% d.links_by_category.each do |category, links| %>
         <h4><%= category.name %></h4>
         <ul>

@@ -4,8 +4,8 @@
       <h2><%= links.first.digest %></h2>
       <ul>
       <% links.each do |link| %>
-        <% issue = Weekly::Digest.issue_from(link.digest, link.created_at) %>
-        <li><%= link.title %> (#<%= issue %>) : <%= link.clicks %> clicks</li>
+        <% digest = Weekly::Digest.new(link.digest, issue: Weekly::Digest.issue_from(link.digest, link.created_at)) %>
+        <li><%= link.title %> (#<%= digest.issue %> - <%= (digest.to + 1.day).strftime("%d.%m %Y") %>) : <%= link.clicks %> clicks</li>
       <% end %>
       </ul>
     <% end %>

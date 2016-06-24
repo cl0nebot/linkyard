@@ -160,7 +160,7 @@ textarea { &.l10 { height: 14em; }}
 .links, .share_requests {
   & > div { margin: 0; width: 100%; }
   .links-list { margin-top: 1em; }
-  textarea, input[type="text"], select { display: block; min-width: 15em; line-height: 150%; font-size: 1em; margin-bottom: 1em; }
+  textarea, input[type="text"], select { display: block; width: 100%; line-height: 150%; font-size: 1em; margin-bottom: 1em; }
   label input[type="checkbox"] { }
   input[type="submit"], button { font-size: 1em; width: 150px;  display: block; margin-top: 1em; }
 
@@ -188,7 +188,8 @@ body.dashboard, body.news, body.links, body.share_requests {
 
 .dashboard {
   .digests { width: 100%; }
-  .stats { padding: 0 1em; margin-bottom: 2em; }
+  .stats { padding: 0 1em; }
+  .offset-selection { padding: 0 1em; }
   .digest { padding: 0.25em 1em 2em 1em; }
   .digest:nth-of-type(odd) { background: #EDF1F2; }
   .digest-name { margin: 2em 0; text-transform: uppercase;}
