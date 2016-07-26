@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def issue_date(type, issue)
     digest = Weekly::Digest.new(type, issue: issue)
-    digest.from.strftime("%d/%m/%Y")
+    (digest.to + 1.day).strftime("%d/%m/%Y")
   end
 
   def tracking_id(digest_type)
