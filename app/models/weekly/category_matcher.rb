@@ -8,16 +8,8 @@ module Weekly
           Category.new("sponsor", 0, ["sponsor"]),
           Category.new("ruby", 2, ["ruby", "rails"]),
           Category.new("webdev", 3, ["html", "javascript", "webdev", "css"]),
-          Category.new("fun", 5, ["programmingfun", "funny"]),
-        ]
-      },
-      Weekly::Digest::PHOTOGRAPHY => {
-        default: Category.new("general", 1, []),
-        categories: [
-          Category.new("sponsor", 0, ["sponsor"]),
-          Category.new("photos of the week", 2, ["photo"]),
-          Category.new("tutorials", 3, ["tutorial"]),
-          Category.new("gear reviews", 4, ["gear"]),
+          Category.new("fun", 5, ["programmingfun", "funny", "fun"]),
+          Category.new("jobs", 100, ["job", "jobs"]),
         ]
       },
       Weekly::Digest::CSHARP => {
@@ -27,6 +19,7 @@ module Weekly
           Category.new("asp.net", 2, ["aspnet", "iis"]),
           Category.new("azure", 3, ["azure"]),
           Category.new("wpf", 4, ["wpf"]),
+          Category.new("jobs", 100, ["job", "jobs"]),
         ]
       },
       Weekly::Digest::ELIXIR => {
@@ -34,6 +27,7 @@ module Weekly
         categories: [
           Category.new("sponsor", 0, ["sponsor"]),
           Category.new("phoenix", 2, ["phoenix"]),
+          Category.new("jobs", 100, ["job", "jobs"]),
         ]
       },
       Weekly::Digest::REACT => {
@@ -41,6 +35,7 @@ module Weekly
         categories: [
           Category.new("sponsor", 0, ["sponsor"]),
           Category.new("react native", 2, ["reactnative"])
+          Category.new("jobs", 100, ["job", "jobs"]),
         ]
       }
     }
