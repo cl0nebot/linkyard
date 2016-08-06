@@ -53,7 +53,7 @@ header {
 }
 
 .share a { font-weight: bold; }
-.perex { font-family: Verdana, Geneva, sans-serif; font-size: 50px; margin: 20px 0 25px 0; letter-spacing: 2px; }
+.perex { font-family: Verdana, Geneva, sans-serif; font-size: 50px; margin: 20px 0 25px 0; letter-spacing: 2px; line-height: 125%; }
 footer {
   a, a:visited { color: $light-color; }
 }
