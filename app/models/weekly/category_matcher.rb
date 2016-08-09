@@ -18,7 +18,7 @@ module Weekly
           Category.new("sponsor", 0, ["sponsor"]),
           Category.new("asp.net", 2, ["aspnet", "iis"], end_date: Date.parse('2016-07-31')),
           Category.new("azure", 3, ["azure"], end_date: Date.parse('2016-07-31')),
-          Category.new("wpf", 4, ["wpf", end_date: Date.parse('2016-07-31')]),
+          Category.new("wpf", 4, ["wpf"], end_date: Date.parse('2016-07-31')),
           Category.new("jobs", 100, ["job", "jobs"]),
         ]
       },
