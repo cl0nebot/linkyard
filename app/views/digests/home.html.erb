@@ -1,40 +1,34 @@
 <% content_for :title do %>
-  <%= "Stay up to date with the best Weekly #{digest_name(@digest_type)} Digest" %>
+  <%= "Stay up to date with top 5 #{digest_name(@digest_type).downcase} news from last week" %>
 <% end %>
 
 <% if @digest_type == Weekly::Digest::PROGRAMMING %>
-  <h1>One email per week,<br />no spam.</h1>
+  <h1>One email per week,<br />5 links.</h1>
   <hr />
-  <p>Stay up to date with current web technologies.</p>
-  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in programming and software development in web.</p>
-  <p>The only news source you need targeted on (but not limited to) <strong>Ruby</strong>, <strong>Javascript</strong>  and <strong>Web development</strong>.</p>
-  <%= render partial: "subscribers/form" %>
-<% elsif @digest_type == Weekly::Digest::PHOTOGRAPHY %>
-  <h1>One email per week,<br />no spam.</h1>
-  <hr />
-  <p>Stay up to date with news in photography.</p>
-  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in photography, tutorials and gear tests.</p>
-  <p>The only news source you need targeted on (but not limited to) <strong>photography</strong>, <strong>tutorials</strong>, <strong>gear</strong> and <strong>photo software</strong>.</p>
+  <p>Programming is the most fun, but how do you <strong>keep up to date</strong>?</p>
+  <p>Stop wasting your time on Hackernews or Reddit and get your 5 articles directly to your inbox <strong>every Monday</strong>.</p>
+  <p>One article from Monday to Friday with the most interesting news about <strong>programming, big data, architecture, development process, databases</strong> &mdash; you name it.</p>
+
   <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::CSHARP %>
-  <h1>One email per week,<br />no spam.</h1>
+  <h1>One email per week,<br />5 links.</h1>
   <hr />
-  <p>Stay up to date with C# and .NET Framework</p>
-  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in .NET Framework and Microsoft technologies.</p>
-  <p>The only news source you need targeted on (but not limited to) <strong>C#</strong>, <strong>.NET Framework</strong>, <strong>Azure</strong>, <strong>ASP.NET</strong>  and <strong>WPF</strong>.</p>
+  <p>Do you want to keep up to date with what is happening in the world of <strong>Microsoft development</strong>?</p>
+  <p>But keeping up to date with all the blogs, podcasts and articles is <strong>time consuming</strong>, so why not let someone else curate the content for you?</p>
+  <p>With our weekly newsletter you will get 5 top stories hand picked into your inbox every Monday with topic ranging from <strong>C#, .NET, CLR and WPF</strong> and the world of web and cloud with <strong>Azure and ASP.NET</strong>.</p>
   <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::ELIXIR %>
-  <h1>One email per week,<br />no spam.</h1>
+  <h1>One email per week,<br />5 links.</h1>
   <hr />
-  <p>Stay up to date with Elixir.</p>
-  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in functional programming with Elixir.</p>
-  <p>The only news source you need targeted on (but not limited to) <strong>Elixir</strong>, <strong>functional programming</strong>, <strong>Phoenix</strong> and <strong>Ecto</strong>.</p>
+  <p>Elixir is the new emerging language running on an Erlang virtual machine with a syntax of Ruby.</p>
+  <p>It is buzzing with news and to keep up to date with them we select 5 top articles and send them to your <strong>inbox every Monday</strong>.</p>
+  <p>Get your weekly portion of <strong>Elixir</strong> and <strong>Phoenix</strong> goodness and become THE functional programming master.</p>
   <%= render partial: "subscribers/form" %>
 <% elsif @digest_type == Weekly::Digest::REACT %>
-  <h1>One email per week,<br />no spam.</h1>
+  <h1>One email per week,<br />5 links.</h1>
   <hr />
-  <p>Stay up to date with react.js.</p>
-  <p>Get a <strong>free</strong>, weekly newsletter about the latest news in React Javascript community.</p>
-  <p>The only news source you need targeted on (but not limited to) <strong>React</strong>, <strong>Javascript</strong>, <strong>Flux</strong> and <strong>functional programming</strong>.</p>
+  <p>Keeping up to date in the land of <strong>Javascript</strong> framework is almost impossible.</p>
+  <p>We love React and we select 5 top articles and send them to you <strong>every Monday</strong>.
+  <p><strong>Flux, Redux, MobX, React and React Native</strong> we are watching everything so sign up and get your portion of javascript awesomeness every week.</p>
   <%= render partial: "subscribers/form" %>
 <% end %>
