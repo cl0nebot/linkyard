@@ -20,6 +20,11 @@
   <p class="perex">5 top links &mdash;<br />save time, be smarter.</p>
   <hr />
 
+  <% unless @digest.has_sponsor? %>
+    <h2>sponsor</h2>
+    <a href="http://www.launchbit.com/az/<%= launchbit_id(@digest.type) %>/"><img width="468" height="60" src="http://www.launchbit.com/az-images/<%= launchbit_id(@digest.type) %>/" /></a>
+  <% end %>
+
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>

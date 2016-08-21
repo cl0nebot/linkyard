@@ -44,6 +44,10 @@ module ApplicationHelper
     DigestsController::DIGEST_MAPPINGS[digest_type][:twitter]
   end
 
+  def launchbit_id(digest_type)
+    DigestsController::DIGEST_MAPPINGS[digest_type][:launchbit]
+  end
+
   def other_digests(digest_type)
     DigestsController::DOMAIN_TO_DIGEST.reject { |k, v| v == digest_type || Weekly::Digest::INACTIVE_DIGESTS.include?(v) }
   end

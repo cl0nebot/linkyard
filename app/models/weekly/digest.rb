@@ -52,6 +52,10 @@ module Weekly
       @type = type
     end
 
+    def has_sponsor?
+      links.any? { |l| l.tags.any? { |t| t.name == "sponsor" }}
+    end
+
     def links
       @links ||= Link.digestable(type).where(created_at: @from..@to).includes(:tags)
     end

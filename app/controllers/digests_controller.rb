@@ -8,18 +8,16 @@ class DigestsController < ApplicationController
 
   DOMAIN_TO_DIGEST = {
     "programmingdigest.net" => Weekly::Digest::PROGRAMMING,
-    "photographydigest.net" => Weekly::Digest::PHOTOGRAPHY,
     "csharpdigest.net" => Weekly::Digest::CSHARP,
     "elixirdigest.net"=> Weekly::Digest::ELIXIR,
     "reactdigest.net" => Weekly::Digest::REACT
   }
 
   DIGEST_MAPPINGS = {
-    Weekly::Digest::PROGRAMMING => { name: "Programming", analytics: "UA-66393277-1", twitter: "softwaredigest" },
-    Weekly::Digest::PHOTOGRAPHY => { name: "Photography", analytics: "UA-66393277-2", twitter: "35mmdigest" },
-    Weekly::Digest::CSHARP => { name: "C#", analytics: "UA-66393277-3", twitter: "csharpdigest" },
-    Weekly::Digest::ELIXIR => { name: "Elixir", analytics: "UA-66393277-4", twitter: "elixirdigest" },
-    Weekly::Digest::REACT => { name: "React", analytics: "UA-66393277-5", twitter: "reactjsdigest" }
+    Weekly::Digest::PROGRAMMING => { name: "Programming", analytics: "UA-66393277-1", twitter: "softwaredigest", launchbit: "17952-11373" },
+    Weekly::Digest::CSHARP => { name: "C#", analytics: "UA-66393277-3", twitter: "csharpdigest", launchbit: "17953-11372" },
+    Weekly::Digest::ELIXIR => { name: "Elixir", analytics: "UA-66393277-4", twitter: "elixirdigest", launchbit: "17950-11371" },
+    Weekly::Digest::REACT => { name: "React", analytics: "UA-66393277-5", twitter: "reactjsdigest", launchbit: "17951-11374" }
   }
 
   def index
