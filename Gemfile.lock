@@ -90,7 +90,7 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-rails (1.1.5)
+    capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capybara (2.5.0)
@@ -484,7 +484,7 @@ DEPENDENCIES
   buffer!
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
-  capistrano-rails (~> 1.1.1)
+  capistrano-rails (~> 1.1.8)
   capistrano-rbenv!
   capistrano-sidekiq!
   capybara
@@ -530,4 +530,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
