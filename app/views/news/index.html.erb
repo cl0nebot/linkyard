@@ -1,10 +1,5 @@
 <h1>News</h1>
 <h2>Reddit</h2>
-<%= render partial: "links", locals: { subreddit: "Programming", news: @programming_news  } %>
-<%= render partial: "links", locals: { subreddit: "Webdev", news: @webdev_news  } %>
-<%= render partial: "links", locals: { subreddit: "Javascript", news: @javascript_news  } %>
-<%= render partial: "links", locals: { subreddit: "C#", news: @csharp_news  } %>
-<%= render partial: "links", locals: { subreddit: "Ruby", news: @ruby_news  } %>
-<%= render partial: "links", locals: { subreddit: "Elixir", news: @elixir_news  } %>
-<%= render partial: "links", locals: { subreddit: "React", news: @react_news  } %>
-<%= render partial: "links", locals: { subreddit: "React Native", news: @react_native_news  } %>
+<% @news.each do |subreddit, links| %>
+  <%= render partial: "links", locals: { subreddit: subreddit, news: links  } %>
+<% end %>

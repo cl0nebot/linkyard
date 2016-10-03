@@ -3,12 +3,6 @@ class NewsController < ApplicationController
 
   def index
     period = params[:period] ? params[:period].to_sym : :week
-    @programming_news = FetchRedditNews.new("programming", period).call
-    @webdev_news = FetchRedditNews.new("webdev", period).call
-    @csharp_news = FetchRedditNews.new("csharp", period).call
-    @ruby_news = FetchRedditNews.new("ruby", period).call
-    @elixir_news = FetchRedditNews.new("elixir", period).call
-    @react_news = FetchRedditNews.new("reactjs", period).call
-    @react_native_news = FetchRedditNews.new("reactnative", period).call
+    @news = FetchRedditNews.new(period: period).call
   end
 end
