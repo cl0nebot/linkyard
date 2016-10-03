@@ -13,7 +13,7 @@ every :monday, :at => '03:05' do
   runner "SendDigests.run"
 end
 
-every 1.day, at: '20:50' do
+every 1.day, at: '21:10' do
   runner "RedditMailer.daily.deliver"
 end
 

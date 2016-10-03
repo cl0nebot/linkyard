@@ -81,7 +81,7 @@ GEM
     byebug (9.0.6)
     cane (2.6.2)
       parallel
-    capistrano (3.1.0)
+    capistrano (3.4.1)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
@@ -463,7 +463,7 @@ PLATFORMS
 DEPENDENCIES
   activeuuid
   buffer!
-  capistrano (~> 3.1.0)
+  capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.8)
   capistrano-rbenv!
