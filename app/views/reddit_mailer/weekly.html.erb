@@ -1,0 +1,16 @@
+<style type="text/css" media="all">
+  ul { padding-left: 0px; }
+  li:nth-child(odd) { background: #ededed; }
+  li { list-style: none; padding: 0.75em 0; }
+</style>
+
+<h1>Reddit news</h1>
+<% @news.each do |subreddit, links| %>
+  <h2><%= subreddit %></h2>
+  <ul>
+    <% links.each do |link| %>
+      <li><%= "[#{link.upvotes}] #{link_to link.title, link.url, title: link.title} (#{distance_of_time_in_words(Time.now, link.created_at)})".html_safe %></li>
+    <% end %>
+  </ul>
+  <hr />
+<% end %>

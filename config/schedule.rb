@@ -12,3 +12,11 @@ job_type :script, %q{ cd :path && PATH=:env_path:"$PATH" RAILS_ENV=:environment 
 every :monday, :at => '03:05' do
   runner "SendDigests.run"
 end
+
+every 1.day, at: '20:50' do
+  runner "RedditMailer.daily.deliver"
+end
+
+every :friday, at: '12:00' do
+  runner "RedditMailer.weekly.deliver"
+end
