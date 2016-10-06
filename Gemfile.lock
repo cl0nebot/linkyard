@@ -98,6 +98,23 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.6)
+      timers (>= 4.1.1)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -117,7 +134,6 @@ GEM
     concord (0.1.5)
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
-    concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -159,6 +175,7 @@ GEM
     hashie (3.4.6)
     hike (1.2.3)
     hirb (0.7.3)
+    hitimes (1.2.4)
     htmlentities (4.3.4)
     http (1.0.4)
       addressable (~> 2.3)
@@ -284,8 +301,6 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     rack (1.5.5)
-    rack-protection (1.5.3)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.14)
@@ -322,6 +337,8 @@ GEM
       hashie (~> 3.4)
       multi_json (~> 1.12)
     redis (3.3.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     reek (2.2.1)
       parser (~> 2.2)
       rainbow (~> 2.0)
@@ -382,11 +399,12 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     sexp_processor (4.7.0)
-    sidekiq (4.2.2)
-      concurrent-ruby (~> 1.0)
+    sidekiq (3.5.4)
+      celluloid (~> 0.17.2)
       connection_pool (~> 2.2, >= 2.2.0)
-      rack-protection (~> 1.5)
+      json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
+      redis-namespace (~> 1.5, >= 1.5.2)
     simple_oauth (0.3.1)
     slop (3.6.0)
     spring (1.7.2)
@@ -409,6 +427,8 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     timecop (0.8.1)
+    timers (4.1.1)
+      hitimes
     twitter (5.16.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -496,7 +516,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver (>= 2.45.0.dev3)
-  sidekiq
+  sidekiq (~> 3.5.4)
   spring
   spring-commands-rspec
   sqlite3
