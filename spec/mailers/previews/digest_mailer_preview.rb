@@ -2,7 +2,7 @@
 class DigestMailerPreview < ActionMailer::Preview
   def weekly
     type = Weekly::Digest::PROGRAMMING
-    return DigestMailer.weekly(Weekly::Digest.new(type, issue: 119), Subscriber.for_email.where(digest: type).last)
+    return DigestMailer.weekly(Weekly::Digest.new(type, issue: 175), Subscriber.for_email.where(digest: type).last)
 
     # type = Weekly::Digest::CSHARP
     # return DigestMailer.weekly(Weekly::Digest.new(type, issue: 107), Subscriber.for_email.where(digest: type).last)

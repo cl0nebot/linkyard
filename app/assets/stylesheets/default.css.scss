@@ -14,7 +14,7 @@ $react-alternate-color: #2F92CC;
 header, nav, section, article, aside, footer, main { display:block; }
 
 html, body { min-height: 100%; margin: 0; padding: 0; top: 0; left: 0; }
-body { font-family: "Courier New", Courier, monospace; color: $main-color; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 17px; }
+body { font-family: Arial, Helvetica, sans-serif; color: $main-color; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 17px; }
 h1, h2, h3, h4, h5, h6 { margin: 1.25em 0 1em 0; line-height: 125%; }
 h1 { font-size: 1.5em; margin-top: 0.75em; }
 h2 { font-size: 1.3em; }
@@ -91,7 +91,7 @@ textarea { &.l10 { height: 14em; }}
   width: 1115px; background-repeat: no-repeat;
 
   input[type="text"], input[type="email"], textarea {
-    border: none; border-bottom: 1px solid $main-color; font-size: 0.9em; display: block; margin: 1em 0; padding: 2px; font-family: "Courier New", Courier, monospace; min-width: 317px;
+    border: none; border-bottom: 1px solid $main-color; font-size: 0.9em; display: block; margin: 1em 0; padding: 2px; min-width: 317px;
     &:focus { outline: none; }
   }
   textarea { min-height: 4em; }
@@ -100,14 +100,14 @@ textarea { &.l10 { height: 14em; }}
   :-moz-placeholder { font-style: italic; }
   ::-moz-placeholder { font-style: italic; }
   :-ms-input-placeholder { font-style: italic; }
-  input[type="submit"] { color: $alternate-color; font-family: "Courier New", Courier, monospace; font-size: 0.9em; border-radius: 20px; padding: 6px 10px; min-width: 200px; }
+  input[type="submit"] { color: $alternate-color; font-size: 0.9em; border-radius: 20px; padding: 6px 10px; min-width: 200px; }
 
 
   .content { padding: 20px 20px 20px 60px; }
   header {
     a:hover { text-decoration: underline; }
     h1 {
-      width: 205px; margin-right: 175px; float: left; font-weight: normal;
+      width: 205px; margin-right: 125px; float: left; font-weight: normal;
       a, a:visited { color: $alternate-color; text-decoration: none; }
     }
     ul { margin: 0; padding: 0; }
@@ -118,7 +118,7 @@ textarea { &.l10 { height: 14em; }}
   }
 
   .sidebar {
-    width: 205px; float: left; margin-right: 175px; color: $alternate-color; padding-top: 10px;
+    width: 205px; float: left; margin-right: 125px; color: $alternate-color; padding-top: 10px;
     a, a:visited { color: $alternate-color; }
     h3 { margin: 10px 0; }
     ul { padding-left: 0; margin-bottom: 50px;}
@@ -126,11 +126,11 @@ textarea { &.l10 { height: 14em; }}
   }
 
   &.home .main {
-    h1 { font-family: sk-modernistbold, Verdana, Geneva, sans-serif; font-size: 65px; font-weight: bold; margin: 20px 0 40px 0; line-height: 100%; }
+    h1 { font-family: "Arial Black", Gadget, sans-serif; font-size: 55px; font-weight: bold; margin: 20px 0 40px 0; line-height: 115%; }
   }
 
   .main {
-    width: 635px; float: right;
+    width: 685px; float: left;
     .subscribe-form, .search-form {
       margin: 3em 0;
     }
@@ -149,7 +149,7 @@ textarea { &.l10 { height: 14em; }}
     a:visited { color: #551a8b; }
     a:active { color: #ee0000; }
     .title, .tags { margin: 0; }
-    .description { line-height: 115%; margin-top: 0.3em; }
+    .description { line-height: 145%; margin-top: 0.3em; }
     ul { padding: 0; margin-bottom: 3em; }
     li { list-style: none; display: inline; padding-right: 3em; }
   }
@@ -168,7 +168,6 @@ textarea { &.l10 { height: 14em; }}
 
   &.show {
     article {
-      font-family: serif;
       h1, h2, h3, h4, h5, h6 { font-weight: bold;}
       header {
         text-align: center;
@@ -183,7 +182,7 @@ textarea { &.l10 { height: 14em; }}
 
 
 body.dashboard, body.news, body.links, body.share_requests {
-  top: 0; left: 0; margin: 0; padding: 0; font-family: sans-serif;
+  top: 0; left: 0; margin: 0; padding: 0;
 }
 
 .dashboard {

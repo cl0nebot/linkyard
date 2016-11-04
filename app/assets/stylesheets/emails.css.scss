@@ -15,7 +15,7 @@ $react-alternate-color: #2F92CC;
 header, nav, section, article, aside, footer, main { display:block; }
 
 html, body { min-height: 100%; margin: 0; padding: 0; top: 0; left: 0; }
-body { font-family: "Courier New", Courier, monospace; color: $main-color; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 17px; }
+body { font-family: Arial, Helvetica, sans-serif; color: $main-color; text-rendering: optimizeLegibility; hyphens: auto; line-height: 145%; font-size: 17px; }
 h1, h2, h3, h4, h5, h6, .perex { margin: 1.25em 0 1em 0; line-height: 125%; font-weight: bold; }
 h1, .perex { font-size: 1.5em; margin-top: 0.75em; }
 h2 { font-size: 1.3em; }
@@ -53,7 +53,7 @@ header {
 }
 
 .share a { font-weight: bold; }
-.perex { font-family: Verdana, Geneva, sans-serif; font-size: 50px; margin: 20px 0 25px 0; letter-spacing: 2px; line-height: 125%; }
+.perex { font-family: "Arial Black", Gadget, sans-serif; font-size: 55px; font-weight: bold; margin: 20px 0; line-height: 115%; }
 footer {
   a, a:visited { color: $light-color; }
 }
@@ -65,7 +65,7 @@ footer {
   a:visited { color: #551a8b; }
   a:active { color: #ee0000; }
   .title, .tags { margin: 0; }
-  .description { line-height: 115%; margin-top: 0.3em; }
+  .description { line-height: 145%; margin-top: 0.3em; }
   ul { padding: 0; margin-bottom: 3em; }
   li { list-style: none; display: inline; padding-right: 3em; }
 }

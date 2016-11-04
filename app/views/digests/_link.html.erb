@@ -2,11 +2,11 @@
   <p class="title"><%= link_to link.title, redirect_link_url(link, { host: @digest_type ? Weekly::Digest.domain_from(@digest_type) : @digest.domain }.merge(url_params || {})) %></p>
   <% if show_digest %>
     <% issue = Weekly::Digest.issue_from(@digest_type, link.created_at) + 1 %>
-    <p class="tags"><%= link.tags.map { |t| t.name }.join(", ") %> (<%= link_to "##{issue}", digest_path(issue) %>)</p>
+    <p class="tags"><%= link.tags.map { |t| "##{t.name}" }.join(", ") %> (<%= link_to "##{issue}", digest_path(issue) %>)</p>
   <% else %>
-    <p class="tags"><%= link.tags.map { |t| t.name }.join(", ") %></p>
+    <p class="tags"><%= link.tags.map { |t| "##{t.name}" }.join(", ") %></p>
   <% end %>
   <% if link.description.present? %>
-    <p class="description"><small><%= link.description %></small></p>
+    <p class="description"><%= link.description %></p>
   <% end %>
 </div>
