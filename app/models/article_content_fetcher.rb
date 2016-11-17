@@ -7,10 +7,12 @@ class ArticleContentFetcher
   end
 
   def fetch
-    source = open(@url).read
-    doc = Readability::Document.new(source)
-    { url: @url, title: doc.title, content: doc.content }
-  rescue SocketError, OpenURI::HTTPError
+    response = open("https://mercury.postlight.com/parser?url=#{@url}",
+                    "Content-Type" => "application/json",
+                    "x-api-key" => Rails.application.secrets.mercury_key).read
+    json = JSON.parse(response)
+    { url: @url, title: json["title"], content: json["content"] }
+  rescue SocketError, OpenURI::HTTPError, JSON::ParserError
     { url: @url, title: "", content: "" }
   end
 

@@ -17,7 +17,6 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
 gem 'uuidtools'
-gem 'ruby-readability'
 gem "pg"
 gem 'will_paginate', '~> 3.0.6'
 gem 'pg_search'
