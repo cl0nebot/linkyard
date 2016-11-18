@@ -17,6 +17,6 @@ every 1.day, at: '10:00' do
   runner "RedditMailer.daily.deliver"
 end
 
-every :friday, at: '16:15' do
+every :friday, at: '10:15' do
   runner "RedditMailer.weekly.deliver"
 end
