@@ -494,6 +494,7 @@ DEPENDENCIES
   jquery-ui-rails
   mail_form
   metric_fu
+  nokogiri
   omniauth-buffer2
   omniauth-reddit!
   omniauth-twitter
