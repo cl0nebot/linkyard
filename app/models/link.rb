@@ -35,9 +35,26 @@ class Link < ActiveRecord::Base
     link_tags.default.present? ? link_tags.default.first.tag : nil
   end
 
+  def decorated_url(medium)
+    add_params(url, { utm_source: "#{digest}digest", utm_medium: medium || "email", utm_campaign: sponsored? ? "sponsored" : "featured" })
+  end
+
+  def sponsored?
+    tags.map(&:name).include?("sponsor")
+  end
+
   protected
   def normalize
     self.url = "http://#{url}" unless url.blank? || url.start_with?("http")
     self.digest = nil unless Weekly::Digest::TYPES.include?(digest)
+  end
+
+  def add_params(url, params)
+    uri = URI(url)
+    query_params = URI.decode_www_form(uri.query || "")
+    original_keys = query_params.map { |k, v| k.to_sym }
+    params.each { |name, value| query_params << [name, value] unless original_keys.include?(name) }
+    uri.query = URI.encode_www_form(query_params)
+    uri.to_s
   end
 end

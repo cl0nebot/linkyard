@@ -7,7 +7,7 @@
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>
-      <%= render partial: "link", locals: { link: link, show_digest: false, url_params: { utm_source: @digest_type, utm_medium: "website", utm_campaign: "digest" }  } %>
+      <%= render partial: "link", locals: { link: link, show_digest: false, url_params: { medium: "web" }  } %>
     <% end %>
   <% end %>
   <div class="share">

@@ -106,7 +106,7 @@ class LinksController < ApplicationController
       link.clicks += 1
       link.save!
     end
-    redirect_to link.url
+    redirect_to link.decorated_url(params[:medium])
   end
 
   private

@@ -19,11 +19,6 @@ $(function() {
   });
 
   $("body.links-new").each(function() {
-    $("#add-tracking").click(function() {
-      var digest = $("#link_submission_digest").val();
-      $("#link_submission_url").val($("#link_submission_url").val() + "?utm_source=" + digest + "digest&utm_medium=email&utm_campaign=sponsored");
-    });
-
     function View() {
       var input = {
         url : $("#link_submission_url"),

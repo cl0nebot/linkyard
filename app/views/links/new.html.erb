@@ -1,6 +1,5 @@
 <%= form_for @link_submission, url: links_path(@link_submission) do |f| %>
   <%= render "shared/errors", locals: { errors?: @link_submission.errors.any?, error_message: @link_submission.errors.full_messages.to_sentence } %>
-  <%= f.label :url %> (<%= link_to "add tracking", "#", id: "add-tracking" %>)
   <%= f.text_field :url, { required: true, autofocus: true } %>
 
   <%= f.label :tags %>

@@ -12,7 +12,7 @@
 
 <% if @links %>
   <% @links.each do |link| %>
-    <%= render partial: "link", locals: { link: link, show_digest: true, url_params: { utm_source: @digest_type, utm_medium: "search", utm_campaign: "digest" }} %>
+    <%= render partial: "link", locals: { link: link, show_digest: true, url_params: { medium: "search" }} %>
   <% end %>
 <% else %>
   <p>No links were found.</p>
