@@ -4,6 +4,16 @@ class Statistics
     issues.map { |i| Statistics.new(Weekly::Digest.new(type, issue: i)) }.reduce(0) { |sum, s| s.avg_ctr + sum }.to_f / issues.size
   end
 
+  def self.sponsor_link_stats
+    Tag.find_by(name: "sponsor").links.where.not(clicks: 0).where(digest: Weekly::Digest::TYPES).order(created_at: :asc).map do |link|
+      { link: link, ctr: ctr_for(link), subscribers: new(Weekly::Digest.new(link.digest, issue: Weekly::Digest.issue_from(link.digest, link.created_at))).number_of_subscribers }
+    end
+  end
+
+  def self.ctr_for(link)
+    (link.clicks.to_f * 100 / new(Weekly::Digest.new(link.digest, issue: Weekly::Digest.issue_from(link.digest, link.created_at))).number_of_subscribers).round(2)
+  end
+
   def initialize(digest)
     @digest = digest
   end
