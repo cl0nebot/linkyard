@@ -11,7 +11,7 @@
     <table>
       <tr>
         <td><h1><%= digest_name(@digest.type).downcase %><br />digest</h1></td>
-        <td><aside><%= link_to "##{@digest.issue}", digest_url(@digest.issue, host: @digest.domain) %></aside></td>
+        <td><aside><%= link_to "##{@digest.issue}", digest_url(@digest.issue, host: @digest.domain, protocol: 'https') %></aside></td>
       </tr>
     </table>
   </header>
@@ -34,18 +34,18 @@
     <% title = "#{digest_name(@digest.type)} Digest ##{@digest.issue} for #{formatted_date(@digest.to + 1.day)}" %>
     <h2>share</h2>
     <ul>
-      <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(title) %>&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&via=<%= twitter_username(@digest.type) %>">Twitter</a></li>
-      <li class="reddit"><a href="//www.reddit.com/submit?url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>">Reddit</a></li>
-      <li class="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=<%= digest_url(@digest.issue, host: @digest.domain) %>">Facebook</a></li>
-      <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= digest_url(@digest.issue, host: @digest.domain) %>&title=<%= CGI.escape(title) %>&source=<%= @digest.domain %>">LinkedIn</a></li>
+      <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(title) %>&url=<%= digest_url(@digest.issue, host: @digest.domain, protocol: 'https') %>&via=<%= twitter_username(@digest.type) %>">Twitter</a></li>
+      <li class="reddit"><a href="//www.reddit.com/submit?url=<%= digest_url(@digest.issue, host: @digest.domain, protocol: 'https') %>&title=<%= CGI.escape(title) %>">Reddit</a></li>
+      <li class="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=<%= digest_url(@digest.issue, host: @digest.domain, protocol: 'https') %>">Facebook</a></li>
+      <li class="linkedin"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= digest_url(@digest.issue, host: @digest.domain, protocol: 'https') %>&title=<%= CGI.escape(title) %>&source=<%= @digest.domain %>">LinkedIn</a></li>
     </ul>
   </div>
   <div class="ads">
-    <p>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_url(host: @digest.domain) %>.<br />Do you want to post a job? Check out our <%= link_to "job listings", job_url(host: @digest.domain) %>.</p>
+    <p>Do you want to sponsor the digest? See our <%= link_to "advertisement options", advertise_url(host: @digest.domain, protocol: 'https') %>.<br />Do you want to post a job? Check out our <%= link_to "job listings", job_url(host: @digest.domain, protocol: 'https') %>.</p>
   </div>
   <hr />
   <footer>
-    <p>&copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %><br /><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @digest.domain) %>.</small></p>
+    <p>&copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %><br /><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @digest.domain, protocol: 'https') %>.</small></p>
   </footer>
 </body>
 </html>
