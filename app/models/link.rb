@@ -43,6 +43,10 @@ class Link < ActiveRecord::Base
     tags.map(&:name).include?("sponsor")
   end
 
+  def weekly_digest
+    Weekly::Digest.new(digest, issue: Weekly::Digest.issue_from(digest, created_at) + 1)
+  end
+
   protected
   def normalize
     self.url = "http://#{url}" unless url.blank? || url.start_with?("http")

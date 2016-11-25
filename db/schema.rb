@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519041523) do
+ActiveRecord::Schema.define(version: 20161125015740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160519041523) do
     t.string   "digest"
     t.integer  "clicks",             default: 0,     null: false
     t.boolean  "possible_duplicate", default: false
+    t.integer  "imminent_clicks",    default: 0
   end
 
   create_table "pg_search_documents", force: true do |t|

@@ -1,7 +1,7 @@
 <div class="digest-article <%= "no-description" unless link.description.present? %>">
   <p class="title"><%= link_to link.title, redirect_link_url(link, { host: @digest_type ? Weekly::Digest.domain_from(@digest_type) : @digest.domain, protocol: 'https' }.merge(url_params || {})) %></p>
   <% if show_digest %>
-    <% issue = Weekly::Digest.issue_from(@digest_type, link.created_at) + 1 %>
+    <% issue = link.weekly_digest.issue %>
     <p class="tags"><%= link.tags.map { |t| "##{t.name}" }.join(", ") %> (<%= link_to "##{issue}", digest_path(issue) %>)</p>
   <% else %>
     <p class="tags"><%= link.tags.map { |t| "##{t.name}" }.join(", ") %></p>

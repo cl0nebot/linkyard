@@ -103,6 +103,7 @@ class LinksController < ApplicationController
   def redirect
     link = Link.find(params[:id])
     link.with_lock do
+      link.imminent_clicks += 1 if Time.now < link.weekly_digest.to + 2.weeks
       link.clicks += 1
       link.save!
     end
