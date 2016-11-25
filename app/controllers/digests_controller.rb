@@ -97,7 +97,8 @@ class DigestsController < ApplicationController
 
   private
   def set_digest_type
-    @digest_type = DOMAIN_TO_DIGEST[request.host] || Weekly::Digest::PROGRAMMING
+    host = request.host.starts_with?("www.") ? request.host[4..-1] : request.host
+    @digest_type = DOMAIN_TO_DIGEST[host] || Weekly::Digest::PROGRAMMING
   end
 
   def set_latest_issue

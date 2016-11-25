@@ -4,7 +4,7 @@ xml.rss :version => "2.0" do
     xml.title "Weekly #{digest_name(@digest_type)} Digest"
     xml.author "Jakub Chodounsky"
     xml.description "The list of the most awesome #{digest_name(@digest_type)} links distributed weekly."
-    xml.link "http://#{@digest_type}digest.net"
+    xml.link "https://#{@digest_type}digest.net"
     xml.language "en"
 
     @digests.each do |digest|
