@@ -8,11 +8,11 @@ module Weekly
     TYPES = [PROGRAMMING, CSHARP, ELIXIR, REACT]
     INACTIVE_DIGESTS = [PHOTOGRAPHY]
     CONFIGURATION = {
-      PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
-      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10"), last_issue: 17 },
-      CSHARP => { initial_issue: 35, from: Time.zone.parse("2015-01-26") },
-      ELIXIR => { initial_issue: 8, from: Time.zone.parse("2015-08-17") },
-      REACT => { initial_issue: 5, from: Time.zone.parse("2015-08-17") }
+      PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26").end_of_day },
+      PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10").end_of_day, last_issue: 17 },
+      CSHARP => { initial_issue: 35, from: Time.zone.parse("2015-01-26").end_of_day },
+      ELIXIR => { initial_issue: 8, from: Time.zone.parse("2015-08-17").end_of_day },
+      REACT => { initial_issue: 5, from: Time.zone.parse("2015-08-17").end_of_day }
     }
 
     attr_reader :from, :to, :issue, :type
