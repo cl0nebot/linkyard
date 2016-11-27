@@ -9,7 +9,7 @@ class DigestMailer < ActionMailer::Base
     mail to: @subscriber.email,
       from: "jakub@#{@digest.type}digest.net",
       reply_to: "jakub.chodounsky@gmail.com",
-      subject: "Weekly #{digest_name(@digest.type)} Digest ##{@digest.issue}",
+      subject: "#{digest_name(@digest.type)} Digest ##{@digest.issue}",
       delivery_method_options: { domain: @digest.domain }
   end
 end

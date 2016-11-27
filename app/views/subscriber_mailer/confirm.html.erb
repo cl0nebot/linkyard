@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'emails', media: 'all' %>
+  </head>
+<body class="<%= @subscriber.digest %>">
+  <header class="clearfix">
+    <h1><%= digest_name(@subscriber.digest).downcase %> digest</h1>
+  </header>
+
+
+  <p>Please confirm your email address by clicking on the following link:</p>
+  <p><%= link_to subscriber_confirm_url(@subscriber.id, host: @domain, protocol: 'https'),  subscriber_confirm_url(@subscriber.id, host: @domain, protocol: 'https') %></p>
+
+  <p>Thank you!</p>
+
+  <hr />
+
+  <footer>
+    <p>&copy; <%= Time.zone.now.year %> <%= link_to "Jakub Chodounský", "https://chodounsky.net" %><br /><small>If you no longer wish to receive these emails, click to <%= link_to "unsubscribe",  subscriber_unsubscribe_url(@subscriber.id, host: @domain, protocol: 'https') %>.</small></p>
+  </footer>
+</body>
+</html>

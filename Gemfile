@@ -43,6 +43,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.8'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
   gem 'capistrano-sidekiq' , github: 'seuros/capistrano-sidekiq'
+  gem "letter_opener", :group => :development
 end
 
 group :development, :test do
