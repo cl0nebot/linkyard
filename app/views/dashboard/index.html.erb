@@ -14,6 +14,9 @@
   <% @future_digests.each do |d| %>
     <div class="digest">
       <h2 class="digest-name"><%= "#{d.type} ##{d.issue} (#{(d.to + 1.day).strftime("%d.%m %Y")})" %></h2>
+      <% d.messages.each do |message| %>
+        <p><%= message.content.html_safe %></p>
+      <% end %>
       <% d.links_by_category.each do |category, links| %>
         <h4><%= category.name %></h4>
         <ul>

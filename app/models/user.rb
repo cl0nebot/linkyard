@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :authorizations, dependent: :destroy
   has_many :tags, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   before_save :ensure_authentication_token
 

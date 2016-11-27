@@ -19,6 +19,14 @@
   <hr />
   <p class="perex">5 top links &mdash;<br />save time, be smarter.</p>
 
+  <% if @digest.messages.present? %>
+    <div class="message">
+      <% @digest.messages.each do |message| %>
+        <p><%= message.content.html_safe %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <% unless @digest.has_sponsor? %>
     <h2>sponsor</h2>
     <a href="http://www.launchbit.com/az/<%= launchbit_id(@digest.type) %>/"><img width="468" height="60" src="http://www.launchbit.com/az-images/<%= launchbit_id(@digest.type) %>/" /></a>

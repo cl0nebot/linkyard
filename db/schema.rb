@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127014424) do
+ActiveRecord::Schema.define(version: 20161127041511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20161127014424) do
     t.boolean  "possible_duplicate", default: false
     t.integer  "imminent_clicks",    default: 0
   end
+
+  create_table "messages", force: true do |t|
+    t.string   "content"
+    t.string   "digest"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

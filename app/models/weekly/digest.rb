@@ -60,6 +60,10 @@ module Weekly
       @links ||= Link.digestable(type).where(created_at: @from..@to).includes(:tags)
     end
 
+    def messages
+      @messages ||= Message.digestable(type).where(created_at: @from..@to)
+    end
+
     def domain
       self.class.domain_from(type)
     end

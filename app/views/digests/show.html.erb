@@ -4,6 +4,9 @@
   <% end %>
   <h1><%= link_to "Digests", digests_path %> » <%= @digest.issue %></h1>
   <%= render partial: "subscribers/form" %>
+  <% @digest.messages.each do |message| %>
+    <p><%= message.content.html_safe %></p>
+  <% end %>
   <% @digest.links_by_category.each do |category, links| %>
     <h2><%= category.name %></h2>
     <% links.each do |link| %>

@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages
+
   get 'submit', to: "digests#submission"
   post 'submit', to: "digests#send_submission"
   get 'advertise', to: "digests#advertisement"
