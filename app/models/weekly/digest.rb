@@ -7,6 +7,8 @@ module Weekly
     REACT = "react"
     TYPES = [PROGRAMMING, CSHARP, ELIXIR, REACT]
     INACTIVE_DIGESTS = [PHOTOGRAPHY]
+    # React and Elixir are in DST +13 and programming and c# are in +12 which might lead to +1 hour difference
+    # especially if you are looking at the stats and issues around midnight.
     CONFIGURATION = {
       PROGRAMMING => { initial_issue: 92, from: Time.zone.parse("2015-01-26") },
       PHOTOGRAPHY => { initial_issue: 1, from: Time.zone.parse("2015-08-10"), last_issue: 17 },
