@@ -1,0 +1,11 @@
+<%= form_for @message do |f| %>
+  <%= render "shared/errors", locals: { errors?: @message.errors.any?, error_message: @message.errors.full_messages.to_sentence } %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.label :digest %>
+  <%= f.select :digest, @available_digests %>
+
+  <%= f.submit 'Submit' %>
+<% end %>

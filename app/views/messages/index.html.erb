@@ -1,0 +1,28 @@
+<h1>Messages</h1>
+
+<%= render "shared/notifications" %>
+
+<p><%= link_to "New", new_message_path %></p>
+
+<% if @messages.any? %>
+<table class="links-list">
+  <thead>
+    <tr>
+      <th>Digest</th>
+      <th>Content</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @messages.each do |message| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= message.digest %></td>
+      <td><%= message.content.html_safe %></td>
+      <td><%= message.created_at.to_formatted_s(:long) %></td>
+      <td><%= link_to "Edit", edit_message_path(message)  %> <%= link_to "Delete", message, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

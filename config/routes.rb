@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages
+  resources :messages, except: [:show]
 
   get 'submit', to: "digests#submission"
   post 'submit', to: "digests#send_submission"
