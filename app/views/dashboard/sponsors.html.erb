@@ -1,3 +1,27 @@
+<div class="sponsors advertisement">
+  <table style="width: auto;">
+    <tr>
+      <th>Digest</th>
+      <th>Next available</th>
+      <th>Per issue</th>
+      <th>Subscribers</th>
+      <th>Click rate</th>
+      <th>PPC</th>
+      <th>Jobs</th>
+    </tr>
+    <% @advertisement_stats.each do |advertisement| %>
+      <tr>
+        <td><%= advertisement.digest %></td>
+        <td><%= advertisement.next_available.strftime("%b %e") %></td>
+        <td><%= "$#{advertisement.quoted_cost_per_issue} ($#{advertisement.ad_cost_per_issue.ceil})" %></td>
+        <td><%= advertisement.number_of_subscribers %></td>
+        <td><%= "#{advertisement.quoted_click_rate}% (#{advertisement.average_click_rate.ceil}%)" %></td>
+        <td><%= "$#{(advertisement.quoted_click_rate.to_f / (advertisement.number_of_subscribers * advertisement.average_click_rate / 100)).round(3) } ($#{advertisement.pay_per_click})" %></td>
+        <td><%= "$#{advertisement.job_listing_cost_per_issue.ceil}" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 <div class="sponsors stats">
   <% @sponsor_stats.each do |links| %>
     <% if links.any? %>

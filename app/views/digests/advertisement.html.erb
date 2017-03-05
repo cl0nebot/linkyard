@@ -13,10 +13,9 @@
 <h2>Ad details and newsletter statistics</h2>
 
 <ul>
-  <li class="important">Cost: <strong>$<%= @advertisement.ad_cost_per_issue.ceil %> per issue</strong></li>
+  <li class="important">Cost: <strong>$<%= @advertisement.quoted_cost_per_issue.ceil %> per issue</strong></li>
   <li>Subscribers: <%= @advertisement.number_of_subscribers %></li>
-  <li>Click rate: <%= @advertisement.average_click_rate.ceil %>%</li>
-  <li>PPC value: $<%= @advertisement.pay_per_click %></li>
+  <li>Click rate: <%= @advertisement.quoted_click_rate %>%</li>
 </ul>
 
 <p>If you chose to sponsor the newsletter for 4 issues you will get a 10% discount.</p>

@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161127041511) do
     t.string  "email_contact"
   end
 
-  create_table "subscribers", id: :uuid, force: true do |t|
+  create_table "subscribers", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "email"
     t.string   "digest",          limit: 20
     t.datetime "created_at"

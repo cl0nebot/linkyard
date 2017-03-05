@@ -41,7 +41,24 @@ class AdvertisementForm < MailForm::Base
   end
 
   def job_listing_cost_per_issue
-    ad_cost_per_issue / 3
+    quoted_cost_per_issue / 3
+  end
+
+  def quoted_cost_per_issue
+    RATES[digest]
+  end
+
+  def quoted_click_rate
+    15
+  end
+
+  def next_available(week_offset: 1)
+    d = Weekly::Digest.new(digest, issue: Weekly::Digest.issue_from(digest, Time.zone.now) + week_offset)
+    if d.has_sponsor?
+      next_available(week_offset: week_offset + 1)
+    else
+      d.to + 1.day
+    end
   end
 
   private
@@ -50,5 +67,12 @@ class AdvertisementForm < MailForm::Base
     "csharp" => 140,
     "elixir" => 130,
     "react" => 170
+  }
+
+  RATES = {
+    "programming" => 25,
+    "csharp" => 50,
+    "elixir" => 35,
+    "react" => 25
   }
 end

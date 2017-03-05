@@ -9,6 +9,7 @@ class DashboardController < ApplicationController
   end
 
   def sponsors
+    @advertisement_stats = Weekly::Digest::TYPES.map { |type| AdvertisementForm.new(digest: type) }
     @sponsor_stats = Dashboard.sponsor_stats
   end
 end

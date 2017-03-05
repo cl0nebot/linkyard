@@ -16,7 +16,7 @@
 <ul>
   <li class="important">Cost: <strong>$<%= @job_listing.job_listing_cost_per_issue.ceil %> per issue</strong></li>
   <li>Subscribers: <%= @job_listing.number_of_subscribers %></li>
-  <li>Click rate: <%= @job_listing.average_click_rate.ceil %>%</li>
+  <li>Click rate: <%= @job_listing.quoted_click_rate.ceil %>%</li>
 </ul>
 
 <% if @job_listing.errors.any? %>
