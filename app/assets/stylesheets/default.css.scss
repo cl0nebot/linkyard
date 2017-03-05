@@ -191,6 +191,8 @@ body.dashboard, body.news, body.links, body.share_requests, body.messages {
   .offset-selection { padding: 0 1em; }
   .digest { padding: 0.25em 1em 2em 1em; }
   .digest:nth-of-type(odd) { background: #EDF1F2; }
+  .digest.full { background: #e2ffd6;}
+  .digest.full:nth-of-type(odd) { background: #f4ffef; }
   .digest-name { margin: 2em 0; text-transform: uppercase;}
   a.link { color: blue !important; }
   a.duplicate { color: red !important; }
